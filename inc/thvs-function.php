@@ -229,7 +229,14 @@ if ( ! function_exists( 'thvs_settings' ) ):
                                 'desc'       => '',
 								'pro'          => true,
 								'width'        => 'auto',
-								'screen_shot'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro-coming-soon.png' ),
+								'screen_shot1'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro1.png' ),
+								'screen_shot2'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro2.png' ),
+								'screen_shot3'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro3.png' ),
+								'screen_shot4'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro4.png' ),
+								'screen_shot5'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro5.png' ),
+								'screen_shot6'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro6.png' ),
+								'link1' => esc_url('https://themehunk.com/th-variation-swatches/#pricing'),
+								'link2' => esc_url('https://themehunk.com/th-variation-swatches/'),
 								
 							),
 						)
