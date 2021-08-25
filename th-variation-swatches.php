@@ -47,3 +47,19 @@ if (!defined('TH_VARIATION_SWATCHES_VERSION')) {
 if (!class_exists('TH_Variation_Swatches')) {
 require_once("inc/thvs.php");
 }   
+
+        /**
+         * Add the settings link to the Lead Form Plugin plugin row
+         *
+         * @param array $links - Links for the plugin
+         * @return array - Links
+         */
+function thvs_plugin_action_links($links) {
+          $settings_page = add_query_arg(array('page' => 'th-variation-swatches'), admin_url());
+          $settings_link = '<a href="'.esc_url($settings_page).'">'.__('Settings', 'th-variation-swatches' ).'</a>';
+          array_unshift($links, $settings_link);
+
+           $links['thvs_pro'] = sprintf( '<a style="color: #39b54a; font-weight:600;" href="%s" target="_blank" class="thvs-plugins-gopro">%s</a>', 'https://themehunk.com/th-variation-swatches/', __( 'Go Pro', 'th-variation-swatches' ) );
+          return $links;
+        }
+add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'thvs_plugin_action_links', 10, 1);
