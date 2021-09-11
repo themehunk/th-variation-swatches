@@ -3,11 +3,11 @@
  * Plugin Name:             TH Variation Swatches
  * Plugin URI:              https://themehunk.com/product/th-variation-swatches-plugin/
  * Description:             Beautiful Colors, Images and Buttons Variation Swatches For WooCommerce Product Attributes
- * Version:                 1.0.9
+ * Version:                 1.2.0
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
  * Requires at least:       4.8
- * Tested up to:            5.8
+ * Tested up to:            5.8.1
  * WC requires at least:    3.2
  * WC tested up to:         5.1
  * Domain Path:             /languages
@@ -55,7 +55,7 @@ require_once("inc/thvs.php");
          * @return array - Links
          */
 function thvs_plugin_action_links($links) {
-          $settings_page = add_query_arg(array('page' => 'th-variation-swatches'), admin_url());
+          $settings_page = add_query_arg(array('page' => 'th-variation-swatches'), admin_url('admin.php'));
           $settings_link = '<a href="'.esc_url($settings_page).'">'.__('Settings', 'th-variation-swatches' ).'</a>';
           array_unshift($links, $settings_link);
 

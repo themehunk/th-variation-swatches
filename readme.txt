@@ -3,8 +3,8 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
 Requires at least: 4.8
-Tested up to: 5.8
-Stable tag: 1.0.9
+Tested up to: 5.8.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,9 @@ Just upload the `th-variation-swatches.zip` to the `/wp-content/plugins/` direct
 == Screenshots ==
 
 == Changelog ==
+
+= 1.2.0 =
+Tested up to wordpress 5.8.1.
 
 = 1.0.9 =
 Pro feature detail add.
