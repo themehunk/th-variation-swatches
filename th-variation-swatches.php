@@ -2,8 +2,8 @@
 /**
  * Plugin Name:             TH Variation Swatches
  * Plugin URI:              https://themehunk.com/product/th-variation-swatches-plugin/
- * Description:             Beautiful Colors, Images and Buttons Variation Swatches For WooCommerce Product Attributes
- * Version:                 1.2.0
+ * Description:             Beautiful Colors, Images and Buttons Variation Swatches For WooCommerce Product Attributes. This plugin will replace default swatches to professionally styled and colourful swatches. Plugin interface is User-friendly which allows you to edit variations seamlessly. <a href="https://themehunk.com/plugins/" target="_blank">Get more plugins for your website on <strong>ThemeHunk</strong></a>
+ * Version:                 1.2.1
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
  * Requires at least:       4.8
@@ -49,17 +49,51 @@ require_once("inc/thvs.php");
 }   
 
         /**
-         * Add the settings link to the Lead Form Plugin plugin row
+         * Add the settings link to plugin row
          *
          * @param array $links - Links for the plugin
          * @return array - Links
          */
 function thvs_plugin_action_links($links) {
-          $settings_page = add_query_arg(array('page' => 'th-variation-swatches'), admin_url('admin.php'));
+          $settings_page = add_query_arg(array('page' => 'th-variation-swatches'), admin_url());
           $settings_link = '<a href="'.esc_url($settings_page).'">'.__('Settings', 'th-variation-swatches' ).'</a>';
           array_unshift($links, $settings_link);
-
-           $links['thvs_pro'] = sprintf( '<a style="color: #39b54a; font-weight:600;" href="%s" target="_blank" class="thvs-plugins-gopro">%s</a>', 'https://themehunk.com/th-variation-swatches/', __( 'Go Pro', 'th-variation-swatches' ) );
           return $links;
         }
 add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'thvs_plugin_action_links', 10, 1);
+
+
+ /**
+   * Add links to plugin's description in plugins table
+   *
+   * @param array  $links  Initial list of links.
+   * @param string $file   Basename of current plugin.
+   *
+   * @return array
+   */
+if ( ! function_exists( 'thvs_plugin_meta_links' ) ){
+
+  function thvs_plugin_meta_links($links, $file){
+
+    if ($file !== plugin_basename(__FILE__)) {
+      return $links;
+    }
+
+    //$demo_link = '<a target="_blank" href="#" title="' . __('Live Demo', 'th-variation-swatches') . '"><span class="dashicons  dashicons-laptop"></span>' . __('Live Demo', 'th-variation-swatches') . '</a>';
+
+    $doc_link = '<a target="_blank" href="https://themehunk.com/docs/th-variation-swatches-plugin/" title="' . __('Documentation', 'th-variation-swatches') . '"><span class="dashicons  dashicons-search"></span>' . __('Documentation', 'th-variation-swatches') . '</a>';
+
+    $support_link = '<a target="_blank" href="https://themehunk.com/contact-us/" title="' . __('Support', 'th-variation-swatches') . '"><span class="dashicons  dashicons-admin-users"></span>' . __('Support', 'th-variation-swatches') . '</a>';
+
+    $pro_link = '<a target="_blank" href="https://themehunk.com/th-variation-swatches/" title="' . __('Premium Version', 'th-variation-swatches') . '"><span class="dashicons  dashicons-cart"></span>' . __('Premium Version', 'th-variation-swatches') . '</a>';
+
+    $links[] = $doc_link;
+    $links[] = $support_link;
+    $links[] = $pro_link;
+
+    return $links;
+
+  } // plugin_meta_links
+
+}
+add_filter('plugin_row_meta', 'thvs_plugin_meta_links', 10, 2);
