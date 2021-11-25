@@ -282,3 +282,34 @@ margin-top:1rem;
 font-size:1rem;
 }
 #doc_iframe-wrapper iframe{border: 1px solid #eee;}
+#profeature-wrapper img{
+max-width:100%;
+}
+#profeature-wrapper .pro-button{
+    border: 0;
+    box-shadow: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    font-size:0.7rem!important;
+    margin-right: 1rem;
+    margin-top: 2.5rem;
+    background: #ff5402;
+    color: #fff;
+    line-height: 2.15384615;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 500;
+    position: relative;
+   display: inline-flex;
+   letter-spacing:0.8px;
+}
+#profeature-wrapper .pro-button.buynow{
+    background: #4da754;
+}
+#profeature-wrapper{
+text-align:center;
+}
+
+#profeature-wrapper .pro-button:hover{
+background: #f4a51c;
+}

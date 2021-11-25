@@ -587,10 +587,24 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			if ( $is_html ) {
 				$html = $args['html'];
 			} else {
-				$image = esc_url( $args['screen_shot'] );
-				$link  = '';
+				$image1 = esc_url( $args['screen_shot1'] );
+				$image2 = esc_url( $args['screen_shot2'] );
+				$image3 = esc_url( $args['screen_shot3'] );
+				$image4 = esc_url( $args['screen_shot4'] );
+				$image5 = esc_url( $args['screen_shot5'] );
+				$image6 = esc_url( $args['screen_shot6'] );
+				$link1  = $args['link1'];
+				$link2  = $args['link2'];
 				$width = isset( $args['width'] ) ? $args['width'] : '70%';
-				$html = sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link, $width, $image );
+				$html = sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image1 );
+				$html .= sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image2 );
+				$html .= sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image3 );
+				$html .= sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image4 );
+				$html .= sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image5 );
+				$html .= sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image6 );
+				$html .= sprintf( '<a class="pro-button" target="_blank" href="%s">MORE DETAIL</a>', $link2 );
+				$html .= sprintf( '<a class="pro-button buynow" target="_blank" href="%s">BUY NOW</a>', $link1 );
+				
 				$html .= $this->get_field_description( $args );
 			}
 
