@@ -245,6 +245,55 @@ if ( ! function_exists( 'thvs_settings' ) ):
 			)
 		), apply_filters( 'thvs_profeature_setting_default_active', true )
 		);
+		th_variation_swatches()->add_setting(
+			'usefull_plugin', esc_html__( 'Themehunk Useful Plugins', 'th-variation-swatches' ), apply_filters(
+			'thvs_usefull_plugin_settings_section', array(
+				array(
+				
+					'title'  => esc_html__( 'Themehunk Useful Plugins', 'th-variation-swatches' ),
+					'desc'   => esc_html__( '', 'th-variation-swatches' ),
+					'fields' => apply_filters(
+						'thvs_usefull_plugin_setting_fields', array(
+							array(
+								'id'         => 'th-advance-product-search',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/th-advance-product-search/assets/icon-128x128.gif'),
+								'plugin_title'  => esc_html__( 'TH Advance Product Search', 'th-variation-swatches' ),
+								'plugin_link'  => esc_url('https://themehunk.com/advance-product-search/'),	
+								
+							),
+							array(
+								'id'         => 'lead-form-builder',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/lead-form-builder/assets/icon-128x128.png'),
+								'plugin_title'  => esc_html__( 'Lead Form Builder', 'th-variation-swatches' ),
+								'plugin_link'  => esc_url('https://themehunk.com/product/lead-form-builder-pro/'),	
+								
+							),
+							array(
+								'id'         => 'wp-popup-builder',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/wp-popup-builder/assets/icon-128x128.png'),
+								'plugin_title'  => esc_html__( 'WP Popup Builder – Popup Forms & Newsletter', 'th-variation-swatches' ),
+								'plugin_link'  => esc_url('https://themehunk.com/product/wp-popup-builder/'),	
+								
+							),
+							
+						)
+					)
+				)
+			)
+		), apply_filters( 'thvs_usefull_plugin_setting_default_active', true )
+		);
 
 
 		do_action( 'after_thvs_settings', th_variation_swatches() );

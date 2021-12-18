@@ -90,6 +90,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
 						<?php endforeach; ?>
 					</div>
+
 					<?php
 					$this->last_tab_input();
 					
@@ -103,8 +104,22 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 					</p> 
 
             </div>
+
 				</form>
 			</div>
+			<div class="thvs-notes-wrap">
+
+            	<div class="thvs-notes-row thvs-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-variation-swatches' ) ?></h4><p><?php esc_html_e( '', 'th-variation-swatches' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-variation-swatches-plugin/'); ?>"><?php esc_html_e( 'Read Now', 'th-variation-swatches' ) ?></a></div>
+
+            	<div class="thvs-notes-row thvs-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Unlock TH Variation Swatches Pro','th-variation-swatches', 'th-advance-product-search' ) ?></h4><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'th-variation-pro.png') ?>' alt="amaz-store"><a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-variation-swatches/'); ?>"><?php esc_html_e( 'Upgrade Pro', 'th-variation-swatches' ) ?></a></div>
+
+            	<div class="thvs-notes-row thvs-wrap-img">
+	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/product/amaz-store/'); ?>"><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'amaz-store.png') ?>' alt="amaz-store">
+	               	</a>
+            	</div>
+
+      </div>
+
 			<?php
 			
 		}
@@ -332,6 +347,10 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 					echo '<td colspan="2" style="padding: 0; margin: 0">';
 					$this->pro_field_callback( $field['args'] );
 					echo '</td>';
+			  	}	elseif ( isset( $field['args']['usefull'] ) ) {
+					echo '<td colspan="2" style="padding: 0; margin: 0">';
+					$this->usefullplugin_field_callback( $field['args'] );
+					echo '</td>';
 			  	} else {
 					echo '<th scope="row" class="thvs-settings-label">';
 					if ( ! empty( $field['args']['label_for'] ) ) {
@@ -486,6 +505,10 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 					$this->pro_field_callback( $field );
 					break;
 
+				case 'usefullplugin':
+					$this->usefullplugin_field_callback( $field );
+					break;	
+
 				case 'iframe':
 					$this->iframe_field_callback( $field );
 					break;
@@ -606,6 +629,25 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 				$html .= sprintf( '<a class="pro-button buynow" target="_blank" href="%s">BUY NOW</a>', $link1 );
 				
 				$html .= $this->get_field_description( $args );
+			}
+
+
+			echo $html;
+		}
+
+		public function usefullplugin_field_callback( $args ) {
+
+			$is_html = isset( $args['html'] );
+
+			if ( $is_html ) {
+				$html = $args['html'];
+			  } else {
+				$plugin_image  = esc_url( $args['plugin_image'] );
+				$plugin_title  = $args['plugin_title'];
+				$plugin_link   = $args['plugin_link'];
+
+				$html = sprintf( '<div class="thvs-use-plugin"><img src="%s" /><a target="_blank" href="%s">%s</a></div>', $plugin_image, $plugin_link, $plugin_title);
+				
 			}
 
 

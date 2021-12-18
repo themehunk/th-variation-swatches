@@ -32,7 +32,7 @@ padding:2rem 2rem;
 #thvs .nav-tab-wrapper {
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 28%;
     border: none;
     padding: 0;
     background:#0d2b56;
@@ -313,3 +313,58 @@ text-align:center;
 #profeature-wrapper .pro-button:hover{
 background: #f4a51c;
 }
+#thvs{
+    float:left;
+    width: 78%;
+    border: none;
+    padding: 0;
+}
+
+.thvs-notes-wrap{
+ float:left;
+ width: 19%;
+margin-top:1.6rem;
+}
+
+.thvs-notes-row
+{
+padding: 24px 16px;
+    border-radius: 4px;
+  color: #111;
+    text-align: center;
+    background:#fff;
+    margin-bottom: 1rem;
+}
+.thvs-wrap-doc a,.thvs-wrap-pro a{
+padding: 0.4rem 1.5rem;
+    letter-spacing: -0.08px;
+    font-size: .6875rem;
+    line-height: 1.81818;
+    background:#f56640;
+    color: #fff;
+    margin-top: 0.5rem;
+    display: inline-flex;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
+    text-transform: uppercase;
+        font-weight: 700;
+}
+.thvs-use-plugin img{
+width:128px;
+height:128px;
+margin-right:1rem;
+    border: 1px solid #efefef;
+
+}
+
+.thvs-use-plugin{
+display:flex;
+align-items: center;
+margin:1rem 0;
+}
+
+.thvs-use-plugin a{
+font-size:1rem;
+font-weight:500;
+}
+
