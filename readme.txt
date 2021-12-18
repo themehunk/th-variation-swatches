@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
 Requires at least: 4.8
 Tested up to: 5.8.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,10 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.2.2 =
+* Amaz Store Banner add.
+* Useful Plugins add.
 
 = 1.2.1 =
 * Improve Text.
