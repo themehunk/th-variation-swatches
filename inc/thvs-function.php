@@ -255,6 +255,28 @@ if ( ! function_exists( 'thvs_settings' ) ):
 					'fields' => apply_filters(
 						'thvs_usefull_plugin_setting_fields', array(
 							array(
+								'id'         => 'thvs-th-taiowc',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/th-all-in-one-woo-cart/assets/icon-128x128.png'),
+								'plugin_title'  => esc_html__( 'TH Side Cart and Menu Cart for Woocommerce', 'th-variation-swatches' ),
+								'plugin_link'  => esc_url('https://themehunk.com/th-all-in-one-woo-cart/'),	
+								
+							),
+							array(
+								'id'         => 'thvs-th-product-compare',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/th-product-compare/assets/icon-128x128.png'),
+								'plugin_title'  => esc_html__( 'Th Product Compare', 'th-variation-swatches' ),
+								'plugin_link'  => esc_url('https://themehunk.com/th-product-compare-plugin/'),	
+								
+							),
+							array(
 								'id'         => 'th-advance-product-search',
 								'title'      =>'',
                                 'type'       => 'usefullplugin',
