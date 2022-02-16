@@ -368,3 +368,11 @@ font-size:1rem;
 font-weight:500;
 }
 
+#usefull_plugin.thvs-setting-tab tbody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#usefull_plugin.thvs-setting-tab tr{
+    width: 50%;
+}
