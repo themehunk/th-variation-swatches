@@ -83,11 +83,9 @@ if ( ! function_exists( 'thvs_plugin_meta_links' ) ){
 
     //$demo_link = '<a target="_blank" href="#" title="' . __('Live Demo', 'th-variation-swatches') . '"><span class="dashicons  dashicons-laptop"></span>' . __('Live Demo', 'th-variation-swatches') . '</a>';
 
-    $doc_link = '<a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-variation-swatches-plugin/');?>" title="' . __('Documentation', 'th-variation-swatches') . '"><span class="dashicons  dashicons-search"></span>' . __('Documentation', 'th-variation-swatches') . '</a>';
-
-    $support_link = '<a target="_blank" href="<?php echo esc_url('https://themehunk.com/contact-us/');?>" title="' . __('Support', 'th-variation-swatches') . '"><span class="dashicons  dashicons-admin-users"></span>' . __('Support', 'th-variation-swatches') . '</a>';
-
-    $pro_link = '<a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-variation-swatches/');?>" title="' . __('Premium Version', 'th-variation-swatches') . '"><span class="dashicons  dashicons-cart"></span>' . __('Premium Version', 'th-variation-swatches') . '</a>';
+    $doc_link = '<a target="_blank" href="'.esc_url('https://themehunk.com/docs/th-variation-swatches-plugin/').'" title="' . __('Documentation', 'th-variation-swatches') . '"><span class="dashicons  dashicons-search"></span>' . __('Documentation', 'th-variation-swatches') . '</a>';
+    $support_link = '<a target="_blank" href="'.esc_url('https://themehunk.com/contact-us/').'" title="' . __('Support', 'th-variation-swatches') . '"><span class="dashicons  dashicons-admin-users"></span>' . __('Support', 'th-variation-swatches') . '</a>';
+    $pro_link = '<a target="_blank" href="'.esc_url('https://themehunk.com/th-variation-swatches/').'" title="' . __('Premium Version', 'th-variation-swatches') . '"><span class="dashicons  dashicons-cart"></span>' . __('Premium Version', 'th-variation-swatches') . '</a>';
 
     $links[] = $doc_link;
     $links[] = $support_link;
