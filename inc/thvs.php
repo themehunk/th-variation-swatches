@@ -47,9 +47,12 @@ if ( ! class_exists( 'TH_Variation_Swatches' ) ):
 
         public function hooks() {
             
-                add_action( 'init', array( $this, 'settings_api' ), 5 );
+                
+                if ( $this->is_required_php_version() && $this->is_wc_active() ) {
                 add_filter( 'body_class', array( $this, 'body_class' ) );
                 add_action( 'wp_enqueue_scripts', array( $this, 'th_variation_swatches_enqueue_scripts' ), 15 );
+            }
+            add_action( 'init', array( $this, 'settings_api' ), 5 );
         
 
 
