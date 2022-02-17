@@ -35,22 +35,22 @@ if ( ! class_exists( 'TH_Variation_Swatches' ) ):
         }
 
         public function includes() {
-            if ( $this->is_required_php_version() && $this->is_wc_active() ) {
+           
                 require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-meta.php';
                 require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-settings.php';
                 require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-function.php';
                 require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-hook.php';
                 require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-front-custom-style.php';
     
-            }
+            
         }
 
         public function hooks() {
-            if($this->is_wc_active()){
+            
                 add_action( 'init', array( $this, 'settings_api' ), 5 );
                 add_filter( 'body_class', array( $this, 'body_class' ) );
                 add_action( 'wp_enqueue_scripts', array( $this, 'th_variation_swatches_enqueue_scripts' ), 15 );
-            }
+        
 
 
         }
@@ -71,7 +71,7 @@ if ( ! class_exists( 'TH_Variation_Swatches' ) ):
         }
         public function settings_api() {
 
-            if ( ! $this->_settings_api &&  $this->is_wc_active() )  {
+            if ( ! $this->_settings_api )  {
                 $this->_settings_api = new TH_Variation_Swatches_Settings();
             }
 

@@ -376,3 +376,10 @@ font-weight:500;
 #usefull_plugin.thvs-setting-tab tr{
     width: 50%;
 }
+.requirement-notice{
+background: #d14b35;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    display:inline-block;
+    width:auto;
+}

@@ -1,5 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
 	class Th_Variation_Swatches_Settings {
@@ -51,16 +52,27 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 		}
 
 		public function settings_form() {
+
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+
+				    wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+
 			}
+
+			if( ! class_exists( 'WooCommerce' ) ){
+
+				   printf('<h2 class="requirement-notice">%s</h2>',__('Th Variation Swatches requires WooCommerce to work. Make sure that you have installed and activated WooCommerce Plugin.','th-variation-swatches' ) );
+
+             return;
+
+				}
 		
 			?>
 			<div id="thvs" class="settings-wrap  <?php echo esc_attr($this->admin_add_class());?>">
-                
+  
 				<div class="top-wrap"><div id="logo"></div>
-				  <h1><?php echo get_admin_page_title() ?></h1>
-			     </div>
+				  <h1><?php _e('TH Variation Swatches','th-variation-swatches'); ?></h1>
+			   </div>
 				<form method="post" action="" enctype="multipart/form-data" class="thvs-setting-form">
                      <input type="hidden" name="action" value="thvs_form_setting">
 					 
