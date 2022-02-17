@@ -95,6 +95,7 @@ Yes, You can translate our plugin to desired language.
 
 = 1.2.4 =
 * Pro Notice Improved.
+* New Option panel added.
 
 = 1.2.3 =
 * Pro Notice add.

@@ -45,6 +45,7 @@ if (!defined('TH_VARIATION_SWATCHES_VERSION')) {
 } 
 
 if (!class_exists('TH_Variation_Swatches')){
+include_once(TH_VARIATION_SWATCHES_PLUGIN_PATH . 'inc/themehunk-menu/admin-menu.php');
 require_once("inc/thvs.php");
 require_once("notice/th-notice.php");
 }   

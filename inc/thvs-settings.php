@@ -32,14 +32,12 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
             
             public function add_menu() {
 						$page_title = esc_html__( 'Variation Swatches for WooCommerce Settings', 'th-variation-swatches' );
-						$menu_title = esc_html__( 'TH Swatches', 'th-variation-swatches' );
-						add_menu_page( $page_title, $menu_title, 'edit_theme_options', 'th-variation-swatches', array(
-							$this,
-							'settings_form'
-						),  esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'/icon.png'), 31 );
-
-
-
+						 $menu_title = esc_html__( 'TH Variation Swatches', 'th-variation-swatches' );
+						// add_menu_page( $page_title, $menu_title, 'edit_theme_options', 'th-variation-swatches', array(
+						// 	$this,
+						// 	'settings_form'
+						// ),  esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'/icon.png'), 31 );
+						add_submenu_page( 'themehunk-plugins', $page_title, $menu_title, 'manage_options', 'th-variation-swatches', array($this, 'settings_form'),15 );
 		}
 
 		public function admin_add_class(){
@@ -700,23 +698,25 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 		}
 
 		public function script_enqueue(){
-			
-			wp_enqueue_media();
-			wp_enqueue_style( 'wp-color-picker' );
-			wp_enqueue_style( 'th-variation-swatches-admin', TH_VARIATION_SWATCHES_PLUGIN_URI. '/assets/css/admin.css', array(), TH_VARIATION_SWATCHES_VERSION );
-            
-			wp_enqueue_script( 'wp-color-picker-alpha', TH_VARIATION_SWATCHES_PLUGIN_URI. '/assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
-			wp_enqueue_script( 'wp-color-picker-alpha' );
-            wp_enqueue_script( 'thvs-setting-script', TH_VARIATION_SWATCHES_PLUGIN_URI. '/assets/js/thvs-setting.js', array('jquery'),true);
-			wp_localize_script(
-				'thvs-setting-script', 'THVSPluginObject', array(
-					'media_title'   => esc_html__( 'Choose an Image', 'th-variation-swatches' ),
-					'button_title'  => esc_html__( 'Use Image', 'th-variation-swatches' ),
-					'add_media'     => esc_html__( 'Add Media', 'th-variation-swatches' ),
-					'ajaxurl'       => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
-					'nonce'         => wp_create_nonce( 'thvs_plugin_nonce' ),
-				)
-			);
+				if (isset($_GET['page']) && $_GET['page'] == 'th-variation-swatches') {
+
+				wp_enqueue_media();
+				wp_enqueue_style( 'wp-color-picker' );
+				wp_enqueue_style( 'th-variation-swatches-admin', TH_VARIATION_SWATCHES_PLUGIN_URI. '/assets/css/admin.css', array(), TH_VARIATION_SWATCHES_VERSION );
+				
+				wp_enqueue_script( 'wp-color-picker-alpha', TH_VARIATION_SWATCHES_PLUGIN_URI. '/assets/js/wp-color-picker-alpha.js', array('wp-color-picker'),true);
+				wp_enqueue_script( 'wp-color-picker-alpha' );
+				wp_enqueue_script( 'thvs-setting-script', TH_VARIATION_SWATCHES_PLUGIN_URI. '/assets/js/thvs-setting.js', array('jquery'),true);
+				wp_localize_script(
+					'thvs-setting-script', 'THVSPluginObject', array(
+						'media_title'   => esc_html__( 'Choose an Image', 'th-variation-swatches' ),
+						'button_title'  => esc_html__( 'Use Image', 'th-variation-swatches' ),
+						'add_media'     => esc_html__( 'Add Media', 'th-variation-swatches' ),
+						'ajaxurl'       => esc_url( admin_url( 'admin-ajax.php', 'relative' ) ),
+						'nonce'         => wp_create_nonce( 'thvs_plugin_nonce' ),
+					)
+				);
+			}
 		}
   }
 
