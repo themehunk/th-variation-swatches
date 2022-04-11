@@ -3,11 +3,11 @@
  * Plugin Name:             TH Variation Swatches
  * Plugin URI:              https://themehunk.com/th-variation-swatches/
  * Description:             Beautiful Colors, Images and Buttons Variation Swatches For WooCommerce Product Attributes. This plugin will replace default swatches to professionally styled and colourful swatches. Plugin interface is User-friendly which allows you to edit variations seamlessly. <a href="https://themehunk.com/plugins/" target="_blank">Get more plugins for your website on <strong>ThemeHunk</strong></a>
- * Version:                 1.2.4
+ * Version:                 1.2.5
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
  * Requires at least:       4.8
- * Tested up to:            5.9
+ * Tested up to:            5.9.2
  * WC requires at least:    3.2
  * WC tested up to:         5.1
  * Domain Path:             /languages
