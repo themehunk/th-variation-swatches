@@ -6,13 +6,8 @@ if (!defined('ABSPATH')){
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-if ( is_plugin_active( 'th-variation-swatches-pro/th-variation-swatches-pro.php' ) ){
 
-    exit;
-    
-}
-
-if ( ! class_exists( 'TH_Variation_Swatches_Notice' ) ){
+if ( ! class_exists( 'TH_Variation_Swatches_Notice' ) && !is_plugin_active( 'th-variation-swatches-pro/th-variation-swatches-pro.php' )){
 
 class TH_Variation_Swatches_Notice{
 
