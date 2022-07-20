@@ -710,7 +710,8 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 		}
 
 		public function script_enqueue(){
-				if (isset($_GET['page']) && $_GET['page'] == 'th-variation-swatches') {
+
+				
 
 				wp_enqueue_media();
 				wp_enqueue_style( 'wp-color-picker' );
@@ -728,7 +729,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 						'nonce'         => wp_create_nonce( 'thvs_plugin_nonce' ),
 					)
 				);
-			}
+
 		}
   }
 
