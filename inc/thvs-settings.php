@@ -124,7 +124,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
             	<div class="thvs-notes-row thvs-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Unlock TH Variation Swatches Pro','th-variation-swatches', 'th-advance-product-search' ) ?></h4><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'th-variation-pro.png') ?>' alt="amaz-store"><a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-variation-swatches/'); ?>"><?php esc_html_e( 'Upgrade Pro', 'th-variation-swatches' ) ?></a></div>
 
             	<div class="thvs-notes-row thvs-wrap-img">
-	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/product/amaz-store/'); ?>"><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'amaz-store.png') ?>' alt="amaz-store">
+	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-shop-mania/'); ?>"><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'th-shop-mania-ad.png') ?>' alt="th-shop-mania">
 	               	</a>
             	</div>
 
