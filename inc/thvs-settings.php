@@ -20,8 +20,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
              $this->fields          = apply_filters( 'thvs_settings', $this->fields );
 		         $this->reserved_key    = sprintf( '%s_reserved', $this->settings_name );
 		         $this->reserved_fields = apply_filters( 'thvs_reserved_fields', array() );
-
-             
+		         
              add_action( 'admin_menu', array( $this, 'add_menu' ) );
              add_action( 'init', array( $this, 'set_defaults' ), 8 );
              add_action( 'admin_init', array( $this, 'settings_init' ), 90 );
@@ -686,7 +685,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			}
 
 		 }
-		 
+
 			public function usefullplugin_field_callback( $args ) {
 
 			$is_html = isset( $args['html'] );
@@ -704,7 +703,8 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			}
 
 			?>
-			<div class="thaps-use-plugin"><img src="<?php echo esc_url($plugin_image);?>" /><a target="_blank" href="<?php echo esc_url($plugin_link);?>"><?php echo esc_html($plugin_title);?></a>
+
+			<div class="thvs-use-plugin"><img src="<?php echo esc_url($plugin_image);?>" /><a target="_blank" href="<?php echo esc_url($plugin_link);?>"><?php echo esc_html($plugin_title);?></a>
 			</div>
 
 		<?php }
@@ -757,13 +757,9 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
            if ( ! empty( $args['desc'] ) ) { 
 
-
-
            $arr = array( 
-       	   'code' => array(
-	        
-         ));
-
+       	      'code' => array()
+           	 );
 				?>
 
       <p class="description"><?php echo wp_kses($args['desc'],$arr);?></p>  
