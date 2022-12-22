@@ -113,7 +113,7 @@
         $.ajax({
           url: THVSPluginObject.ajaxurl,
           type: "POST",
-          data: form_settting,
+          data: form_settting +'&_wpnonce=' + THVSPluginObject.nonce +'',
           success: function (response) {
            
             $('#submit').removeClass('loader');

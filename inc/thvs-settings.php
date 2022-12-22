@@ -20,8 +20,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
              $this->fields          = apply_filters( 'thvs_settings', $this->fields );
 		         $this->reserved_key    = sprintf( '%s_reserved', $this->settings_name );
 		         $this->reserved_fields = apply_filters( 'thvs_reserved_fields', array() );
-
-             
+		         
              add_action( 'admin_menu', array( $this, 'add_menu' ) );
              add_action( 'init', array( $this, 'set_defaults' ), 8 );
              add_action( 'admin_init', array( $this, 'settings_init' ), 90 );
@@ -32,13 +31,9 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
           }
             
             public function add_menu() {
-						$page_title = esc_html__( 'Variation Swatches for WooCommerce Settings', 'th-variation-swatches' );
+						 $page_title = esc_html__( 'Variation Swatches for WooCommerce Settings', 'th-variation-swatches' );
 						 $menu_title = esc_html__( 'TH Variation Swatches', 'th-variation-swatches' );
-						// add_menu_page( $page_title, $menu_title, 'edit_theme_options', 'th-variation-swatches', array(
-						// 	$this,
-						// 	'settings_form'
-						// ),  esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'/icon.png'), 31 );
-						add_submenu_page( 'themehunk-plugins', $page_title, $menu_title, 'manage_options', 'th-variation-swatches', array($this, 'settings_form'),15 );
+						 add_submenu_page( 'themehunk-plugins', $page_title, $menu_title, 'manage_options', 'th-variation-swatches', array($this, 'settings_form'),15 );
 		}
 
 		public function admin_add_class(){
@@ -53,7 +48,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
 			if ( ! current_user_can( 'manage_options' ) ) {
 
-				    wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+				    wp_die( __( 'You do not have sufficient permissions to access this page.','th-variation-swatches' ) );
 
 			}
 
@@ -72,9 +67,8 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 				  <h1><?php _e('TH Variation Swatches','th-variation-swatches'); ?></h1>
 			   </div>
 				<form method="post" action="" enctype="multipart/form-data" class="thvs-setting-form">
-                     <input type="hidden" name="action" value="thvs_form_setting">
+        <input type="hidden" name="action" value="thvs_form_setting">
 					 
-
 					<?php $this->options_tabs(); ?>
                      <div class="setting-wrap">
 					<div id="settings-tabs">
@@ -135,12 +129,24 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 		}
 
     public function thvs_form_setting(){  
+
+    	      if ( ! current_user_can( 'administrator' ) ) {
+
+		            wp_die( - 1, 403 );
+		            
+		         } 
+
+              check_ajax_referer( 'thvs_plugin_nonce','_wpnonce');
+
              if( isset($_POST['th_variation_swatches']) ){
-             	        $th_variation_swatches =  $_POST['th_variation_swatches']; 
-                      $sanitize_data_array = $this->thvs_form_sanitize($th_variation_swatches);
+
+                      $sanitize_data_array = $this->thvs_form_sanitize($_POST['th_variation_swatches']);
+
                       update_option('th_variation_swatches',$sanitize_data_array);         
 	            }
+
 	            die();  
+
     }
         
     public function thvs_form_sanitize( $input ){
@@ -153,11 +159,21 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
     }
 
 		public function reset_url() {
-			return add_query_arg( array( 'page' => 'th-variation-swatches', 'reset' => '' ), admin_url( 'admin.php' ) );
+			return add_query_arg( 
+				array( 
+					'page' => 'th-variation-swatches', 
+					'reset' => 'reset',
+					'delete_wpnonce' => wp_create_nonce('delete_nonce') 
+				), admin_url( 'admin.php' ) );
 		}
 
 		public function settings_url(){
-			return add_query_arg( array( 'page' => 'th-variation-swatches' ), admin_url( 'admin.php' ) );
+			return add_query_arg( 
+				array( 
+					'page' => 'th-variation-swatches',
+					'_wpnonce' => wp_create_nonce('_nonce'),
+					 ), admin_url( 'admin.php' )
+				 );
 		}
     private function set_default( $key, $type, $value ) {
 		$this->defaults[ $key ] = array( 'id' => $key, 'type' => $type, 'value' => $value );
@@ -178,11 +194,20 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
 		public function delete_settings() {
 
+			if ( ! current_user_can( 'administrator' ) ) {
+
+            wp_die( - 1, 403 );
+
+            }
+
+     if (isset($_GET['delete_wpnonce']) || wp_verify_nonce($_REQUEST['delete_wpnonce'], 'delete_nonce' ) ) {
+
 			do_action( sprintf( 'delete_%s_settings', $this->settings_name ), $this );
 
-			// license_key should not updated
-
 			return delete_option( $this->settings_name );
+
+		 }
+
 		}
 		public function set_defaults() {
 			foreach ( $this->fields as $tab_key => $tab ) {
@@ -222,7 +247,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
 			if ( $this->is_reset_all() ) {
 				 $this->delete_settings();
-				 wp_redirect(esc_url($this->settings_url()));
+				 wp_redirect($this->settings_url());
 			}
               
 		  register_setting( $this->settings_name, $this->settings_name, array( $this, 'sanitize_callback' ) );
@@ -503,14 +528,6 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 					$this->number_field_callback( $field );
 					break;
 
-				case 'color':
-					$this->color_field_callback( $field );
-					break;
-
-				case 'post_select':
-					$this->post_select_field_callback( $field );
-					break;
-
 				case 'pro':
 					$this->pro_field_callback( $field );
 					break;
@@ -532,47 +549,75 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
       public function checkbox_field_callback( $args ) {
                
-			$value = wc_string_to_bool( $this->get_option( $args['id'] ) );
+			$value = (bool)( $this->get_option( $args['id'] ) );
 
-			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
+			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';?>
 
-			$html = sprintf( '<fieldset><label><input %1$s type="checkbox" id="%2$s-field" name="%4$s[%2$s]" value="%3$s" %5$s/> %6$s</label> %7$s</fieldset>', $attrs, $args['id'], true, $this->settings_name, checked( $value, true, false ), esc_attr( $args['desc'] ), $this->get_field_description( $args ) );
+            <fieldset>
+            	<label>
+            		<input <?php echo esc_attr($attrs); ?> type="checkbox" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="1" <?php echo esc_attr(checked( $value, true, false ));?>> <?php if ( ! empty( $args['desc'] ) ) {  echo esc_html($args['desc']); } ?>
+            	</label>     
+            </fieldset> <?php 
+		  }
 
-			echo $html;
-		}
 			public function radio_field_callback( $args ) {
 		
-			$options = apply_filters( "thvs_settings_{$args[ 'id' ]}_radio_options", $args['options'] );
+      $options = apply_filters( "thvs_settings_{$args[ 'id' ]}_radio_options", $args['options'] );
+
 			$value   = esc_attr( $this->get_option( $args['id'] ) );
 
 			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
-
-
-			$html = '<fieldset>';
-			$html .= implode( '<br />', array_map( function ( $key, $option ) use ( $attrs, $args, $value ) {
-				return sprintf( '<label><input %1$s type="radio"  name="%4$s[%2$s]" value="%3$s" %5$s/> %6$s</label>', $attrs, $args['id'], $key, $this->settings_name, checked( $value, $key, false ), $option );
+		
+			return implode( '<br />', array_map( function ( $key, $option ) use ( $attrs, $args, $value ) {
+				echo sprintf( '<label><input %1$s type="radio"  name="%4$s[%2$s]" value="%3$s" %5$s/> %6$s</label>', $attrs, $args['id'], $key, $this->settings_name, checked( $value, $key, false ), $option );
 			}, array_keys( $options ), $options ) );
-			$html .= $this->get_field_description( $args );
-			$html .= '</fieldset>';
 
-			echo $html;
+
 		}
+
 		public function select_field_callback( $args ) {
+
 			$options = apply_filters( "thvs_settings_{$args[ 'id' ]}_select_options", $args['options'] );
-			$value   = esc_attr( $this->get_option( $args['id'] ) );
-			$options = array_map( function ( $key, $option ) use ( $value ) {
-				return "<option value='{$key}'" . selected( $key, $value, false ) . ">{$option}</option>";
-			}, array_keys( $options ), $options );
+
+			$valuee   = $this->get_option( $args['id'] );
+
+		
 			$size    = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 
 			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
+			?>
 
-			$html = sprintf( '<select %5$s class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]">%3$s</select>', $size, $args['id'], implode( '', $options ), $this->settings_name, $attrs );
-			$html .= $this->get_field_description( $args );
+			<select <?php echo esc_attr($attrs); ?> class="<?php echo esc_attr($size); ?>-text" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]">
 
-			echo $html;
-		}
-		public function get_field_description( $args ) {
+				<?php foreach($options as $key => $value){ ?>
+
+                <option <?php echo esc_attr(selected( $key, $valuee, false )) ;?> value="<?php echo esc_attr($key);?>">
+                	
+                	<?php echo esc_html($value);?> 	
+
+                </option> 
+
+               <?php } ?>
+
+			</select>
+
+			<?php if ( ! empty( $args['desc'] ) ) { 
+
+       $arr = array( 
+       	 'a' => array(
+	        'href' => array(),
+	        'title' => array(),
+	        'target' => array()
+         ));
+
+				?>
+
+      <p class="description"><?php echo wp_kses($args['desc'],$arr);?></p>
+
+		    <?php } }
+
+
+		  public function get_field_description( $args ) {
 
 			$desc = '';
 			
@@ -584,36 +629,30 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			}
 
 			return ( ( $args['type'] === 'checkbox' ) ) ? '' : $desc;
-		}
-		public function post_select_field_callback( $args ) {
 
-			$options = apply_filters( "thvs_settings_{$args[ 'id' ]}_post_select_options", $args['options'] );
-
-			$value = esc_attr( $this->get_option( $args['id'] ) );
-
-			$options = array_map( function ( $option ) use ( $value ) {
-				return "<option value='{$option->ID}'" . selected( $option->ID, $value, false ) . ">$option->post_title</option>";
-			}, $options );
-
-			$size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
-			$html = sprintf( '<select class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]">%3$s</select>', $size, $args['id'], implode( '', $options ), $this->settings_name );
-			$html .= $this->get_field_description( $args );
-			echo $html;
 		}
 
 		public function text_field_callback( $args ) {
-			$value = esc_attr( $this->get_option( $args['id'] ) );
+			$value =  $this->get_option( $args['id'] );
+
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
 
-			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
+			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';?>
 
-			$html = sprintf( '<input %5$s type="text" class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]" value="%3$s"/>', $size, $args['id'], $value, $this->settings_name, $attrs );
-			$html .= $this->get_field_description( $args );
+            <input type="text" class="<?php echo esc_attr($size); ?>-text" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="<?php echo esc_attr($value); ?>"/>
 
-			echo $html;
+            <?php if ( ! empty( $args['desc'] ) ) { ?>
+
+            <p class="description"><?php echo esc_html($args['desc']);?></p>
+
+	        <?php 
+
+	           }
+				
 		}
+     
 
-		public function pro_field_callback( $args ) {
+     public function pro_field_callback( $args ) {
 
 			$is_html = isset( $args['html'] );
 
@@ -628,90 +667,109 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 				$image6 = esc_url( $args['screen_shot6'] );
 				$link1  = $args['link1'];
 				$link2  = $args['link2'];
-				$width = isset( $args['width'] ) ? $args['width'] : '70%';
-				$html = sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image1 );
-				$html .= sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image2 );
-				$html .= sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image3 );
-				$html .= sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image4 );
-				$html .= sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image5 );
-				$html .= sprintf( '<a target="_blank" href="%s"><img style="width: %s" src="%s" /></a>', $link1, $width, $image6 );
-				$html .= sprintf( '<a class="pro-button" target="_blank" href="%s">MORE DETAIL</a>', $link2 );
-				$html .= sprintf( '<a class="pro-button buynow" target="_blank" href="%s">BUY NOW</a>', $link1 );
-				
-				$html .= $this->get_field_description( $args );
+				$width = isset( $args['width'] ) ? $args['width'] : '70%';?>
+
+				<a target="_blank" href="<?php echo esc_url($link1); ?>"><img style="width: <?php echo esc_attr($width); ?>" src="<?php echo esc_url($image1); ?>" /></a>
+				<a target="_blank" href="<?php echo esc_url($link1); ?>"><img style="width: <?php echo esc_attr($width); ?>" src="<?php echo esc_url($image2); ?>" /></a>
+				<a target="_blank" href="<?php echo esc_url($link1); ?>"><img style="width: <?php echo esc_attr($width); ?>" src="<?php echo esc_url($image3); ?>" /></a>
+				<a target="_blank" href="<?php echo esc_url($link1); ?>"><img style="width: <?php echo esc_attr($width); ?>" src="<?php echo esc_url($image4); ?>" /></a>
+				<a target="_blank" href="<?php echo esc_url($link1); ?>"><img style="width: <?php echo esc_attr($width); ?>" src="<?php echo esc_url($image5); ?>" /></a>
+				<a target="_blank" href="<?php echo esc_url($link1); ?>"><img style="width: <?php echo esc_attr($width); ?>" src="<?php echo esc_url($image6); ?>" /></a>
+
+				<a class="pro-button" target="_blank" href="<?php echo esc_url($link2); ?>"><?php echo esc_html__('MORE DETAIL','th-variation-swatches')?></a>
+
+				<a class="pro-button buynow" target="_blank" href="<?php echo esc_url($link1); ?>"><?php echo esc_html__('BUY NOW','th-variation-swatches')?></a>
+
+				<?php 
+
 			}
 
+		 }
 
-			echo $html;
-		}
-
-		public function usefullplugin_field_callback( $args ) {
+			public function usefullplugin_field_callback( $args ) {
 
 			$is_html = isset( $args['html'] );
 
 			if ( $is_html ) {
+
 				$html = $args['html'];
+
 			  } else {
-				$plugin_image  = esc_url( $args['plugin_image'] );
+
+				$plugin_image  = $args['plugin_image'];
 				$plugin_title  = $args['plugin_title'];
 				$plugin_link   = $args['plugin_link'];
-
-				$html = sprintf( '<div class="thvs-use-plugin"><img src="%s" /><a target="_blank" href="%s">%s</a></div>', $plugin_image, $plugin_link, $plugin_title);
 				
 			}
 
+			?>
 
-			echo $html;
-		}
+			<div class="thvs-use-plugin"><img src="<?php echo esc_url($plugin_image);?>" /><a target="_blank" href="<?php echo esc_url($plugin_link);?>"><?php echo esc_html($plugin_title);?></a>
+			</div>
+
+		<?php }
 
 		public function iframe_field_callback( $args ) {
+
 			$is_html = isset( $args['html'] );
+
 			if ( $is_html ){
+
 				$html = $args['html'];
+
 			  } else {
+
 				$screen_frame = esc_url( $args['screen_frame'] );
         $doc_link     = esc_url( $args['doc_link'] );
         $doc_text     = esc_html($args['doc-texti']);
 				$width        = isset( $args['width'] ) ? $args['width'] : '100%';
 				$height       = isset( $args['height'] ) ? $args['height'] : '100%';
 
-        $html = sprintf( '<iframe width="%1s" height="%2s" src="%3s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><a target="_blank" href="%4s">%5s</a>',  $width, $height, $screen_frame ,$doc_link, $doc_text);
+       ?>
 
-				$html .= $this->get_field_description( $args );
+        <iframe width="<?php echo esc_attr($width); ?>" height="<?php echo esc_attr($height); ?>" src="<?php echo esc_url($screen_frame); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><a target="_blank" href="<?php echo esc_url($doc_link); ?>"><?php echo esc_attr($doc_text); ?></a>
+
+			<?php 	
+
 			}
-			echo $html;
-		}
-
-		public function color_field_callback( $args ){
-			$value = esc_attr( $this->get_option( $args['id'] ) );
 			
-			$alpha = isset( $args['alpha'] ) && $args['alpha'] === true ? ' data-alpha="true"' : '';
-			$html  = sprintf( '<input type="text" %1$s class="thvs-color-picker" id="%2$s-field" name="%4$s[%2$s]" value="%3$s"  data-default-color="%3$s" />', $alpha, $args['id'], $value, $this->settings_name );
-			$html  .= $this->get_field_description( $args );
-
-			echo $html;
 		}
+
 		public function number_field_callback( $args ) {
-			$value = esc_attr( $this->get_option( $args['id'] ) );
+
+			$value = $this->get_option( $args['id'] );
+
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'small';
 
-			$min    = isset( $args['min'] ) && ! is_null( $args['min'] ) ? 'min="' . $args['min'] . '"' : '';
-			$max    = isset( $args['max'] ) && ! is_null( $args['max'] ) ? 'max="' . $args['max'] . '"' : '';
-			$step   = isset( $args['step'] ) && ! is_null( $args['step'] ) ? 'step="' . $args['step'] . '"' : '';
-			$suffix = isset( $args['suffix'] ) && ! is_null( $args['suffix'] ) ? ' <span>' . $args['suffix'] . '</span>' : '';
-
 			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
+            ?>
 
+			<input type="number"  <?php echo esc_attr($attrs); ?> class="<?php echo esc_attr($size); ?>-text" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="<?php echo esc_attr($value); ?>"  min="<?php echo esc_attr($args['min']); ?>" max="<?php echo esc_attr($args['max']); ?>" step="<?php  if ( ! empty($args['step']) ) { 
+				echo esc_attr($args['step']); } ?>" />
 
-			$html = sprintf( '<input %9$s type="number" class="%1$s-text" id="%2$s-field" name="%4$s[%2$s]" value="%3$s" %5$s %6$s %7$s /> %8$s', $size, $args['id'], $value, $this->settings_name, $min, $max, $step, $suffix, $attrs );
-			$html .= $this->get_field_description( $args );
+           <?php if(isset( $args['suffix'] ) && ! is_null( $args['suffix'] ) ){ ?>
 
-			echo $html;
+			     <span><?php echo esc_attr($args['suffix']); ?></span>
+         
+             <?php
+
+               }
+
+           if ( ! empty( $args['desc'] ) ) { 
+
+           $arr = array( 
+       	      'code' => array()
+           	 );
+				?>
+
+      <p class="description"><?php echo wp_kses($args['desc'],$arr);?></p>  
+
+		  <?php 	
+
+	         } 
 		}
 
 		public function script_enqueue(){
-
-				
 
 				wp_enqueue_media();
 				wp_enqueue_style( 'wp-color-picker' );

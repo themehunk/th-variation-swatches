@@ -369,7 +369,7 @@ if ( ! function_exists( 'thvs_add_product_taxonomy_meta' ) ) {
 						th_variation_swatches()->add_term_meta( $product_attr, 'product', $fields[ $product_attr_type ] );
 
 						do_action( 'thvs_wc_attribute_taxonomy_meta_added', $product_attr, $product_attr_type );
-					endif; //  in_array( $product_attr_type, array( 'color', 'image' ) )
+					endif; 
 				endforeach; // $attribute_taxonomies
 			endif; // $attribute_taxonomies
 		endif; // function_exists( 'wc_get_attribute_taxonomies' )
@@ -386,18 +386,18 @@ if ( ! function_exists( 'thvs_taxonomy_meta_fields' ) ):
 
 		$fields['color'] = array(
 			array(
-				'label' => esc_html__( 'Color', 'th-variation-swatches' ), // <label>
-				'desc'  => esc_html__( 'Choose a color', 'th-variation-swatches' ), // description
-				'id'    => 'product_attribute_color', // name of field
+				'label' => esc_html__( 'Color', 'th-variation-swatches' ), 
+				'desc'  => esc_html__( 'Choose a color', 'th-variation-swatches' ), 
+				'id'    => 'product_attribute_color', 
 				'type'  => 'color'
 			)
 		);
 
 		$fields['image'] = array(
 			array(
-				'label' => esc_html__( 'Image', 'th-variation-swatches' ), // <label>
-				'desc'  => esc_html__( 'Choose an Image', 'th-variation-swatches' ), // description
-				'id'    => 'product_attribute_image', // name of field
+				'label' => esc_html__( 'Image', 'th-variation-swatches' ),
+				'desc'  => esc_html__( 'Choose an Image', 'th-variation-swatches' ),
+				'id'    => 'product_attribute_image',
 				'type'  => 'image'
 			)
 		);
@@ -413,9 +413,9 @@ if ( ! function_exists( 'thvs_taxonomy_meta_fields' ) ):
 	}
 endif;
 
-//-------------------------------------------------------------------------------
+//-----------------------------------------------------------------
 // Available Product Attribute Types
-//-------------------------------------------------------------------------------
+//-----------------------------------------------------------------
 
 if ( ! function_exists( 'thvs_available_attributes_types' ) ):
 	function thvs_available_attributes_types( $type = false ) {
@@ -602,7 +602,7 @@ if ( ! function_exists( 'thvs_default_button_variation_attribute_options' ) ) :
 
 		$content = thvs_default_variable_item( $type, $options, $args );
 
-		echo thvs_variable_items_wrapper( $content, $type, $args );
+		thvs_variable_items_wrapper( $content, $type, $args );
 
 		
 	}
@@ -678,7 +678,7 @@ if ( ! function_exists( 'thvs_button_variation_attribute_options' ) ) :
 
 		$content = thvs_variable_item( $type, $options, $args );
 
-		echo thvs_variable_items_wrapper( $content, $type, $args );
+		thvs_variable_items_wrapper( $content, $type, $args );
 	}
 endif;
 
@@ -882,7 +882,7 @@ if ( ! function_exists( 'thvs_color_variation_attribute_options' ) ) :
 
 		$content = thvs_variable_item( $type, $options, $args );
 
-		echo thvs_variable_items_wrapper( $content, $type, $args );
+		thvs_variable_items_wrapper( $content, $type, $args );
 
 	}
 endif;
@@ -1004,7 +1004,7 @@ if ( ! function_exists( 'thvs_variable_items_wrapper' ) ):
 
 		$data = sprintf( '<ul role="radiogroup" aria-label="%1$s"  class="variable-items-wrapper %2$s" data-attribute_name="%3$s" data-attribute_values="%4$s">%5$s</ul>', esc_attr( wc_attribute_label( $attribute ) ), trim( implode( ' ', array_unique( $css_classes ) ) ), esc_attr( wc_variation_attribute_name( $attribute ) ), wc_esc_json( wp_json_encode( array_values( $options ) ) ), $contents );
 
-		return apply_filters( 'thvs_variable_items_wrapper', $data, $contents, $type, $args, $saved_attribute );
+		echo apply_filters( 'thvs_variable_items_wrapper', $data, $contents, $type, $args, $saved_attribute );
 	}
 endif;
 //-------------------------------------------------------------------------------
