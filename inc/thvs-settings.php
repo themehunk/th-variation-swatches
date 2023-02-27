@@ -32,7 +32,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
             
             public function add_menu() {
 						 $page_title = esc_html__( 'Variation Swatches for WooCommerce Settings', 'th-variation-swatches' );
-						 $menu_title = esc_html__( 'TH Variation Swatches', 'th-variation-swatches' );
+						 $menu_title = esc_html__( 'Variation Swatches', 'th-variation-swatches' );
 						 add_submenu_page( 'themehunk-plugins', $page_title, $menu_title, 'manage_options', 'th-variation-swatches', array($this, 'settings_form'),15 );
 		}
 
@@ -63,8 +63,11 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			?>
 			<div id="thvs" class="settings-wrap  <?php echo esc_attr($this->admin_add_class());?>">
   
-				<div class="top-wrap"><div id="logo"></div>
-				  <h1><?php _e('TH Variation Swatches','th-variation-swatches'); ?></h1>
+				<div class="top-wrap"><div id="logo">
+
+						<img src='<?php echo esc_url(TH_VARIATION_SWATCHES_PLUGIN_URI.'images/th-logo.png') ?>' alt="tapsp-logo"/>
+					</div>
+				  <h1><?php _e('Variation Swatches','th-variation-swatches'); ?></h1>
 			   </div>
 				<form method="post" action="" enctype="multipart/form-data" class="thvs-setting-form">
         <input type="hidden" name="action" value="thvs_form_setting">
@@ -113,7 +116,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			</div>
 			<div class="thvs-notes-wrap">
 
-            	<div class="thvs-notes-row thvs-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-variation-swatches' ) ?></h4><p><?php esc_html_e( '', 'th-variation-swatches' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-variation-swatches-plugin/'); ?>"><?php esc_html_e( 'Read Now', 'th-variation-swatches' ) ?></a></div>
+            	<div class="thvs-notes-row thvs-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-variation-swatches' ) ?></h4><p><?php esc_html_e( 'Want to know how this plugin works. Read our Documentation.', 'th-variation-swatches' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-variation-swatches-plugin/'); ?>"><?php esc_html_e( 'Read Now', 'th-variation-swatches' ) ?></a></div>
 
             	<div class="thvs-notes-row thvs-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Unlock TH Variation Swatches Pro','th-variation-swatches', 'th-advance-product-search' ) ?></h4><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'th-variation-pro.png') ?>' alt="amaz-store"><a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-variation-swatches/'); ?>"><?php esc_html_e( 'Upgrade Pro', 'th-variation-swatches' ) ?></a></div>
 
@@ -296,10 +299,20 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			?>
 			<div class="nav-tab-wrapper wp-clearfix">
 				<?php foreach ( $this->fields as $tabs ): ?>
-					<a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="thvs-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>"><?php echo esc_html($tabs['title']); ?></a>
+					<a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="thvs-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>"><span class="dashicons <?php echo $this->icon_list($tabs['id']); ?>"></span><?php echo esc_html($tabs['title']); ?></a>
 				<?php endforeach; ?>
 			</div>
 			<?php
+		}
+		function icon_list($id ='dashicons-menu'){
+			$icon = array(
+				'simple'=>'dashicons-admin-appearance',
+				'advanced' => 'dashicons-hammer',
+				'documention'=>'dashicons-media-document',
+				'profeature'=>'dashicons-unlock',
+				'usefull_plugin'=>'dashicons-admin-plugins'
+		);
+			return $icon[$id];
 		}
 
 		private function get_last_active_tab() {
