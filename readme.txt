@@ -1,4 +1,4 @@
-====== Variation Swatches ========
+====== Variation Swatches for WooCommerce ========
 Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
@@ -8,12 +8,11 @@ Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin will replace default swatches to professionally styled and colourful swatches.
-
+Variation Swatches for WooCommerce plugin will replace default swatches to professionally styled and colourful swatches.
 
 == Description ==
 
-TH Variation Swatches is a Free easy to use Swatches Plugin. This plugin will replace default swatches to professionally styled and colourful swatches. Plugin interface is User-friendly which allows you to edit variations seamlessly. Plugin comes with three attribute types Colour, image & button. For each attribute, you can use rounded and square shape modes. Along with this you can also enable tool-tip on each product attribute, show the attribute title, display styled swatches at shop and catalog page. This amazing plugin will give you new experience of your WooCommerce site and advanced product page look for your customers.
+TH Variation Swatches for WooCommerce is a Free easy to use Swatches Plugin. This plugin will replace default swatches to professionally styled and colourful swatches. Plugin interface is User-friendly which allows you to edit variations seamlessly. Plugin comes with three attribute types Colour, image & button. For each attribute, you can use rounded and square shape modes. Along with this you can also enable tool-tip on each product attribute, show the attribute title, display styled swatches at shop and catalog page. This amazing plugin will give you new experience of your WooCommerce site and advanced product page look for your customers.
 
 [Docs](https://themehunk.com/docs/th-variation-swatches-plugin/) | [More Details](https://themehunk.com/th-variation-swatches/) | [support](https://themehunk.com/contact-us/) 
 
