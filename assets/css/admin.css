@@ -1,5 +1,7 @@
+a:hover{
+    color: #0041ef;
+}
 #thvs {
-    background: #E1E6F4;
     padding: 0;
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
@@ -15,13 +17,14 @@
     align-items: center;
 }
 #thvs .top-wrap h1{
-   color: #111;
-    font-size: 1.3rem;
-    font-weight:bold;
+   color: #121116;
+    font-size: .9rem;
+    line-height: 1.8;
+    font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin: 0 0 0 12px;
     padding: 0;
-    margin-left: 12px;
 }
 .wrp-title{
     font-size: 1rem;
@@ -32,21 +35,22 @@ display:flex;
 
 }
 #thvs .setting-wrap{
-    padding:2rem 2rem;
+    padding: 1.5rem;
+    width: 80%;
     margin: 0 20px;
     background: #fff;
+    padding-top: 2.8rem;
     justify-content: space-between;
     border-radius: 10px;
-    flex-grow: 2;
-    margin-bottom: 21px;
 }
 #thvs .nav-tab-wrapper {
     display: flex;
     flex-direction: column;
     width: 28%;
     border: none;
-    padding: 0;
-    background:#E1E6F4;
+    padding: 10px;
+    background: #E1E6F4;
+    border-radius: 10px;
 }
 #thvs .nav-tab-wrapper .thvs-setting-nav-tab {
 margin-bottom: 20px;
@@ -67,7 +71,7 @@ margin-bottom: 20px;
 #thvs .thvs-setting-nav-tab.nav-tab-active:focus, 
 #thvs .thvs-setting-nav-tab.nav-tab-active:focus:active, 
 #thvs .thvs-setting-nav-tab:hover {
-    color: #007eff;
+    color: #0041ef;
     outline: 0;
     background: #ffffff;
     -webkit-box-shadow: 0px 6px 6px rgb(53 66 134 / 10%);
@@ -75,6 +79,9 @@ margin-bottom: 20px;
     align-items: center;
     padding: 9px 27px;
     border-radius: 8px;
+}
+#thvs .nav-tab-wrapper .thvs-setting-nav-tab.nav-tab-active span {
+    color: #0041ef;
 }
 #thvs .nav-tab-wrapper .thvs-setting-nav-tab span {
     margin-right: 12px;
@@ -121,7 +128,7 @@ border: 0;
     font-size: 1rem;
     margin-right: 1rem;
     margin-top: 2.5rem;
-    background: #1681ef;
+    background: #0041ef;
     color: #fff;
     line-height: 2.15384615;
     text-transform: uppercase;
@@ -148,7 +155,7 @@ font-family: dashicons;
     align-items: center;
 }
 .thvs-setting-form #submit.button-primary:hover{
-background: #006ee1;
+background: #094cff;
 }
 
 .thvs-button-wrapper .reset{
@@ -315,7 +322,7 @@ max-width:100%;
     font-size:0.7rem!important;
     margin-right: 1rem;
     margin-top: 2.5rem;
-    background: #1681ef;
+    background: #0041ef;
     color: #fff;
     line-height: 2.15384615;
     text-transform: uppercase;
@@ -339,33 +346,32 @@ text-align:center;
     opacity: .9;
 }
 #thvs{
-    float:left;
-    width: 78%;
-    border: none;
     padding: 0;
+    margin-top: 1.5rem;
+    margin-right: 1.3rem;
+    border-radius: 0;
 }
 
 .thvs-notes-wrap{
- float:left;
- width: 19%;
-margin-top:1.6rem;
+ display: flex;
+    flex-direction: column;
+    width: 28%;
 }
 
 .thvs-notes-row
 {
-padding: 24px 16px;
-    border-radius: 4px;
-  color: #111;
+padding: 22px 15px;
     text-align: center;
-    background:#fff;
+    background: #fff;
     margin-bottom: 1rem;
+    border-radius: 10px;
 }
 .thvs-wrap-doc a,.thvs-wrap-pro a{
 padding: 0.4rem 1.5rem;
     letter-spacing: -0.08px;
     font-size: .6875rem;
     line-height: 1.81818;
-    background: #1681ef;
+    background: #0041ef;
     color: #fff;
     margin-top: 0.5rem;
     display: inline-flex;
@@ -375,7 +381,7 @@ padding: 0.4rem 1.5rem;
     text-decoration: auto;
 }
 .thvs-wrap-doc a:hover, .thvs-wrap-pro a:hover{
-    background: #006ee1;
+    background: #094cff;
 }
 .thvs-use-plugin img{
 width:128px;
