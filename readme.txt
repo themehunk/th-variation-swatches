@@ -95,6 +95,7 @@ Yes, You can translate our plugin to desired language.
 
 = 1.3.0 =
 * Admin style modification.
+* Background Modification.
 
 = 1.2.9 =
 * Delete Notice.
