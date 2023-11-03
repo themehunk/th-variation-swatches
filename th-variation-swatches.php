@@ -8,9 +8,9 @@
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
  * Requires at least:       4.8
- * Tested up to:            6.3.
+ * Tested up to:            6.3.2
  * WC requires at least:    3.2
- * WC tested up to:         7.4
+ * WC tested up to:         8.2
  * Domain Path:             /languages
  * Text Domain:             th-variation-swatches
  */
