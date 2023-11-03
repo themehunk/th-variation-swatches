@@ -3,7 +3,7 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
 Requires at least: 4.8
-Tested up to: 6.3.
+Tested up to: 6.3.2
 Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
