@@ -8,7 +8,7 @@
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
  * Requires at least:       4.8
- * Tested up to:            6.3.2
+ * Tested up to:            6.3.
  * WC requires at least:    3.2
  * WC tested up to:         7.4
  * Domain Path:             /languages
@@ -44,7 +44,6 @@ if (!defined('TH_VARIATION_SWATCHES_VERSION')) {
   $plugin_data = get_file_data(__FILE__, array('version' => 'Version'), false);
   define('TH_VARIATION_SWATCHES_VERSION', $plugin_data['version']);
 }
-add_action( 'before_woocommerce_init', 'hpos_compatibility' );
 
 if (!class_exists('TH_Variation_Swatches') && (!class_exists('TH_Variation_Swatches_Pro'))) {
 
@@ -53,16 +52,6 @@ if (!class_exists('TH_Variation_Swatches') && (!class_exists('TH_Variation_Swatc
   require_once("inc/thvs.php");
   
 }
-
-/**
-     *  Declare the woo HPOS compatibility.
-     */
-     function hpos_compatibility() {
-
-            if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
-                \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', TH_VARIATION_SWATCHES_PLUGIN_FILE, true );
-            }
-    }
 
 function thvs_plugin_action_links($links)
 {

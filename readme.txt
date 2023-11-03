@@ -3,7 +3,7 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
 Requires at least: 4.8
-Tested up to: 6.3.2
+Tested up to: 6.3.
 Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -163,8 +163,8 @@ Initial release
 
 == Upgrade Notice ==
 
-= 1.3.0 =
-* Admin style modification.
+= 1.3.1 =
+* HPOS compatibility issue fixed.
 
 
 Thanks for using our plugin, I am sure you will create a great Product Swatches for your site. If you have any query then you can contact at our forum : https://www.support.themehunk.com/
