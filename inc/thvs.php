@@ -29,6 +29,7 @@ if ( ! class_exists( 'TH_Variation_Swatches' ) ):
          * Constructor
          */
         public function __construct(){
+    add_action( 'before_woocommerce_init', array( $this, 'hpos_compatibility') );
         $this->includes();
         $this->hooks();
 
@@ -58,6 +59,16 @@ if ( ! class_exists( 'TH_Variation_Swatches' ) ):
             return class_exists( 'WooCommerce' );
         }
         
+        /**
+     *  Declare the woo HPOS compatibility.
+     */
+    public function hpos_compatibility() {
+
+            if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+                \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', TH_VARIATION_SWATCHES_PLUGIN_FILE, true );
+            }
+    }
+
         public function images_uri( $file ) {
             $file = ltrim( $file, '/' );
 
