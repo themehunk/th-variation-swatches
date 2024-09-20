@@ -1,9 +1,5 @@
 <?php
 class themehunk_plugin_option{
-function __construct(){
-    // AJAX.
-    add_action( 'wp_ajax_th_activeplugin',array($this,'th_activeplugin') );
-  }
 
   /*** Plugin List return */
 function get_plugin(){
@@ -28,52 +24,6 @@ function tab_page() {
     $theme_header =$text_array['header'];
     include('tab-html.php' ); 
 }
-
-     /*
-          * Plugin install
-          * Active plugin
-          * Setup Homepage
-          */
-        public function th_activeplugin(){
-
-        if ( ! current_user_can( 'administrator' ) ) {
-
-            wp_die( - 1, 403 );
-                            
-        } 
-
-        check_ajax_referer( 'thvs_admin_nonce','nonce');  
-
-      if ( ! current_user_can( 'install_plugins' ) || ! isset( $_POST['init'] ) || ! $_POST['init'] ) {
-        wp_send_json_error(
-          array(
-            'success' => false,
-            'message' => __( 'No plugin specified', 'th-variation-swatches' ),
-          )
-        );
-      }
-
-      $plugin_init = ( isset( $_POST['init'] ) ) ? esc_attr( $_POST['init'] ) : '';
-
-      $activate = activate_plugin( $plugin_init);
-
-      if ( is_wp_error( $activate ) ) {
-        wp_send_json_error(
-          array(
-            'success' => false,
-            'message' => $activate->get_error_message(),
-          )
-        );
-      }
-
-      wp_send_json_success(
-        array(
-          'success' => true,
-          'message' => __( 'Plugin Successfully Activated', 'th-variation-swatches' ),
-        )
-      );
-
-        }
 
 /**
  * Include Welcome page content

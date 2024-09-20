@@ -130,7 +130,7 @@ function openTab(evt, tabName) {
                 type : 'POST',
 
                 data : {
-                    action : 'th_activeplugin',
+                    action : 'themehunk_activeplugin',
                     init   :  $init,
                     slug   :  $slug,
                     nonce  :  THVSAdmin.nonce,

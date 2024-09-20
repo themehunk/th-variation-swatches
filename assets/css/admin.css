@@ -1,3 +1,6 @@
+img{
+    max-width: 100%;
+}
 #thvs {
     padding: 0;
     border-top-left-radius: 1.5rem;
@@ -125,7 +128,7 @@ border: 0;
     font-size: 1rem;
     margin-right: 1rem;
     margin-top: 2.5rem;
-    background: #0041ef;
+    background: #3070ff;
     color: #fff;
     line-height: 2.15384615;
     text-transform: uppercase;
@@ -152,14 +155,14 @@ font-family: dashicons;
     align-items: center;
 }
 .thvs-setting-form #submit.button-primary:hover{
-background: #094cff;
+    opacity: .9;
 }
 
 .thvs-button-wrapper .reset{
-    background: #da4c4e;
+    background: #858789;
 }
 .thvs-button-wrapper .reset:hover{
-    background: #ff181c;
+    background: #b93234;
 }
 .thvs-button-wrapper{
 display:flex;
@@ -196,7 +199,9 @@ justify-content:space-between;
     background: #f5f5f5;
     margin-right: 0.5rem;
 }
-
+#attribute_behavior-wrapper label{
+    margin-right: 12px;
+}
 .thvs-setting-tab input[type=radio]:checked::before {
     content: "";
     border-radius: 50%;
@@ -312,6 +317,8 @@ font-size:1rem;
 max-width:100%;
 }
 #profeature-wrapper .pro-button{
+    min-width: 108px;
+    justify-content: center;
     border: 0;
     box-shadow: none;
     padding: 0.5rem 1rem;
@@ -319,7 +326,7 @@ max-width:100%;
     font-size:0.7rem!important;
     margin-right: 1rem;
     margin-top: 2.5rem;
-    background: #0041ef;
+    background: #3070ff;
     color: #fff;
     line-height: 2.15384615;
     text-transform: uppercase;
@@ -330,10 +337,9 @@ max-width:100%;
    letter-spacing:0.8px;
    text-decoration: none;
    border-radius: 4px;
-   opacity: .8;
 }
 #profeature-wrapper .pro-button.buynow{
-    background: #4da754;
+    background: #12a925;
 }
 #profeature-wrapper{
 text-align:center;
@@ -368,7 +374,7 @@ padding: 0.4rem 1.5rem;
     letter-spacing: -0.08px;
     font-size: .6875rem;
     line-height: 1.81818;
-    background: #0041ef;
+    background: #858789;
     color: #fff;
     margin-top: 0.5rem;
     display: inline-flex;
@@ -376,9 +382,13 @@ padding: 0.4rem 1.5rem;
     text-transform: uppercase;
     font-weight: 700;
     text-decoration: auto;
+    box-shadow: none;
 }
-.thvs-wrap-doc a:hover, .thvs-wrap-pro a:hover{
-    background: #094cff;
+.thvs-wrap-doc a:hover{
+    background: #575555;
+}
+.thvs-wrap-pro a {
+    background: #3070ff;
 }
 .thvs-use-plugin img{
 width:128px;
@@ -413,4 +423,25 @@ background: #d14b35;
     padding: 0.5rem 1rem;
     display:inline-block;
     width:auto;
+}
+.thvs-use-plugin a{
+    text-decoration: none;
+}
+#profeature-wrapper{
+    position: relative;
+}
+#profeature-wrapper:after {
+    content: 'Pro';
+    background: #b73838;
+    position: absolute;
+    top: -21px;
+    left: 0;
+    border-radius: 100%;
+    width: 29px;
+    height: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 12px;
 }
