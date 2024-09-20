@@ -94,7 +94,7 @@ Yes, You can translate our plugin to desired language.
 
 = 1.3.2 =
 * Fix : Creation of dynamic property Th_Variation_Swatches_Settings::$settings_name is deprecated on
-wp-content\plugins\th-variation-swatches\inc\thvs-settings.php on line 20
+		wp-content\plugins\th-variation-swatches\inc\thvs-settings.php on line 20
 * Fix : Activate ajax issue resolved.
 * Update: Admin style improved.
 * Update: Premium Link  updated.
