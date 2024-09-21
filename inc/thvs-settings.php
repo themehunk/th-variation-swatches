@@ -14,6 +14,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 		private $reserved_key = '';
 		private $reserved_fields = array();
 		private $fields = array();
+		private $settings_name;
 		
              public function __construct() {
              $this->settings_name   = apply_filters( 'thvs_settings_name', $this->setting_name );

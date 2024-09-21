@@ -260,7 +260,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
                                 'type'       => 'usefullplugin',
                                 'desc'       => '',
 								'usefull'          => true,
-								'plugin_image' => esc_url('https://ps.w.org/th-all-in-one-woo-cart/assets/icon-128x128.png'),
+								'plugin_image' => esc_url('https://ps.w.org/th-all-in-one-woo-cart/assets/icon-128x128.gif'),
 								'plugin_title'  => esc_html__( 'TH Side Cart and Menu Cart for Woocommerce', 'th-variation-swatches' ),
 								'plugin_link'  => esc_url('https://themehunk.com/th-all-in-one-woo-cart/'),	
 								
@@ -271,7 +271,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
                                 'type'       => 'usefullplugin',
                                 'desc'       => '',
 								'usefull'          => true,
-								'plugin_image' => esc_url('https://ps.w.org/th-product-compare/assets/icon-128x128.png'),
+								'plugin_image' => esc_url('https://ps.w.org/th-product-compare/assets/icon-128x128.gif'),
 								'plugin_title'  => esc_html__( 'Th Product Compare', 'th-variation-swatches' ),
 								'plugin_link'  => esc_url('https://themehunk.com/th-product-compare-plugin/'),	
 								

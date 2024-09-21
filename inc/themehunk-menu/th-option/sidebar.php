@@ -7,7 +7,7 @@
             <p>
             <?php _e('If you like the free version of this plugin, you will LOVE the full version of plugin which includes numerous  Advanced features, Custom Style and more useful options to customize your plugins.','th-variation-swatches'); ?> 
             </p>
-                <center><a class="button ztabtn" target="_blank" href="<?php echo esc_url('https://themehunk.com/plugins/')?>"><?php _e('Upgrade To Premium Plugin','th-variation-swatches'); ?> </a></center>
+                <center><a class="button ztabtn" target="_blank" href="<?php echo esc_url('https://themehunk.com/th-variation-swatches/')?>"><?php _e('Upgrade To Premium Plugin','th-variation-swatches'); ?> </a></center>
             </div>
             <hr>
             <div class="section">

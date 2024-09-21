@@ -139,6 +139,7 @@
     color: #ffffff !important;
     border-color: #ff6d00 !important;
     background: #ff6d00 !important;
+    box-shadow: none!important;
   }
   
   .toplevel_page_themehunk-plugins .theme_link {
