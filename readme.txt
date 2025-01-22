@@ -3,8 +3,8 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
 Requires at least: 4.8
-Tested up to: 6.6
-Stable tag: 1.3.2
+Tested up to: 6.7.1
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,8 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+= 1.3.3 =
+* Security Issue Fixed.
 
 = 1.3.2 =
 * Fix : Creation of dynamic property Th_Variation_Swatches_Settings::$settings_name is deprecated on

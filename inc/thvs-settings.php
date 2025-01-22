@@ -19,23 +19,22 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
              public function __construct() {
              $this->settings_name   = apply_filters( 'thvs_settings_name', $this->setting_name );
              $this->fields          = apply_filters( 'thvs_settings', $this->fields );
-		         $this->reserved_key    = sprintf( '%s_reserved', $this->settings_name );
-		         $this->reserved_fields = apply_filters( 'thvs_reserved_fields', array() );
+		     $this->reserved_key    = sprintf( '%s_reserved', $this->settings_name );
+		     $this->reserved_fields = apply_filters( 'thvs_reserved_fields', array() );
 		         
              add_action( 'admin_menu', array( $this, 'add_menu' ) );
              add_action( 'init', array( $this, 'set_defaults' ), 8 );
              add_action( 'admin_init', array( $this, 'settings_init' ), 90 );
              add_action( 'admin_enqueue_scripts', array( $this, 'script_enqueue' ) );
-             
-				     add_action('wp_ajax_thvs_form_setting', array($this, 'thvs_form_setting'));
-				     add_action( 'wp_ajax_nopriv_thvs_form_setting', array($this, 'thvs_form_setting'));
+			 add_action('wp_ajax_thvs_form_setting', array($this, 'thvs_form_setting'));
+			 add_action( 'wp_ajax_nopriv_thvs_form_setting', array($this, 'thvs_form_setting'));
           }
             
             public function add_menu() {
 						 $page_title = esc_html__( 'Variation Swatches for WooCommerce Settings', 'th-variation-swatches' );
 						 $menu_title = esc_html__( 'Variation Swatches', 'th-variation-swatches' );
 						 add_submenu_page( 'themehunk-plugins', $page_title, $menu_title, 'manage_options', 'th-variation-swatches', array($this, 'settings_form'),15 );
-		}
+		    }
 
 		public function admin_add_class(){
 			  $classes ='';
@@ -190,7 +189,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			return isset( $_GET['page'] ) && ( $_GET['page'] == 'th-variation-swatches' ) && isset( $_GET[ $this->setting_reset_name ] );
 		}  
 
-		public function delete_settings() {
+	public function delete_settings() {
 
 			if ( ! current_user_can( 'administrator' ) ) {
 
@@ -198,13 +197,13 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
             }
 
-     if (isset($_GET['delete_wpnonce']) || wp_verify_nonce($_REQUEST['delete_wpnonce'], 'delete_nonce' ) ) {
+			check_ajax_referer('delete_nonce','delete_wpnonce');
 
 			do_action( sprintf( 'delete_%s_settings', $this->settings_name ), $this );
 
 			return delete_option( $this->settings_name );
 
-		 }
+		
 
 		}
 		public function set_defaults() {
