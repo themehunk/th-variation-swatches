@@ -64,7 +64,7 @@ $thvs_frnt_custom_css.=".variable-item:not(.radio-variable-item){
 }";
 
 if(wc_string_to_bool( th_variation_swatches()->th_variation_swatches_get_option( 'show_title' ) )==''):
-    $thvs_frnt_custom_css.=".thvs-loaded .variations td.label{
+    $thvs_frnt_custom_css.=".thvs-loaded .variations th.label{
         display:none!important;
     }";
 endif;
