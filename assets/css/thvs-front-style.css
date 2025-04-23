@@ -242,3 +242,7 @@ padding-bottom:0px;
 .th-variation-swatches #alm-quick-view-content .product-type-variable .product_meta{
 margin-top:30px
 }
+
+.th-variation-swatches .variable-items-wrapper {
+row-gap: 15px;
+}

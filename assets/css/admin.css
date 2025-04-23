@@ -121,7 +121,12 @@ color:#444;
 }
 
 .thvs-setting-form #submit.button-primary,.thvs-button-wrapper .reset{
-border: 0;
+    width: 151px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    box-sizing: border-box;
     box-shadow: none;
     padding: 0.4rem 1rem;
     border-radius: 0;
