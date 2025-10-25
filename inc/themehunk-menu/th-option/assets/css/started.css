@@ -298,6 +298,7 @@
   .th-column img {
     width: 128px;
     border: 1px solid #efefef;
+    max-width: 100%;
   }
   
   .facebook-gropup {
@@ -555,6 +556,7 @@
   }
   .th-column.two {
     max-width: 100%;
+    flex-grow: 2;
   }
   .upgrade-to-pro {
     float: initial;
@@ -580,16 +582,26 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 12px;
   }
-
+.wp-core-ui .title-plugin + button{
+  margin-right: 9px;
+}
 .th-column.Free,
   .th-column.Pro {
-    flex: 21%;
+    flex: 15%;
+    display: flex;
+    align-items: center;
   }
 
 
 
 /******************************   Plugin option panel responsive CSS Starts ***************/
+@media (max-width: 1200px) { 
+.th-column.Free, .th-column.Pro{
+  flex: 9%;
+}
+}
    @media (max-width: 1024px) {
 
 .th-heade.th-left-header,
@@ -697,6 +709,9 @@
   .th-column.Free img, .th-column.Pro img{
     width: 54px;
   }
+ .wp-core-ui .upgrade-to-pro{
+  margin-bottom: 0;
+ }
  }
 
  /******************************   Plugin option panel responsive CSS ***************/
