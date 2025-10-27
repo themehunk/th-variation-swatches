@@ -583,6 +583,10 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 12px;
+    float: inline-start;
+  }
+  .wp-core-ui .upgrade-to-pro{
+    margin-bottom: 0;
   }
 .wp-core-ui .title-plugin + button{
   margin-right: 9px;
@@ -593,8 +597,12 @@
     display: flex;
     align-items: center;
   }
-
-
+.sidebar{
+  padding: 0;
+}
+.sidebar-section{
+  padding: 15px;
+}
 
 /******************************   Plugin option panel responsive CSS Starts ***************/
 @media (max-width: 1200px) { 
