@@ -2,8 +2,8 @@
 Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
-Requires at least: 4.8
-Tested up to: 6.8
+Requires at least: 5.8
+Tested up to: 6.9
 Stable tag: 1.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -86,13 +86,15 @@ Yes, You can translate our plugin to desired language.
 
 == Compatible Themes ==
 
-[Astra](https://wordpress.org/themes/astra/), [OceanWP](https://wordpress.org/themes/oceanwp/), [Jot Shop](https://wordpress.org/themes/jot-shop/) [Top Store](https://wordpress.org/themes/top-store/), [Big Store](https://wordpress.org/themes/big-store/), [Open Shop](https://wordpress.org/themes/open-shop/), [Zita](https://wordpress.org/themes/zita/), [Royal Shop](https://wordpress.org/themes/royal-shop/), [Open Mart](https://wordpress.org/themes/open-mart/), [Gogo](https://wordpress.org/themes/gogo/), [Almaira Shop](https://wordpress.org/themes/almaira-shop/), [Oneline](https://wordpress.org/themes/oneline-lite/), [Shopline](https://wordpress.org/themes/shopline/), [Storefront](https://wordpress.org/themes/storefront/), [Envo Shop](https://wordpress.org/themes/envo-shop/), [Orchid Store](https://wordpress.org/themes/orchid-store/)
+[Shop Mania](https://themehunk.com/th-shop-mania/), [OceanWP](https://wordpress.org/themes/oceanwp/), [Jot Shop](https://wordpress.org/themes/jot-shop/) [Top Store](https://wordpress.org/themes/top-store/), [Big Store](https://wordpress.org/themes/big-store/), [Open Shop](https://wordpress.org/themes/open-shop/), [Zita](https://wordpress.org/themes/zita/), [Royal Shop](https://wordpress.org/themes/royal-shop/), [Open Mart](https://wordpress.org/themes/open-mart/), [Gogo](https://wordpress.org/themes/gogo/), [Almaira Shop](https://wordpress.org/themes/almaira-shop/), [Oneline](https://wordpress.org/themes/oneline-lite/), [Shopline](https://wordpress.org/themes/shopline/), [Storefront](https://wordpress.org/themes/storefront/), [Envo Shop](https://wordpress.org/themes/envo-shop/), [Orchid Store](https://wordpress.org/themes/orchid-store/)
 
 == Screenshots ==
 
 == Changelog ==
 
 = 1.3.5 =
+* Update: Tested with WordPress 6.9.
+* Update: PHP 8.1 compatibility improvements.
 * Themehunk Plugins page style updated.
 
 = 1.3.4 =
@@ -183,10 +185,8 @@ Initial release
 
 == Upgrade Notice ==
 
-= 1.3.4 =
-* Update: Tested With WordPress 6.8.
-* Update: Variation margin bottom style updated.
-* Fix: Show Title setting not working issue resolved.
+= 1.3.5 =
+* Update: Tested with WordPress 6.9 and PHP 8.1 compatibility improvements. Security fixes included.
 
 
 Thanks for using our plugin, I am sure you will create a great Product Swatches for your site. If you have any query then you can contact at our forum : https://www.support.themehunk.com/

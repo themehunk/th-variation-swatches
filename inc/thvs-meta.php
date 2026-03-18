@@ -79,6 +79,13 @@ if ( ! class_exists( 'Th_Variation_Swatches_Term_Meta' ) ):
 		public function save( $term_id, $tt_id = '', $taxonomy = '' ) {
 
 			if ( $taxonomy == $this->taxonomy ) {
+
+				$nonce = isset( $_POST['_wpnonce'] ) ? sanitize_key( $_POST['_wpnonce'] ) : '';
+				$valid = wp_verify_nonce( $nonce, 'update-tag_' . $term_id ) || wp_verify_nonce( $nonce, 'add-tag' );
+				if ( ! $valid ) {
+					return;
+				}
+
 				foreach ( $this->fields as $field ) {
 					foreach ( $_POST as $post_key => $post_value ) {
 						if ( $field['id'] == $post_key ) {

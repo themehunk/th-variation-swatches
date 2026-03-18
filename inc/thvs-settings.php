@@ -27,7 +27,6 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
              add_action( 'admin_init', array( $this, 'settings_init' ), 90 );
              add_action( 'admin_enqueue_scripts', array( $this, 'script_enqueue' ) );
 			 add_action('wp_ajax_thvs_form_setting', array($this, 'thvs_form_setting'));
-			 add_action( 'wp_ajax_nopriv_thvs_form_setting', array($this, 'thvs_form_setting'));
           }
             
             public function add_menu() {
@@ -110,7 +109,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
             	<div class="thvs-notes-row thvs-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-variation-swatches' ) ?></h4><p><?php esc_html_e( 'Want to know how this plugin works. Read our Documentation.', 'th-variation-swatches' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-variation-swatches-plugin/'); ?>"><?php esc_html_e( 'Read Now', 'th-variation-swatches' ) ?></a></div>
 
-            	<div class="thvs-notes-row thvs-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Unlock TH Variation Swatches Pro','th-variation-swatches', 'th-advance-product-search' ) ?></h4><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'th-variation-pro.png') ?>' alt="amaz-store"><a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-variation-swatches/'); ?>"><?php esc_html_e( 'Upgrade Pro', 'th-variation-swatches' ) ?></a></div>
+            	<div class="thvs-notes-row thvs-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Unlock TH Variation Swatches Pro', 'th-variation-swatches' ) ?></h4><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'th-variation-pro.png') ?>' alt="amaz-store"><a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-variation-swatches/'); ?>"><?php esc_html_e( 'Upgrade Pro', 'th-variation-swatches' ) ?></a></div>
 
             	<div class="thvs-notes-row thvs-wrap-img">
 	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-shop-mania/'); ?>"><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'th-shop-mania-ad.png') ?>' alt="th-shop-mania">

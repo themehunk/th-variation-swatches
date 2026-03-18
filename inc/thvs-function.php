@@ -494,7 +494,7 @@ if ( ! function_exists( 'thvs_get_wc_attribute_taxonomy' ) ):
 
 			$attribute_name = str_replace( 'pa_', '', wc_sanitize_taxonomy_name( $attribute_name ) );
 
-			$attribute_taxonomy = $wpdb->get_row( "SELECT * FROM " . $wpdb->prefix . "woocommerce_attribute_taxonomies WHERE attribute_name='{$attribute_name}'" );
+			$attribute_taxonomy = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}woocommerce_attribute_taxonomies WHERE attribute_name = %s", $attribute_name ) );
 
 			// $cache->set_transient( $attribute_taxonomy );
 		// }
@@ -708,7 +708,7 @@ if ( ! function_exists( 'thvs_default_variable_item' ) ):
 						$is_selected = ( sanitize_title( $args['selected'] ) == $term->slug );
 
 						$selected_class = $is_selected ? 'selected' : '';
-						$tooltip        = trim( apply_filters( 'thvs_variable_item_tooltip', $option, $term, $args ) );
+						$tooltip        = trim( (string) apply_filters( 'thvs_variable_item_tooltip', $option, $term, $args ) );
 
 						if ( $is_archive && ! $show_archive_tooltip ) {
 							$tooltip = false;
@@ -737,7 +737,9 @@ if ( ! function_exists( 'thvs_default_variable_item' ) ):
 								$image_size    = sanitize_text_field( th_variation_swatches()->th_variation_swatches_get_option( 'attribute_image_size' ) );
 								$image         = wp_get_attachment_image_src( $attachment_id, apply_filters( 'thvs_product_attribute_image_size', $image_size, $attribute, $product ) );
 
-								$data .= sprintf( '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', esc_attr( $option ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );
+								if ( is_array( $image ) ) {
+									$data .= sprintf( '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', esc_attr( $option ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );
+								}
 								// $data .= $image_html;
 								break;
 
@@ -763,7 +765,7 @@ if ( ! function_exists( 'thvs_default_variable_item' ) ):
 					$is_selected = ( sanitize_title( $option ) == sanitize_title( $args['selected'] ) );
 
 					$selected_class = $is_selected ? 'selected' : '';
-					$tooltip        = trim( apply_filters( 'thvs_variable_item_tooltip', $option, $options, $args ) );
+					$tooltip        = trim( (string) apply_filters( 'thvs_variable_item_tooltip', $option, $options, $args ) );
 
 
 					if ( $is_archive && ! $show_archive_tooltip ) {
@@ -792,7 +794,9 @@ if ( ! function_exists( 'thvs_default_variable_item' ) ):
 							$image_size    = sanitize_text_field( th_variation_swatches()->th_variation_swatches_get_option( 'attribute_image_size' ) );
 							$image         = wp_get_attachment_image_src( $attachment_id, apply_filters( 'wvs_product_attribute_image_size', $image_size, $attribute, $product ) );
 
-							$data .= sprintf( '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', esc_attr( $option ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );
+							if ( is_array( $image ) ) {
+								$data .= sprintf( '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', esc_attr( $option ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );
+							}
 							// $data .= $image_html;
 							break;
 
@@ -908,7 +912,7 @@ if ( ! function_exists( 'thvs_variable_item' ) ):
 
 						$is_selected    = ( sanitize_title( $args['selected'] ) == $term->slug );
 						$selected_class = $is_selected ? 'selected' : '';
-						$tooltip        = trim( apply_filters( 'thvs_variable_item_tooltip', $option, $term, $args ) );
+						$tooltip        = trim( (string) apply_filters( 'thvs_variable_item_tooltip', $option, $term, $args ) );
 
 						$tooltip_html_attr       = ! empty( $tooltip ) ? sprintf( ' data-thvstooltip="%s"', esc_attr( $tooltip ) ) : '';
 						$screen_reader_html_attr = $is_selected ? ' aria-checked="true"' : ' aria-checked="false"';
@@ -932,7 +936,9 @@ if ( ! function_exists( 'thvs_variable_item' ) ):
 								$image_size    = th_variation_swatches()->th_variation_swatches_get_option( 'attribute_image_size' );
 								$image         = wp_get_attachment_image_src( $attachment_id, apply_filters( 'thvs_product_attribute_image_size', $image_size, $attribute, $product ) );
 
-								$data .= sprintf( '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', esc_attr( $option ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );
+								if ( is_array( $image ) ) {
+									$data .= sprintf( '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', esc_attr( $option ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );
+								}
 
 								break;
 
@@ -1037,7 +1043,7 @@ if ( ! function_exists( 'thvs_variation_attribute_options_html' ) ):
 		$cache          = '';
 
 		// Clear cache
-		if ( isset( $_GET['thvs_clear_transient'] ) ) {
+		if ( isset( $_GET['thvs_clear_transient'] ) && current_user_can( 'manage_options' ) && isset( $_GET['_wpnonce'] ) && wp_verify_nonce( sanitize_key( $_GET['_wpnonce'] ), 'thvs_clear_transient_nonce' ) ) {
 			$cache->delete_transient();
 		}
 
@@ -1392,7 +1398,7 @@ function thvs_filter_add_html( $term_html, $term, $link, $count ){
 							
 							$term_html = '<a class="thvs-attribute-item variable-item-contents" rel="nofollow" href="' . esc_url( $link ) . '">
 						
-							<span class="variable-item-span variable-item-span-'.esc_attr($tax->attribute_type).'"><img class="variable-item-image" aria-hidden="true" alt="'.esc_attr($term->name).'" src="'.esc_url( $image_src[0] ).'" /></span>
+							<span class="variable-item-span variable-item-span-'.esc_attr($tax->attribute_type).'"><img class="variable-item-image" aria-hidden="true" alt="'.esc_attr($term->name).'" src="'.esc_url( is_array( $image_src ) ? $image_src[0] : '' ).'" /></span>
 						
 							</a>';	
 							
