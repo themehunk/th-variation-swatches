@@ -1,83 +1,49 @@
 <?php 
 if ( ! defined( 'ABSPATH' ) ) exit;
- // Display get all attribute in select.
- 
-if ( ! function_exists( 'thvs_get_all_attribute' ) ):
-
-	function thvs_get_all_attribute() {
-
-		$attribute_array      = array();
-		$attribute_taxonomies = wc_get_attribute_taxonomies();
-
-		     if (!is_array($attribute_array)){ 
-			    return FALSE; 
-			  } 
-			  
-			  foreach ($attribute_taxonomies as $key => $value) { 
-			   
-			   $attribute_array[$value->attribute_name] = $value->attribute_name;
-			    
-			  } 
-			  return $attribute_array;
-	
-	}
-endif;
-
 if ( ! function_exists( 'thvs_settings' ) ):
-	function thvs_settings() {
+	function thvs_settings(){
+
+		do_action( 'before_thvs_settings', th_variation_swatches() );
+
 		th_variation_swatches()->add_setting(
-			'simple', esc_html__( 'Basic', 'th-variation-swatches-pro' ), apply_filters(
+			'simple', esc_html__( 'Basic', 'th-variation-swatches' ), apply_filters(
 			'thvs_simple_settings_section', array(
 				array(
-					'title'  => esc_html__( 'Basic', 'th-variation-swatches-pro' ),
+					'title'  => esc_html__( 'Basic Setting', 'th-variation-swatches' ),
 					'fields' => apply_filters(
 						'thvs_simple_setting_fields', array(
 							array(
 								'id'      => 'tooltip',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Tooltip', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Enable tooltip on each product attribute.', 'th-variation-swatches-pro' ),
+								'title'   => esc_html__( 'Tooltip', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Enable tooltip on each product attribute.', 'th-variation-swatches' ),
 								'default' => true
 							),
 							array(
 								'id'      => 'stylesheet',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Default Stylesheet', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Enable default stylesheet', 'th-variation-swatches-pro' ),
+								'title'   => esc_html__( 'Default Stylesheet', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Enable default stylesheet', 'th-variation-swatches' ),
 								'default' => true
 							),
 							array(
 								'id'      => 'style',
 								'type'    => 'radio',
-								'title'   => esc_html__( 'Attribute Shape Style', 'th-variation-swatches-pro' ),
+								'title'   => esc_html__( 'Attribute Shape Style', 'th-variation-swatches' ),
 								
 								'options' => array(
-									'rounded' => esc_html__( 'Rounded Shape', 'th-variation-swatches-pro' ),
-									'squared' => esc_html__( 'Squared Shape', 'th-variation-swatches-pro' ),
+									'rounded' => esc_html__( 'Rounded Shape', 'th-variation-swatches' ),
+									'squared' => esc_html__( 'Squared Shape', 'th-variation-swatches' ),
 
 								),
 								'default' => 'squared'
 							),
-							
 							array(
 								'id'      => 'default_to_button',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Auto Dropdowns to Button', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Convert default dropdowns to button type', 'th-variation-swatches-pro' ),
+								'title'   => esc_html__( 'Auto Dropdowns to Button', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Convert default dropdowns to button type', 'th-variation-swatches' ),
 								'default' => true
-							),
-							array(
-								'id'      => 'th-swatches-style',
-								'type'    => 'radio-image',
-								'title'   => esc_html__( 'Swatches Style In Single Page (Pro)', 'th-variation-swatches-pro' ),
-								
-								'options' => array(
-									'thswatche' => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'swatches-pro-layout-1.png' ),
-									'theme' => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'swatches-pro-layout-2.png' ),
-
-								),
-
-								'default' => 'thswatche'
 							),
 
 						)
@@ -88,52 +54,27 @@ if ( ! function_exists( 'thvs_settings' ) ):
 		);
 
 		th_variation_swatches()->add_setting(
-			'advanced', esc_html__( 'Advanced', 'th-variation-swatches-pro' ), apply_filters(
+			'advanced', esc_html__( 'Advanced', 'th-variation-swatches' ), apply_filters(
 			'thvs_advanced_settings_section', array(
+			
 				array(
-					'title'  => esc_html__( 'Display Setting', 'th-variation-swatches-pro' ),
+					'title'  => esc_html__( 'Display Setting', 'th-variation-swatches' ),
 					'fields' => apply_filters(
 						'thvs_advanced_setting_fields', array(
-
-							array(
-								'id'      => 'clear_on_reselect',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Clear Attribute Setting', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Clear selected attribute on select again', 'th-variation-swatches-pro' ),
-								'default' => false
-							),
-							array(
-								'id'      => 'threshold',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Ajax variation threshold', 'th-variation-swatches-pro' ),
-								'desc'    => __( 'Control the number of enable ajax variation threshold, If you set <code>1</code> all product variation will be load via ajax. Default value is <code>30</code>, <br><span class="notes" style="color: red">Note: Disable ajax threshold doesn\'t follow attribute behaviour. It\'s recommended to keep this number between 30 - 40.</span>', 'th-variation-swatches-pro' ),
-								'default' => 30,
-								'min'     => 1,
-								'max'     => 80,
-								'require' => array( 'disable_threshold' => array( 'type' => 'empty' ) )
-							),
+							
                            array(
 								'id'      => 'show_title',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Attribute Title', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Check to Show Attribute Title', 'th-variation-swatches-pro' ),
+								'title'   => esc_html__( 'Attribute Title', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Check to Show Attribute Title', 'th-variation-swatches' ),
 								'default' => true,
 								
-							),
-                           array(
-								'id'      => 'attr_title_font_size',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Title Size', 'th-variation-swatches-pro' ),
-								'default' => 16,
-								'min'     => 8,
-								'max'     => 50,
-								'suffix'  => 'px'
 							),
 							array(
 								'id'      => 'show_variation_label',
 								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Selected Attribute variation Name', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Check to show selected attribute variation name after title', 'th-variation-swatches-pro' ),
+								'title'   => esc_html__( 'Selected Attribute variation Name', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Check to show selected attribute variation name after title', 'th-variation-swatches' ),
 								'default' => true,
 								
 							),
@@ -141,30 +82,47 @@ if ( ! function_exists( 'thvs_settings' ) ):
 							array(
 								'id'      => 'variation_label_separator',
 								'type'    => 'text',
-								'title'   => esc_html__( 'separator', 'th-variation-swatches-pro' ),
-								'desc'    => sprintf( __( 'Change separator between title and name. Default: %s.', 'th-variation-swatches-pro' ), '<code>:</code>' ),
-								'default' => ':',
+								'title'   => esc_html__( 'Separator', 'th-variation-swatches' ),
+								'desc'    => sprintf( __( 'Change separator between title and name.', 'th-variation-swatches' )),
+								'default' => '=',
 								
 								'require' => array( 'show_variation_label' => array( 'type' => '==', 'value' => '1' ) )
 							),
-
+							
+						)
+					)
+				),
+	            array(
+					'title'  => esc_html__( 'Image Setting', 'th-variation-swatches' ),
+					'desc'   => esc_html__( '', 'th-variation-swatches' ),
+					'fields' => apply_filters(
+						'thvs_image_setting_fields', array(
+							
 							array(
-								'id'      => 'attribute_behavior',
-								'type'    => 'radio',
-								'title'   => esc_html__( 'Unavailable Attribute Behavior', 'th-variation-swatches-pro' ),
-								'desc'    => sprintf( __( 'Disabled attribute will be hide / blur. %sNote: Disable ajax threshold doesn\'t apply this feature.%s', 'th-variation-swatches-pro' ), '<br><span class="notes" style="color: red">', '</span>' ),
-								'options' => array(
-									'blur'          => esc_html__( 'Blur with cross', 'th-variation-swatches-pro' ),
-									'blur-no-cross' => esc_html__( 'Blur without cross', 'th-variation-swatches-pro' ),
-									'hide'          => esc_html__( 'Hide', 'th-variation-swatches-pro' ),
-								),
-								'default' => 'blur'
+								'id'      => 'attribute_image_size',
+								'type'    => 'select',
+								'title'   => esc_html__( 'Attribute image size', 'th-variation-swatches' ),
+								'desc'    => has_filter( 'thvs_product_attribute_image_size' ) ? __( '<span style="color: red">Attribute image size changed by <code>thvs_product_attribute_image_size</code> hook. So this option will not apply any effect.</span>', 'th-variation-swatches' ) : __( sprintf( 'Choose attribute image size. <a target="_blank" href="%s">Media Settings</a>', esc_url( admin_url( 'options-media.php' ) ) ), 'th-variation-swatches' ),
+								'options' => thvs_get_all_image_sizes(),
+								'default' => 'thumbnail'
 							),
+						
+							
+
+						)
+					)
+				),
+				array(
+					'title'  => esc_html__( 'Attribute Style', 'th-variation-swatches' ),
+					'desc'   => esc_html__( '', 'th-variation-swatches' ),
+					'fields' => apply_filters(
+						'thvs_attr_style_fields', array(
+							
 							array(
 								'id'      => 'width',
 								'type'    => 'number',
-								'title'   => esc_html__( 'Width', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Variation item width', 'th-variation-swatches-pro' ),
+								'title'   => esc_html__( 'Width', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Variation item width', 'th-variation-swatches' ),
 								'default' => 30,
 								'min'     => 10,
 								'max'     => 200,
@@ -173,8 +131,8 @@ if ( ! function_exists( 'thvs_settings' ) ):
 							array(
 								'id'      => 'height',
 								'type'    => 'number',
-								'title'   => esc_html__( 'Height', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Variation item height', 'th-variation-swatches-pro' ),
+								'title'   => esc_html__( 'Height', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Variation item height', 'th-variation-swatches' ),
 								'default' => 30,
 								'min'     => 10,
 								'max'     => 200,
@@ -183,448 +141,184 @@ if ( ! function_exists( 'thvs_settings' ) ):
 							array(
 								'id'      => 'single_font_size',
 								'type'    => 'number',
-								'title'   => esc_html__( 'Font Size', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Variation item font size', 'th-variation-swatches-pro' ),
+								'title'   => esc_html__( 'Font Size', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Variation item font size', 'th-variation-swatches' ),
 								'default' => 16,
 								'min'     => 8,
-								'max'     => 50,
-								'suffix'  => 'px'
-							)
-
-						) ) ),
-				array(
-					'title'  => esc_html__( 'Image Setting', 'th-variation-swatches-pro' ),
-					'fields' => apply_filters(
-						'thvs_advanced_setting_fields', array(
-
-							array(
-								'id'      => 'attribute_image_size',
-								'type'    => 'select',
-								'title'   => esc_html__( 'Attribute image size', 'th-variation-swatches-pro' ),
-								'desc'    => has_filter( 'thvs_product_attribute_image_size' ) ? __( '<span style="color: red">Attribute image size changed by <code>thvs_product_attribute_image_size</code> hook. So this option will not apply any effect.</span>', 'th-variation-swatches-pro' ) : __( sprintf( 'Choose attribute image size. <a target="_blank" href="%s">Media Settings</a>', esc_url( admin_url( 'options-media.php' ) ) ), 'th-variation-swatches-pro' ),
-								'options' => thvs_get_all_image_sizes(),
-								'default' => 'thumbnail'
-							), 
-						))),
-			)
-		), apply_filters( 'thvs_advanced_style_default_active', false )
-		);
-
-        th_variation_swatches()->add_setting(
-			'thvs_style', esc_html__( 'Style (Pro)', 'th-variation-swatches-pro' ), apply_filters(
-			'thvs_style_settings_section', array(
-				array(
-					'title'  => esc_html__( 'Tooltip', 'th-variation-swatches-pro' ),
-					
-					'fields' => apply_filters(
-						'thvs_style_tooltip_setting_fields', array(
-							
-
-							array(
-								'id'      => 'tooltip_background_color',
-								'type'    => 'color',
-								'title'   => esc_html__( 'Background Color', 'th-variation-swatches-pro' ),
-								'alpha'   => true,
-							),
-							array(
-								'id'      => 'tooltip_text_color',
-								'type'    => 'color',
-								'title'   => esc_html__( 'Text Color', 'th-variation-swatches-pro' ),
-								'alpha'   => true,
-							),
-							
-						
-							
-
-						)
-					)
-				),
-				array(
-					'title'  => esc_html__( 'Attribute Style', 'th-variation-swatches-pro' ),
-					
-					'fields' => apply_filters(
-						'thvs_style_tooltip_setting_fields', array(
-							
-
-							array(
-								'id'      => 'attr_brdr_color',
-								'type'    => 'color',
-								'default' => '#ebe9eb',
-								'title'   => esc_html__( 'Border Color', 'th-variation-swatches-pro' ),
-								'alpha'   => true,
-								
-							),
-							  array(
-								'id'      => 'attr_brdr_size',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Border Size', 'th-variation-swatches-pro' ),
-								'default' => 1,
-								'min'     => 0,
-								'max'     => 10,
+								'max'     => 24,
 								'suffix'  => 'px'
 							),
-							
-							array(
-								'id'      => 'attr_text_color',
-								'type'    => 'color',
-								'title'   => esc_html__( 'Text Color', 'th-variation-swatches-pro' ),
-								'alpha'   => true,
-							),
-
-							array(
-								'id'      => 'attr_bg_btn_color',
-								'type'    => 'color',
-								'title'   => esc_html__( 'Background Color', 'th-variation-swatches-pro' ),
-								'alpha'   => true,
-							),
-
-						)
-					)
-				),
-				array(
-					'title'  => esc_html__( 'Hover & Selected Attribute Style', 'th-variation-swatches-pro' ),
-					
-					'fields' => apply_filters(
-						'thvs_style_hvr_slcted_setting_fields', array(
-							
-
-							array(
-								'id'      => 'attr_brdr_hvr_color',
-								'type'    => 'color',
-								'default' => '#111',
-								'title'   => esc_html__( 'Border Color', 'th-variation-swatches-pro' ),
-								'alpha'   => true,
-								
-							),
-						
-							
-							array(
-								'id'      => 'attr_text_hvr_color',
-								'type'    => 'color',
-								'title'   => esc_html__( 'Text Color', 'th-variation-swatches-pro' ),
-								'alpha'   => true,
-							),
-							array(
-								'id'      => 'attr_bg_btn_hvr_color',
-								'type'    => 'color',
-								'default' => '#e9e9e9',
-								'title'   => esc_html__( 'Background Color', 'th-variation-swatches-pro' ),
-								'alpha'   => true,
-							),
-							
-						
-							
-
-						)
-					)
-				),
-			)
-		), apply_filters( 'thvs_advanced_style_default_active', true )
-		);
-		th_variation_swatches()->add_setting(
-			'thvs_special', esc_html__( 'Special (Pro)', 'th-variation-swatches-pro' ), apply_filters(
-			'thvs_special_settings_section', array(
-				array(
-					'title'  => esc_html__( 'Product Catalog', 'th-variation-swatches-pro' ),
-					
-					'fields' => apply_filters(
-						'thvs_special_setting_fields', array(
-							
-							array(
-								'id'      => 'show_swatches_shop',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Swatches', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Show Swatches in Catlog on Shop / Archive Page', 'th-variation-swatches-pro' ),
-								'default' => false
-							),
-
-							array(
-								'id'      => 'show_single_swatches_on_shop',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Single Swatches', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Show single attribute as catalog mode on shop / archive pages', 'th-variation-swatches-pro' ),
-								'default' => false
-							),
-
-							array(
-								'id'      => 'show_swatches_shop_attr',
-								'type'    => 'select',
-								'title'   => esc_html__( 'Select Attribute', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Choose an attribute to show in catlog', 'th-variation-swatches-pro' ),
-								'options' => thvs_get_all_attribute(),
-								
-							),
-
-							array(
-								'id'      => 'show_swatches_shop_attr_more',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable More', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Show More link in Catlog on Shop / Archive Page more than 4 Attribute', 'th-variation-swatches-pro' ),
-								'default' => false
-							),
-							array(
-								'id'      => 'show_swatches_shop_attr_limit',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Attribute Display Limit', 'th-variation-swatches-pro' ),
-							
-								'default' => 4,
-								'min'     => 1,
-								'max'     => 100,
-								
-							),
-							array(
-								'id'      => 'show_swatches_shop_attr_more_text',
-								'type'    => 'text',
-								'title'   => esc_html__( 'More Text', 'th-variation-swatches-pro' ),
-								
-								'default' => esc_html__( 'More', 'th-variation-swatches-pro' )
-							),
-
-							array(
-								'id'      => 'show_swatches_shop_tooltip',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Tooltip', 'th-variation-swatches-pro' ),
-								'desc'    => '',
-								'default' => false
-							),
-							array(
-								'id'      => 'show_swatches_shop_clear_link',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Clear Link', 'th-variation-swatches-pro' ),
-								'desc'    => '',
-								'default' => false
-							),
-							array(
-								'id'      => 'show_swatches_shop_attr_link',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Link Attribute', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Attribute Selected on product page', 'th-variation-swatches-pro' ),
-								'default' => false
-							),
-							array(
-								'id'      => 'show_swatches_shop_attr_alignment',
-								'type'    => 'select',
-								'title'   => esc_html__( 'Swatches Alignment', 'th-variation-swatches-pro' ),
-								'default' => 'left',
+						array(
+								'id'      => 'attribute_behavior',
+								'type'    => 'radio',
+								'title'   => esc_html__( 'Unavailable Attribute Behavior', 'th-variation-swatches' ),
+								'desc'    => sprintf( __( 'Disabled attribute will be hide / blur. Disable ajax threshold doesn\'t apply this feature', 'th-variation-swatches' )),
 								'options' => array(
-									'left'   => esc_html__( 'Left', 'th-variation-swatches-pro' ),
-									'center' => esc_html__( 'Center', 'th-variation-swatches-pro' ),
-									'right'  => esc_html__( 'Right', 'th-variation-swatches-pro' )
-								)
-								
-							),
-							array(
-								'id'      => 'swatches_shop_width',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Width', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Variation item width', 'th-variation-swatches-pro' ),
-								'default' => 30,
-								'min'     => 10,
-								'max'     => 200,
-								'suffix'  => 'px'
-							),
-							array(
-								'id'      => 'swatches_shop_height',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Height', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Variation item height', 'th-variation-swatches-pro' ),
-								'default' => 30,
-								'min'     => 10,
-								'max'     => 200,
-								'suffix'  => 'px'
-							),
-							array(
-								'id'      => 'swatches_shop_font_size',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Font Size', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Variation item font size', 'th-variation-swatches-pro' ),
-								'default' => 16,
-								'min'     => 8,
-								'max'     => 50,
-								'suffix'  => 'px'
-							)
-							
-						)
-					)
-				),
-					array(
-					'title'  => esc_html__( 'Tooltip', 'th-variation-swatches-pro' ),
-					
-					'fields' => apply_filters(
-						'thvs_special_setting_tooltip_fields', array(
-							
-							array(
-								'id'      => 'show_tootip_image',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Image Tooltip', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Show Image Tooltip in Product single page', 'th-variation-swatches-pro' ),
-								'default' => false
-							),
-							array(
-								'id'      => 'show_tootip_image_attr',
-								'type'    => 'select',
-								'title'   => esc_html__( 'Select Tooltip Attribute', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Choose an attribute to show Tooltip in Product Single Page', 'th-variation-swatches-pro' ),
-								'options' => thvs_get_all_attribute(),
-								
-							),
-							array(
-								'id'      => 'tootip_image_width',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Width', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Note:Tooltip Image Maintain 1:1 ratio.', 'th-variation-swatches-pro' ),
-								'default' => 120,
-								'min'     => 10,
-								'max'     => 300,
-								'suffix'  => 'px'
-							),
-							
-
-
-						)
-					)
-				),
-					array(
-					'title'  => esc_html__( 'Highlight Attribute', 'th-variation-swatches-pro' ),
-					
-					'fields' => apply_filters(
-						'thvs_special_setting_highlight_fields', array(
-							
-							array(
-								'id'      => 'enable_highlight_attr',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Highlight', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Show Attribute in large size', 'th-variation-swatches-pro' ),
-								'default' => false
-							),
-							array(
-								'id'      => 'highlight_attr',
-								'type'    => 'select',
-								'title'   => esc_html__( 'Select Highlight Attribute', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Choose an attribute to show large in Product Single Page', 'th-variation-swatches-pro' ),
-								'options' => thvs_get_all_attribute(),
-								
-							),
-							array(
-								'id'      => 'highlight_width',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Width', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Variation item width', 'th-variation-swatches-pro' ),
-								'default' => 30,
-								'min'     => 10,
-								'max'     => 200,
-								'suffix'  => 'px'
-							),
-							array(
-								'id'      => 'highlight_height',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Height', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Variation item height', 'th-variation-swatches-pro' ),
-								'default' => 30,
-								'min'     => 10,
-								'max'     => 200,
-								'suffix'  => 'px'
-							),
-							array(
-								'id'      => 'highlight_font_size',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Font Size', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Variation item font size', 'th-variation-swatches-pro' ),
-								'default' => 16,
-								'min'     => 8,
-								'max'     => 50,
-								'suffix'  => 'px'
-							)
-
-
-						)
-					)
-				),
-					array(
-					'title'  => esc_html__( 'Stock', 'th-variation-swatches-pro' ),
-					
-					'fields' => apply_filters(
-						'thvs_special_setting_stock_fields', array(
-							
-							array(
-								'id'      => 'show_stock_available',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Enable Stock', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'Show Stock availablity in Product single page', 'th-variation-swatches-pro' ),
-								'default' => false
-							),
-							array(
-								'id'      => 'stock_display_threshold',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Stock threshold', 'th-variation-swatches-pro' ),
-								'desc'    => esc_html__( 'When stock reaches this amount stock label will be shown.', 'th-variation-swatches-pro' ),
-								'default' => 0,
-								'min'     => 0,
-								'max'     => 200,
-								
-							)
-
-						)
-					)
-				),
-				array(
-					'title'  => esc_html__( 'Filter Attribute Widget', 'th-variation-swatches-pro' ),
-					
-					'fields' => apply_filters(
-						'thvs_special_setting_filter_fields', array(
-							
-							array(
-								'id'      => 'filter_widget_style',
-								'type'    => 'radio-image',
-								'title'   => esc_html__( 'Filter Attribute Style', 'th-variation-swatches-pro' ),
-								'default' => 'style-1',
-								'options' => array(
-									'style-1'   => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'swatches-pro-layout-widget-1.png' ),
-									'style-2' => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'swatches-pro-layout-widget-2.png' ),
-									'style-3'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'swatches-pro-layout-widget-3.png' )
+									'blur'          => esc_html__( 'Blur with cross', 'th-variation-swatches' ),
+									'blur-no-cross' => esc_html__( 'Blur without cross', 'th-variation-swatches' ),
+									'hide'          => esc_html__( 'Hide', 'th-variation-swatches' ),
 								),
-	
+								'default' => 'blur'
 							),
+						array(
+								'id'      => 'threshold',
+								'type'    => 'number',
+								'title'   => esc_html__( 'Ajax variation threshold', 'th-variation-swatches' ),
+								'desc'    => __( 'Control the number of enable ajax variation threshold, If you set <code>1</code> all product variation will be load via ajax. Default value is <code>30</code>, <br>Note: Disable ajax threshold doesn\'t follow attribute behaviour. It\'s recommended to keep this number between 30 - 40.', 'th-variation-swatches' ),
+								'default' => 30,
+								'min'     => 1,
+								'max'     => 80,
+								'require' => array( 'disable_threshold' => array( 'type' => 'empty' ) )
+							),
+
+							array(
+								'id'      => 'clear_on_reselect',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Clear Attribute Setting', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Clear selected attribute on reselect', 'th-variation-swatches' ),
+								'default' => false
+							),
+							
 
 						)
 					)
 				),
+			)
+		), apply_filters( 'thvs_advanced_setting_default_active', false )
+		);
+        th_variation_swatches()->add_setting(
+			'documention', esc_html__( 'Tutorial', 'th-variation-swatches' ), apply_filters(
+			'thvs_document_settings_section', array(
+				array(
+					
+					'title'  => esc_html__( 'Tutorial', 'th-variation-swatches' ),
+					'desc'   => esc_html__( '', 'th-variation-swatches' ),
+					'fields' => apply_filters(
+						'thvs_document_settings_fields', array(
+							array(
+								'id'         => 'doc_iframe',
+                                'type'       => 'iframe',
+                                'title'      => '',
+                                'desc'       => '',
+								'width'      => '720px',
+								'height'      => '550px',
+								'screen_frame'=> esc_url('https://www.youtube.com/embed/mLsuFC9-SrU'),
+								'doc_link'    => esc_url('https://themehunk.com/docs/th-variation-swatches-plugin/'),
+								'doc-texti' => esc_html__('For More Documentation','th-variation-swatches'),
+								
+							),
+						)
+					)
+				)
 			)
 		), apply_filters( 'thvs_document_setting_default_active', true )
 		);
-
 		th_variation_swatches()->add_setting(
-			'thvs_reset', esc_html__( 'Reset All Setting', 'th-advance-product-search-pro' ), apply_filters(
-			'thvs_reset_settings_section', array(
+			'profeature', esc_html__( 'TH Swatches Pro', 'th-variation-swatches' ), apply_filters(
+			'thvs_profeature_settings_section', array(
 				array(
-					'title'  => esc_html__( 'Reset All Your Custom Settings.', 'th-advance-product-search-pro' ),
+				
+					'title'  => esc_html__( 'Pro Feature', 'th-variation-swatches' ),
+					'desc'   => esc_html__( '', 'th-variation-swatches' ),
 					'fields' => apply_filters(
-						'thvs_reset_setting_fields', array(
+						'thvs_profeature_setting_fields', array(
+							array(
+								'id'         => 'profeature',
+								'title'      =>'',
+                                'type'       => 'pro',
+                                'desc'       => '',
+								'pro'          => true,
+								'width'        => 'auto',
+								'screen_shot1'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro1.png' ),
+								'screen_shot2'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro2.png' ),
+								'screen_shot3'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro3.png' ),
+								'screen_shot4'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro4.png' ),
+								'screen_shot5'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro5.png' ),
+								'screen_shot6'  => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'/pro6.png' ),
+								'link1' => esc_url('https://themehunk.com/th-variation-swatches/#pricing'),
+								'link2' => esc_url('https://themehunk.com/th-variation-swatches/'),
+								
+							),
+						)
+					)
+				)
+			)
+		), apply_filters( 'thvs_profeature_setting_default_active', true )
+		);
+		th_variation_swatches()->add_setting(
+			'usefull_plugin', esc_html__( 'Themehunk Useful Plugins', 'th-variation-swatches' ), apply_filters(
+			'thvs_usefull_plugin_settings_section', array(
+				array(
+				
+					'title'  => esc_html__( 'Themehunk Useful Plugins', 'th-variation-swatches' ),
+					'desc'   => esc_html__( '', 'th-variation-swatches' ),
+					'fields' => apply_filters(
+						'thvs_usefull_plugin_setting_fields', array(
+							array(
+								'id'         => 'thvs-th-taiowc',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/th-all-in-one-woo-cart/assets/icon-128x128.gif'),
+								'plugin_title'  => esc_html__( 'TH Side Cart and Menu Cart for Woocommerce', 'th-variation-swatches' ),
+								'plugin_link'  => esc_url('https://themehunk.com/th-all-in-one-woo-cart/'),	
+								
+							),
+							array(
+								'id'         => 'thvs-th-product-compare',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/th-product-compare/assets/icon-128x128.gif'),
+								'plugin_title'  => esc_html__( 'Th Product Compare', 'th-variation-swatches' ),
+								'plugin_link'  => esc_url('https://themehunk.com/th-product-compare-plugin/'),	
+								
+							),
+							array(
+								'id'         => 'th-advance-product-search',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/th-advance-product-search/assets/icon-128x128.gif'),
+								'plugin_title'  => esc_html__( 'TH Advance Product Search', 'th-variation-swatches' ),
+								'plugin_link'  => esc_url('https://themehunk.com/advance-product-search/'),	
+								
+							),
+							array(
+								'id'         => 'lead-form-builder',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/lead-form-builder/assets/icon-128x128.png'),
+								'plugin_title'  => esc_html__( 'Lead Form Builder', 'th-variation-swatches' ),
+								'plugin_link'  => esc_url('https://themehunk.com/product/lead-form-builder-pro/'),	
+								
+							),
+							array(
+								'id'         => 'wp-popup-builder',
+								'title'      =>'',
+                                'type'       => 'usefullplugin',
+                                'desc'       => '',
+								'usefull'          => true,
+								'plugin_image' => esc_url('https://ps.w.org/wp-popup-builder/assets/icon-128x128.png'),
+								'plugin_title'  => esc_html__( 'WP Popup Builder – Popup Forms & Newsletter', 'th-variation-swatches' ),
+								'plugin_link'  => esc_url('https://themehunk.com/product/wp-popup-builder/'),	
+								
+							),
 							
 						)
 					)
-				 )
-			  )
-		    )
-		  );
+				)
+			)
+		), apply_filters( 'thvs_usefull_plugin_setting_default_active', true )
+		);
 
-	  	th_variation_swatches()->add_setting(
-			'thvs_help', esc_html__( 'Help', 'th-advance-product-search-pro' ), apply_filters(
-			'thvs_help_settings_section', array(
-				array(
-					'title'  => esc_html__( 'Help', 'th-advance-product-search-pro' ),
-					'fields' => apply_filters(
-						'thvs_help_setting_fields', array(
-							
-						)
-					)
-				 )
-			  )
-		    )
-		  );
 
-	do_action( 'after_thvs_settings', th_variation_swatches() );
-
+		do_action( 'after_thvs_settings', th_variation_swatches() );
 	}
 endif;
 

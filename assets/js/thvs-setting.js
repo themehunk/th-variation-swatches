@@ -6,11 +6,11 @@
         bindEvents: function (){
           var $this = this;
             $this.SettingTab();
-            $this.ColorPiker();
             $this.ImageAdd();
             $this.RemoveImage();
             $this.SaveSetting();
             $this.ChangeSetting();
+            $this.ColorPiker();
         },
         SettingTab: function (){
           $(document).ready(function(){ 
@@ -20,13 +20,159 @@
                   $(this).addClass('nav-tab-active').siblings().removeClass('nav-tab-active')
                   $('#' + target).show().siblings().hide()
                   $('#_last_active_tab').val(target)
+
+                  if ($("a[data-target='thvs_reset']").hasClass('nav-tab-active')){
+                         $('.preview-reset-wrapper').show();
+                    }else{
+                         $('.preview-reset-wrapper').hide();
+                    }
+
+                if ($("a[data-target='thvs_help']").hasClass('nav-tab-active')){
+                         $('.setting-preview-wrap.help-wrapper').show();
+                    }else{
+                         $('.setting-preview-wrap.help-wrapper').hide();
+                    }
+
+                    if ($("a[data-target='thvs_style']").hasClass('nav-tab-active')){
+                         $('.setting-preview-wrap.style-wrapper').css('display', 'flex');
+                    }else{
+                         $('.setting-preview-wrap.style-wrapper').hide();
+                    }
+
+                   // ===== header title change =====
+                  var tabText = $(this).clone().children().remove().end().text().trim();
+                  $('.tabheading').text(tabText);
+
+                    /* Dynamic class add */
+                        var wrap = $('.setting-wrap');
+
+                        // keep only 'setting-wrap'
+                        wrap.attr('class', 'setting-wrap');
+
+                        // add the clicked button's class
+                        wrap.addClass(target);
+
                 });
+
+        $("#thvs_special input,#thvs_special select").prop("disabled", true);
           });
         },
-        ColorPiker: function (){
-          $(document).ready(function(){ 
-                $('.thvs-color-picker').wpColorPicker();
+         ColorPiker: function (){
+        jQuery(document).ready(function ($) {
+
+            function applyHoverColor(inputId, value) {
+
+          var styleId = 'hover-style-' + inputId;
+          $('#' + styleId).remove();
+
+          var css = '';
+
+          // background hover
+          $('[data-th-bg-hover="' + inputId + '"]').each(function () {
+            var selector = getSelector(this);
+
+            css += selector + ':hover { background-color: ' + value + ' !important; }';
+            css += selector + ':nth-child(4){ background-color: ' + value + ' !important; }';
+
           });
+
+          // text hover
+          $('[data-th-color-hover="' + inputId + '"]').each(function () {
+            var selector = getSelector(this);
+
+            css += selector + ':hover { color: ' + value + ' !important; }';
+            css += selector + ':nth-child(4){ color: ' + value + ' !important; }';
+            
+          });
+
+           // Border Hover
+          $('[data-th-border-hover="' + inputId + '"]').each(function () {
+            var selector = getSelector(this);
+
+            css += selector + ':hover { border-color: ' + value + ' !important; }';
+            css += selector + ':nth-child(4){ border-color: ' + value + ' !important; }';
+
+          });
+
+           // tooltip bg
+          $('[data-th-bg-tooltip="' + inputId + '"]').each(function () {
+            var selector = getSelector(this);
+
+            css += selector + ':after { border-top-color: ' + value + ' !important; }';
+            css += selector + ':before { background-color: ' + value + ' !important; }';
+          });
+
+           // tooltip text color
+          $('[data-th-color-tooltip="' + inputId + '"]').each(function () {
+            var selector = getSelector(this);
+
+            css += selector + ':before { color: ' + value + ' !important; }';
+          });
+
+
+          $('head').append('<style id="' + styleId + '">' + css + '</style>');
+}
+
+           function getSelector(el) {
+
+  // priority 1: ID
+  if (el.id) {
+    return '#' + el.id;
+  }
+
+  // priority 2: unique class
+  if (el.className) {
+    var classes = el.className.trim().split(/\s+/).join('.');
+    return el.tagName.toLowerCase() + '.' + classes;
+  }
+
+  // fallback (rare case)
+  return el.tagName.toLowerCase();
+}
+
+  function applyPreview(inputId, value) {
+    $('[data-th-bg="' + inputId + '"]').css('background-color', value);
+    $('[data-th-color="' + inputId + '"]').css('color', value);
+    $('[data-th-border="' + inputId + '"]').css('border-color', value);
+  }
+
+  // ✅ INIT ON LOAD
+  $('.thvs-color-picker').each(function () {
+    var val = $(this).val();
+    if (val) applyPreview(this.id, val);
+     // hover
+    applyHoverColor(this.id, val);
+  });
+
+  // ✅ COLOR PICKER CHANGE
+  $('.thvs-color-picker').wpColorPicker({
+    change: function (event, ui) {
+       var id = event.target.id;
+    var value = ui.color.toString();
+
+    // normal
+    applyPreview(id, value);
+
+    // hover
+    applyHoverColor(id, value);
+    }
+  });
+
+  // 🔥 IMPORTANT: ALPHA SLIDER LIVE TRACK
+  $(document).on('mousemove', '.iris-slider, .iris-square', function () {
+
+    $('.thvs-color-picker').each(function () {
+      var inputId = this.id;
+      var value = $(this).val(); // updated rgba
+
+      if (value) {
+        applyPreview(inputId, value);
+      }
+    });
+
+  });
+
+});
         },
 
         ImageAdd:function (){
@@ -105,7 +251,7 @@
               $('#submit').removeAttr("disabled");
               
         });  
-        $(document).on("click", ".thvs-setting-form #submit", function (e) {
+        $(document).on("click", ".thvs-button-wrapper #submit", function (e) {
         e.preventDefault();
         $(this).addClass('loader');
         
@@ -136,3 +282,56 @@
 }
 THVSsettingLib.init();
 })(jQuery);
+
+jQuery(document).ready(function ($) {
+
+    $('#thvs-toggle-sidebar').on('click', function () {
+
+        $('#thvs .nav-tab-wrapper').toggleClass('thvs-sidebar-collapsed');
+
+        // change arrow direction
+        $(this).find('.dashicons')
+        .toggleClass('dashicons-arrow-left-alt2 dashicons-arrow-right-alt2');
+
+    });
+
+       function handleSidebarOnResize() {
+            if ($(window).width() <= 768) {
+                $('#thvs .nav-tab-wrapper').addClass('thvs-sidebar-collapsed');
+            } else {
+                $('#thvs .nav-tab-wrapper').removeClass('thvs-sidebar-collapsed');
+            }
+        }
+
+        // Run on load
+        handleSidebarOnResize();
+
+        // Run on resize
+        $(window).on('resize', handleSidebarOnResize);
+
+
+});
+
+jQuery(document).ready(function($) {
+
+    function updateBorder() {
+        var borderWidth = $('#attr_brdr_size-field').val();
+
+        if (borderWidth !== '') {
+            borderWidth = borderWidth + 'px';
+        }
+
+        $('.style-wrapper .color-option,.style-wrapper.size-option').css({
+            'border-width': borderWidth,
+        });
+    }
+
+    // Run on page load
+    updateBorder();
+
+    // Run on input change
+    $('#attr_brdr_size-field').on('input change', function() {
+        updateBorder();
+    });
+
+});
