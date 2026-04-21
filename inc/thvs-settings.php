@@ -298,7 +298,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 				<div class="top-wrap">
 
 					<div id="logo">
-						<a href="<?php echo esc_url('https://themehunk.com/advance-product-search/'); ?>" target="_blank">
+						<a href="<?php echo esc_url('https://themehunk.com/th-variation-swatches/'); ?>" target="_blank">
 						<img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'/responsive-logo.png') ?>' alt="th-logo" class="resp-logo"/>
 						<img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'/th-logo.png') ?>' alt="tapsp-logo" class="th-logo"/>
 					</a>
