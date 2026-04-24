@@ -54,7 +54,7 @@
 
                 });
 
-        $("#thvs_special input,#thvs_special select").prop("disabled", true);
+        $("#thvs_special input,#thvs_special select,#th-swatches-style-field").prop("disabled", true);
           });
         },
          ColorPiker: function (){
