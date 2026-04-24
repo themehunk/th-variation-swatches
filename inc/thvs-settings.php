@@ -30,7 +30,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
           }
             
             public function add_menu() {
-						 $page_title = esc_html__( 'Variation Swatches for WooCommerce Settings', 'th-variation-swatches' );
+						 $page_title = esc_html__( 'Variation Swatches', 'th-variation-swatches' );
 						 $menu_title = esc_html__( 'Variation Swatches', 'th-variation-swatches' );
 						 add_submenu_page( 'themehunk-plugins', $page_title, $menu_title, 'manage_options', 'th-variation-swatches', array($this, 'settings_form'),15 );
 		    }
@@ -43,83 +43,87 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 				
 		}
 
-		public function settings_form() {
-
+	public function settings_form() {
 			if ( ! current_user_can( 'manage_options' ) ) {
-
-				    wp_die( __( 'You do not have sufficient permissions to access this page.','th-variation-swatches' ) );
-
+				wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 			}
+		  if( ! class_exists( 'WooCommerce' ) ){
 
-			if( ! class_exists( 'WooCommerce' ) ){
-
-				   printf('<h2 class="requirement-notice">%s</h2>',__('Th Variation Swatches requires WooCommerce to work. Make sure that you have installed and activated WooCommerce Plugin.','th-variation-swatches' ) );
+				   printf('<h2 class="requirement-notice">%s</h2>',__('Th Variation Swatches requires WooCommerce to work. Make sure that you have installed and activated WooCommerce Plugin.','th-variation-swatches-pro' ) );
 
              return;
 
 				}
-		
 			?>
 			<div id="thvs" class="settings-wrap  <?php echo esc_attr($this->admin_add_class());?>">
-  
-				<form method="post" action="" enctype="multipart/form-data" class="thvs-setting-form">
-        <input type="hidden" name="action" value="thvs_form_setting">
-					 
-					<?php $this->options_tabs(); ?>
-                     <div class="setting-wrap">
-					<div id="settings-tabs">
-						<?php foreach ( $this->fields as $tab ):
 
-							if ( ! isset( $tab['active'] ) ) {
-								$tab['active'] = false;
-							}
-							$is_active = ( $this->get_last_active_tab() == $tab['id'] );
+				<?php $this->options_tabs(); ?>
+				 <div class="setting-wrap">
 
-							?>
+				 		<div class="top-header">
+                <h2 class="tabheading"><?php esc_html_e("Basic", 'th-variation-swatches-pro'); ?></h2>
+               
+             
+		      <a href="<?php echo esc_url( 'https://themehunk.com/th-variation-swatches/' ); ?>"
+					   title="<?php esc_attr_e( 'Upgrade', 'th-advance-product-search' ); ?>"
+					   target="_blank" class="upgrade-button">
+						<?php esc_html_e( 'Upgrade', 'th-advance-product-search' ); ?>
+					</a>
 
-							<div id="<?php echo esc_attr($tab['id']); ?>"
-								 class="settings-tab thvs-setting-tab"
-								 style="<?php echo ! esc_attr($is_active) ? 'display: none' : '' ?>">
-								 
-								<?php foreach ( $tab['sections'] as $section ):
-
-					        	$this->do_settings_sections( $tab['id'] . $section['id'] );
-
-								endforeach; ?>
-							</div>
-
-						<?php endforeach; ?>
-					</div>
-
-					<?php
-					$this->last_tab_input();
-					
-					?>
 					<p class="submit thvs-button-wrapper">
 						
-						 <a onclick="return confirm('<?php esc_attr_e( 'Are you sure to reset current settings?', 'th-variation-swatches' ) ?>')" class="reset" href="<?php echo esc_url($this->reset_url()); ?>"><?php esc_html_e( 'Reset all', 'th-variation-swatches' ); ?>
+
+						<a onclick="return confirm('<?php esc_attr_e( 'Are you sure to reset current settings?', 'th-variation-swatches-pro' ) ?>')" class="reset" href="<?php echo $this->reset_url() ?>"><?php esc_html_e( 'Reset all', 'th-variation-swatches-pro' ) ?>
 						</a>
-						 <button  disabled id="submit" class="button button-primary" value="<?php esc_html_e( 'Save Changes', 'th-variation-swatches' ) ?>"><span class="dashicons dashicons-image-rotate spin"></span><span><?php esc_html_e( 'Save Changes', 'th-variation-swatches' ) ?></span>
+
+						 <button disabled id="submit" class="button button-primary" value="<?php esc_html_e( 'Save Changes', 'th-variation-swatches-pro' ) ?>"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save transition-transform group-hover:scale-110" aria-hidden="true"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path><path d="M7 3v4a1 1 0 0 0 1 1h7"></path></svg></span><span class="text"><?php esc_html_e( 'Save All Changes', 'th-variation-swatches-pro' ) ?></span>
 						 </button>
 					</p> 
 
-            </div>
 
-            <div class="thvs-notes-wrap">
+					</div>
 
-            	<div class="thvs-notes-row thvs-wrap-doc"><h4 class="wrp-title"><?php esc_html_e( 'Documentation', 'th-variation-swatches' ) ?></h4><p><?php esc_html_e( 'Want to know how this plugin works. Read our Documentation.', 'th-variation-swatches' ) ?></p><a target="_blank" href="<?php echo esc_url('https://themehunk.com/docs/th-variation-swatches-plugin/'); ?>"><?php esc_html_e( 'Read Now', 'th-variation-swatches' ) ?></a></div>
+       <div class="setting-content"> 
 
-            	<div class="thvs-notes-row thvs-wrap-pro"><h4 class="wrp-title"><?php esc_html_e( 'Unlock TH Variation Swatches Pro', 'th-variation-swatches' ) ?></h4><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'th-variation-pro.png') ?>' alt="amaz-store"><a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-variation-swatches/'); ?>"><?php esc_html_e( 'Upgrade Pro', 'th-variation-swatches' ) ?></a></div>
+				<form method="post" action="" enctype="multipart/form-data" class="thvs-setting-form">
+                     <input type="hidden" name="action" value="thvs_form_setting">          
+						<div id="settings-tabs" class="thvs-tabs-wrapper">
+							<?php foreach ( $this->fields as $tab ):
 
-            	<div class="thvs-notes-row thvs-wrap-img">
-	               	<a target="_blank" href="<?php echo esc_url('https://themehunk.com/th-shop-mania/'); ?>"><img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'th-shop-mania-ad.png') ?>' alt="th-shop-mania">
-	               	</a>
-            	</div>
+								if ( ! isset( $tab['active'] ) ) {
+									$tab['active'] = false;
+								}
+								$is_active = ( $this->get_last_active_tab() == $tab['id'] );
 
-      </div>
-				</form>
+								?>
+
+								<div id="<?php echo $tab['id'] ?>"
+									 class="settings-tab thvs-setting-tab"
+									 style="<?php echo ! $is_active ? 'display: none' : '' ?>">
+									 
+									<?php foreach ( $tab['sections'] as $section ):
+
+							$this->do_settings_sections( $tab['id'] . $section['id'] );
+									endforeach; ?>
+								</div>
+
+							<?php endforeach; ?>
+						</div>
+						<?php
+						$this->last_tab_input();
+						 // submit_button();
+						?>
+                 
+					</form>
+
 			</div>
 
+					<?php require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-live-preview.php'; ?> 
+          <?php require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-reset.php'; ?> 
+          <?php require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-help.php'; ?> 
+
+				 </div>
+			</div>
 			<?php
 			
 		}
@@ -291,28 +295,50 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 		public function options_tabs() {
 			?>
 			<div class="nav-tab-wrapper wp-clearfix">
-				<div class="top-wrap"><div id="logo">
-					<a href="<?php echo esc_url('https://themehunk.com/'); ?>" target="_blank">
-						<img src='<?php echo esc_url(TH_VARIATION_SWATCHES_PLUGIN_URI.'images/th-logo.png') ?>' alt="tapsp-logo"/>
+				<div class="top-wrap">
+
+					<div id="logo">
+						<a href="<?php echo esc_url('https://themehunk.com/th-variation-swatches/'); ?>" target="_blank">
+						<img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'/responsive-logo.png') ?>' alt="th-logo" class="resp-logo"/>
+						<img src='<?php echo esc_url(TH_VARIATION_SWATCHES_IMAGES_URI.'/th-logo.png') ?>' alt="tapsp-logo" class="th-logo"/>
 					</a>
 					</div>
-				  <h1><?php _e('Variation Swatches','th-variation-swatches'); ?></h1>
-			   </div>
+
+				  <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+
+			     </div>
 				<?php foreach ( $this->fields as $tabs ): ?>
-					<a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="thvs-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>"><span class="dashicons <?php echo $this->icon_list($tabs['id']); ?>"></span><?php echo esc_html($tabs['title']); ?></a>
+					<a data-target="<?php echo esc_attr($tabs['id']); ?>"  class="thvs-setting-nav-tab nav-tab <?php echo esc_html($this->get_options_tab_css_classes( $tabs )); ?> " href="#<?php echo esc_attr($tabs['id']); ?>"><span><?php echo $this->icon_list($tabs['id']); ?></span><?php echo esc_html($tabs['title']); ?></a>
 				<?php endforeach; ?>
+
+				<div class="thvs-collapse-sidebar">
+				    <button id="thvs-toggle-sidebar">
+				        <span class="dashicons dashicons-arrow-left-alt2"></span>
+				        <span class="collapse-text">Collapse Sidebar</span>
+				    </button>
+				</div>
+
 			</div>
 			<?php
 		}
-		function icon_list($id ='dashicons-menu'){
+	
+	function icon_list($id ='dashicons-menu'){
 			$icon = array(
-				'simple'=>'dashicons-admin-appearance',
-				'advanced' => 'dashicons-hammer',
-				'documention'=>'dashicons-media-document',
-				'profeature'=>'dashicons-unlock',
-				'usefull_plugin'=>'dashicons-admin-plugins'
+				'simple'=>'<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wand-sparkles text-blue-600 shrink-0" aria-hidden="true"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"></path><path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path></svg>',
+				'advanced' => '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hammer text-slate-400 group-hover:text-slate-600 shrink-0" aria-hidden="true"><path d="m15 12-9.373 9.373a1 1 0 0 1-3.001-3L12 9"></path><path d="m18 15 4-4"></path><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172v-.344a2 2 0 0 0-.586-1.414l-1.657-1.657A6 6 0 0 0 12.516 3H9l1.243 1.243A6 6 0 0 1 12 8.485V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"></path></svg>',
+				'thvs_style'=>'<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paintbrush text-slate-400 group-hover:text-slate-600 shrink-0" aria-hidden="true"><path d="m14.622 17.897-10.68-2.913"></path><path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z"></path><path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15"></path></svg>',
+				'thvs_special'=>'<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings text-slate-400 group-hover:text-slate-600 shrink-0" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path><circle cx="12" cy="12" r="3"></circle></svg>',
+				'thvs_documention'=>'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap h-4 w-4 text-indigo-600" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>',
+				'thvs_reset'=>'<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-refresh-ccw" aria-hidden="true"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 16h5v5"></path></svg>',
+				'thvs_help'=>'<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <path d="M12 17h.01"></path>
+            </svg>',
 		);
+
 			return $icon[$id];
+
 		}
 
 		private function get_last_active_tab() {
@@ -342,6 +368,13 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			printf( '<input type="hidden" id="_last_active_tab" name="%s[_last_active_tab]" value="%s">', $this->settings_name, $this->get_last_active_tab() );
 		}
 
+			private function get_options_tab_pro_attr( $tabs ) {
+			
+			$attrs[] = ( isset( $tabs['is_new'] ) && $tabs['is_new'] ) ? sprintf( 'data-new-text="%s"', apply_filters( 'thvs_settings_tab_new_text', 'New' ) ) : false;
+
+			return implode( ' ', $attrs );
+		}
+
 		private function get_options_tab_css_classes( $tabs ) {
 			$classes = array();
 
@@ -349,17 +382,20 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
 			return implode( ' ', array_unique( apply_filters( 'get_options_tab_css_classes', $classes ) ) );
 		}
-		private function do_settings_sections( $page ) {
+
+			private function do_settings_sections( $page ) {
 			global $wp_settings_sections, $wp_settings_fields;
+			$subtitle = '';
 
 			if ( ! isset( $wp_settings_sections[ $page ] ) ) {
 				return;
 			}
 
 			foreach ( (array) $wp_settings_sections[ $page ] as $section ) {
-				if ( $section['title'] ) {
-					echo "<h2>".esc_html($section['title'])."</h2>";	
-				}
+				
+				// if ( $section['title'] ) {
+				// 	echo "<h2>{$section['title']}</h2>\n";
+				// }
 
 				if ( $section['callback'] ) {
 					call_user_func( $section['callback'], $section );
@@ -369,13 +405,37 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 					continue;
 				}
 
-				echo '<table class="form-table">';
+				echo '<div class="form-table" id='.esc_attr($section['id']).'>';
+
+				// To add subtitle start
+				foreach ( $this->fields as $tab ) {
+				    foreach ( $tab['sections'] as $sec ) {
+				        if ( $tab['id'] . $sec['id'] === $page ) {
+				            if ( ! empty( $sec['subtitle'] ) ) {
+				                $subtitle = $sec['subtitle'];
+				            }
+				        }
+				    }
+				}
+
+					echo '<div class="headingwrapper">';
+				if ( $section['title'] ) {
+
+					echo '<h2 class="heading ' . esc_attr($section['id']) . '">' . esc_html($section['title']) . '</h2>';
+
+				}
+
+				if ( $subtitle ) {
+				    echo '<p class="tapsp-section-subtitle">' . esc_html( $subtitle ) . '</p>';
+				}
+				echo '</div>';
+
 				$this->do_settings_fields( $page, $section['id'] );
-				echo '</table>';
+				echo '</div>';
 			}
 		}
 
-		private function do_settings_fields( $page, $section ) {
+				private function do_settings_fields( $page, $section ) {
 			global $wp_settings_fields;
 
 			if ( ! isset( $wp_settings_fields[ $page ][ $section ] ) ) {
@@ -383,36 +443,44 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			}
 
 			foreach ( (array) $wp_settings_fields[ $page ][ $section ] as $field ) {
-				
+				/*$class = '';
+
+				if ( ! empty( $field[ 'args' ][ 'class' ] ) ) {
+					$class = ' class="' . esc_attr( $field[ 'args' ][ 'class' ] ) . '"';
+				}*/
+
 				$custom_attributes = $this->array2html_attr( isset( $field['args']['attributes'] ) ? $field['args']['attributes'] : array() );
 
 				$wrapper_id = ! empty( $field['args']['id'] ) ? esc_attr( $field['args']['id'] ) . '-wrapper' : '';
 				$dependency = ! empty( $field['args']['require'] ) ? $this->build_dependency( $field['args']['require'] ) : '';
 
-				printf( '<tr id="%s" %s %s>', $wrapper_id, $custom_attributes, $dependency );
+				$is_new   = ( isset( $field['args']['is_new'] ) && $field['args']['is_new'] );
+				$new_html = $is_new ? '<span class="thvs-new-feature-tick">' . esc_html__( 'NEW', 'tthvs' ) . '</span>' : '';
+
+				printf( '<div id="%s" class="thvs-settings-row" %s %s>', $wrapper_id, $custom_attributes, $dependency );
 
 				if ( isset( $field['args']['pro'] ) ) {
-					echo '<td colspan="2" style="padding: 0; margin: 0">';
+					echo '<div colspan="2" style="padding: 0; margin: 0">';
 					$this->pro_field_callback( $field['args'] );
-					echo '</td>';
-			  	}	elseif ( isset( $field['args']['usefull'] ) ) {
-					echo '<td colspan="2" style="padding: 0; margin: 0">';
-					$this->usefullplugin_field_callback( $field['args'] );
-					echo '</td>';
-			  	} else {
-					echo '<th scope="row" class="thvs-settings-label">';
+					echo '</div>';
+				} else {
+					echo '<div scope="row" class="thvs-settings-label">';
 					if ( ! empty( $field['args']['label_for'] ) ) {
-						echo '<label for="' . esc_attr( $field['args']['label_for'] ) . '">' . esc_html($field['title']). '</label>';
+						echo '<label for="' . esc_attr( $field['args']['label_for'] ) . '">' . $field['title'] . $new_html . '</label>';
 					} else {
-						echo esc_html($field['title']);
+						echo $field['title'] . $new_html;
 					}
 
-					echo '</th>';
-					echo '<td class="thvs-settings-field-content">';
+					
+					echo '</div>';
+
+
+					echo '<div class="thvs-settings-field-content">';
 					call_user_func( $field['callback'], $field['args'] );
-					echo '</td>';
+					echo '</div>';
 				}
-				echo '</tr>';
+
+				echo '</div>';
 			}
 		}
 
@@ -553,6 +621,10 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 					$this->iframe_field_callback( $field );
 					break;
 
+				case 'color':
+					$this->color_field_callback( $field );
+					break;
+
 				default:
 					$this->text_field_callback( $field );
 					break;
@@ -560,6 +632,31 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			do_action( 'thvs_settings_field_callback', $field );
 		}
 
+		// 🔥 COMMON FUNCTION
+		    public function allowed_html() {
+		        return array(
+		            'a' => array(
+		                'href'   => array(),
+		                'title'  => array(),
+		                'target' => array(),
+		                'rel'    => array(),
+		                'class'  => array(),
+		                'id'     => array(),
+		            ),
+		            'span' => array(
+		                'class'  => array(),
+		                'id'     => array(),
+		                'style'  => array(),
+		                'title'  => array(),
+		                'data-*' => true,
+		            ),
+		            'code' => array(
+		                'class' => array(),
+		                'id'    => array(),
+		                'style' => array(),
+		            ),
+		        );
+		    }
       public function checkbox_field_callback( $args ) {
                
 			$value = (bool)( $this->get_option( $args['id'] ) );
@@ -567,7 +664,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';?>
 
             <fieldset>
-            	<label>
+            	<label class="th-toggle">
             		<input <?php echo esc_attr($attrs); ?> type="checkbox" id="<?php echo esc_attr($args['id']); ?>-field" name="<?php echo esc_attr($this->settings_name);?>[<?php echo esc_attr($args['id']);?>]" value="1" <?php echo esc_attr(checked( $value, true, false ));?>> <?php if ( ! empty( $args['desc'] ) ) {  echo esc_html($args['desc']); } ?>
             	</label>     
             </fieldset> <?php 
@@ -581,11 +678,14 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
 			$attrs = isset( $args['attrs'] ) ? $this->make_implode_html_attributes( $args['attrs'] ) : '';
 		
-			return implode( '<br />', array_map( function ( $key, $option ) use ( $attrs, $args, $value ) {
-				echo sprintf( '<label><input %1$s type="radio"  name="%4$s[%2$s]" value="%3$s" %5$s/> %6$s</label>', $attrs, $args['id'], $key, $this->settings_name, checked( $value, $key, false ), $option );
+		$html = '<fieldset>';
+			$html .= implode( '<br />', array_map( function ( $key, $option ) use ( $attrs, $args, $value ) {
+				return sprintf( '<label><input %1$s type="radio"  name="%4$s[%2$s]" value="%3$s" %5$s/> %6$s</label>', $attrs, $args['id'], $key, $this->settings_name, checked( $value, $key, false ), $option );
 			}, array_keys( $options ), $options ) );
+			$html .= $this->get_field_description( $args );
+			$html .= '</fieldset>';
 
-
+			echo $html;
 		}
 
 		public function select_field_callback( $args ) {
@@ -617,11 +717,27 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 			<?php if ( ! empty( $args['desc'] ) ) { 
 
        $arr = array( 
-       	 'a' => array(
-	        'href' => array(),
-	        'title' => array(),
-	        'target' => array()
-         ));
+    'a' => array(
+        'href' => array(),
+        'title' => array(),
+        'target' => array(),
+        'rel' => array(),
+        'class' => array(),
+        'id' => array(),
+    ),
+    'span' => array(
+        'class' => array(),
+        'id' => array(),
+        'style' => array(),
+        'title' => array(),
+        'data-*' => true,
+    ),
+    'code' => array(
+        'class' => array(),
+        'id' => array(),
+        'style' => array(),
+    )
+);
 
 				?>
 
@@ -699,6 +815,16 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
 		 }
 
+		 public function color_field_callback( $args ){
+			$value = esc_attr( $this->get_option( $args['id'] ) );
+			// $size  = isset( $args[ 'size' ] ) && ! is_null( $args[ 'size' ] ) ? $args[ 'size' ] : 'regular';
+			$alpha = isset( $args['alpha'] ) && $args['alpha'] === true ? ' data-alpha-enabled="true"' : '';
+			$html  = sprintf( '<input type="text" %1$s class="thvs-color-picker" id="%2$s-field" name="%4$s[%2$s]" value="%3$s"  data-default-color="%3$s" />', $alpha, $args['id'], $value, $this->settings_name );
+			$html  .= $this->get_field_description( $args );
+
+			echo $html;
+		}
+
 			public function usefullplugin_field_callback( $args ) {
 
 			$is_html = isset( $args['html'] );
@@ -770,9 +896,28 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
            if ( ! empty( $args['desc'] ) ) { 
 
-           $arr = array( 
-       	      'code' => array()
-           	 );
+                  $arr = array( 
+    'a' => array(
+        'href' => array(),
+        'title' => array(),
+        'target' => array(),
+        'rel' => array(),
+        'class' => array(),
+        'id' => array(),
+    ),
+    'span' => array(
+        'class' => array(),
+        'id' => array(),
+        'style' => array(),
+        'title' => array(),
+        'data-*' => true,
+    ),
+    'code' => array(
+        'class' => array(),
+        'id' => array(),
+        'style' => array(),
+    )
+);
 				?>
 
       <p class="description"><?php echo wp_kses($args['desc'],$arr);?></p>  

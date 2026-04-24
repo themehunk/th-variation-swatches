@@ -5,6 +5,7 @@
  * Only run in input and is defined data alpha in true
  *
  * Version: 3.0.0
+ * https://github.com/kallookoo/wp-color-picker-alpha
  * Licensed under the GPLv2 license or later.
  */
 
@@ -544,7 +545,6 @@
                         self.options.change.call(this, event, ui);
 
                     }
-                    
                 }
             });
 
@@ -559,6 +559,8 @@
              */
             self.wrap.on('click.wpcolorpicker', function (event) {
                 event.stopPropagation();
+                //save button active
+                 $('#submit').removeAttr("disabled");
             });
 
             /**
