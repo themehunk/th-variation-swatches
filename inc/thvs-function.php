@@ -25,70 +25,9 @@ endif;
 
 if ( ! function_exists( 'thvs_settings' ) ):
 	function thvs_settings() {
-		th_variation_swatches()->add_setting(
-			'simple', esc_html__( 'Basic', 'th-variation-swatches' ), apply_filters(
-			'thvs_simple_settings_section', array(
-				array(
-					'title'  => esc_html__( 'Basic', 'th-variation-swatches' ),
-					'fields' => apply_filters(
-						'thvs_simple_setting_fields', array(
-							array(
-								'id'      => 'tooltip',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Tooltip', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'Enable tooltip on each product attribute.', 'th-variation-swatches' ),
-								'default' => true
-							),
-							array(
-								'id'      => 'stylesheet',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Default Stylesheet', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'Enable default stylesheet', 'th-variation-swatches' ),
-								'default' => true
-							),
-							array(
-								'id'      => 'style',
-								'type'    => 'radio',
-								'title'   => esc_html__( 'Attribute Shape Style', 'th-variation-swatches' ),
-								
-								'options' => array(
-									'rounded' => esc_html__( 'Rounded Shape', 'th-variation-swatches' ),
-									'squared' => esc_html__( 'Squared Shape', 'th-variation-swatches' ),
-
-								),
-								'default' => 'squared'
-							),
-							
-							array(
-								'id'      => 'default_to_button',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Auto Dropdowns to Button', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'Convert default dropdowns to button type', 'th-variation-swatches' ),
-								'default' => true
-							),
-							array(
-								'id'      => 'th-swatches-style',
-								'type'    => 'radio-image',
-								'title'   => esc_html__( 'Swatches Style In Single Page (Pro)', 'th-variation-swatches' ),
-								
-								'options' => array(
-									'thswatche' => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'swatches-pro-layout-1.png' ),
-									'theme' => esc_url( TH_VARIATION_SWATCHES_IMAGES_URI.'swatches-pro-layout-2.png' ),
-
-								),
-
-								'default' => 'thswatche'
-							),
-
-						)
-					)
-				)
-			)
-		), apply_filters( 'thvs_simple_setting_default_active', true )
-		);
 
 		th_variation_swatches()->add_setting(
-			'advanced', esc_html__( 'Advanced', 'th-variation-swatches' ), apply_filters(
+			'advanced', esc_html__( 'General Settings', 'th-variation-swatches' ), apply_filters(
 			'thvs_advanced_settings_section', array(
 				array(
 					'title'  => esc_html__( 'Display Setting', 'th-variation-swatches' ),
@@ -211,7 +150,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 		);
 
         th_variation_swatches()->add_setting(
-			'thvs_style', esc_html__( 'Style (Pro)', 'th-variation-swatches' ), apply_filters(
+			'thvs_style', esc_html__( 'Style', 'th-variation-swatches' ), apply_filters(
 			'thvs_style_settings_section', array(
 				array(
 					'title'  => esc_html__( 'Tooltip', 'th-variation-swatches' ),
@@ -219,6 +158,13 @@ if ( ! function_exists( 'thvs_settings' ) ):
 					'fields' => apply_filters(
 						'thvs_style_tooltip_setting_fields', array(
 							
+							array(
+								'id'      => 'tooltip',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Tooltip', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Enable tooltip on each product attribute.', 'th-variation-swatches' ),
+								'default' => true
+							),
 
 							array(
 								'id'      => 'tooltip_background_color',
@@ -245,7 +191,33 @@ if ( ! function_exists( 'thvs_settings' ) ):
 					'fields' => apply_filters(
 						'thvs_style_tooltip_setting_fields', array(
 							
+							array(
+								'id'      => 'stylesheet',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Default Stylesheet', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Enable default stylesheet', 'th-variation-swatches' ),
+								'default' => true
+							),
 
+							array(
+								'id'      => 'style',
+								'type'    => 'radio',
+								'title'   => esc_html__( 'Attribute Shape Style', 'th-variation-swatches' ),
+								
+								'options' => array(
+									'rounded' => esc_html__( 'Rounded Shape', 'th-variation-swatches' ),
+									'squared' => esc_html__( 'Squared Shape', 'th-variation-swatches' ),
+
+								),
+								'default' => 'squared'
+							),
+							array(
+								'id'      => 'default_to_button',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Auto Dropdowns to Button', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Convert default dropdowns to button type', 'th-variation-swatches' ),
+								'default' => true
+							),
 							array(
 								'id'      => 'attr_brdr_color',
 								'type'    => 'color',
@@ -322,7 +294,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 		), apply_filters( 'thvs_advanced_style_default_active', true )
 		);
 		th_variation_swatches()->add_setting(
-			'thvs_special', esc_html__( 'Special (Pro)', 'th-variation-swatches' ), apply_filters(
+			'thvs_special', esc_html__( 'Advance (Pro)', 'th-variation-swatches' ), apply_filters(
 			'thvs_special_settings_section', array(
 				array(
 					'title'  => esc_html__( 'Product Catalog', 'th-variation-swatches' ),
