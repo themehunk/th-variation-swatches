@@ -45,11 +45,11 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 
 	public function settings_form() {
 			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+				wp_die( __( 'You do not have sufficient permissions to access this page.','th-variation-swatches' ) );
 			}
 		  if( ! class_exists( 'WooCommerce' ) ){
 
-				   printf('<h2 class="requirement-notice">%s</h2>',__('Th Variation Swatches requires WooCommerce to work. Make sure that you have installed and activated WooCommerce Plugin.','th-variation-swatches-pro' ) );
+				   printf('<h2 class="requirement-notice">%s</h2>',__('Th Variation Swatches requires WooCommerce to work. Make sure that you have installed and activated WooCommerce Plugin.','th-variation-swatches' ) );
 
              return;
 
@@ -61,22 +61,22 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 				 <div class="setting-wrap">
 
 				 		<div class="top-header">
-                <h2 class="tabheading"><?php esc_html_e("Basic", 'th-variation-swatches-pro'); ?></h2>
+                <h2 class="tabheading"><?php esc_html_e("Basic", 'th-variation-swatches'); ?></h2>
                
              
 		      <a href="<?php echo esc_url( 'https://themehunk.com/th-variation-swatches/' ); ?>"
-					   title="<?php esc_attr_e( 'Upgrade', 'th-advance-product-search' ); ?>"
+					   title="<?php esc_attr_e( 'Upgrade', 'th-variation-swatches' ); ?>"
 					   target="_blank" class="upgrade-button">
-						<?php esc_html_e( 'Upgrade', 'th-advance-product-search' ); ?>
+						<?php esc_html_e( 'Upgrade', 'th-variation-swatches' ); ?>
 					</a>
 
 					<p class="submit thvs-button-wrapper">
 						
 
-						<a onclick="return confirm('<?php esc_attr_e( 'Are you sure to reset current settings?', 'th-variation-swatches-pro' ) ?>')" class="reset" href="<?php echo $this->reset_url() ?>"><?php esc_html_e( 'Reset all', 'th-variation-swatches-pro' ) ?>
+						<a onclick="return confirm('<?php esc_attr_e( 'Are you sure to reset current settings?', 'th-variation-swatches' ) ?>')" class="reset" href="<?php echo $this->reset_url() ?>"><?php esc_html_e( 'Reset all', 'th-variation-swatches' ) ?>
 						</a>
 
-						 <button disabled id="submit" class="button button-primary" value="<?php esc_html_e( 'Save Changes', 'th-variation-swatches-pro' ) ?>"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save transition-transform group-hover:scale-110" aria-hidden="true"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path><path d="M7 3v4a1 1 0 0 0 1 1h7"></path></svg></span><span class="text"><?php esc_html_e( 'Save All Changes', 'th-variation-swatches-pro' ) ?></span>
+						 <button disabled id="submit" class="button button-primary" value="<?php esc_html_e( 'Save Changes', 'th-variation-swatches' ) ?>"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save transition-transform group-hover:scale-110" aria-hidden="true"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path><path d="M7 3v4a1 1 0 0 0 1 1h7"></path></svg></span><span class="text"><?php esc_html_e( 'Save All Changes', 'th-variation-swatches' ) ?></span>
 						 </button>
 					</p> 
 
@@ -455,7 +455,7 @@ if ( ! class_exists( 'Th_Variation_Swatches_Settings' ) ):
 				$dependency = ! empty( $field['args']['require'] ) ? $this->build_dependency( $field['args']['require'] ) : '';
 
 				$is_new   = ( isset( $field['args']['is_new'] ) && $field['args']['is_new'] );
-				$new_html = $is_new ? '<span class="thvs-new-feature-tick">' . esc_html__( 'NEW', 'tthvs' ) . '</span>' : '';
+				$new_html = $is_new ? '<span class="thvs-new-feature-tick">' . esc_html__( 'NEW', 'th-variation-swatches' ) . '</span>' : '';
 
 				printf( '<div id="%s" class="thvs-settings-row" %s %s>', $wrapper_id, $custom_attributes, $dependency );
 

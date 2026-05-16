@@ -7,6 +7,8 @@
  * Version:                 1.3.7
  * Author:                  ThemeHunk
  * Author URI:              https://themehunk.com
+ * License:                 GPL-2.0+
+ * License URI:             http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires at least:       4.8
  * Tested up to:            6.9
  * WC requires at least:    3.2

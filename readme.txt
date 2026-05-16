@@ -95,6 +95,8 @@ Yes, You can translate our plugin to desired language.
 = 1.3.7 =
 * Update: Admin area with live preview style updated.
 * Update: Mobile responsive design added.
+* New: Languages folder added.
+* Update: Issues resolved.
 
 = 1.3.6 =
 * Update: Style Updated.

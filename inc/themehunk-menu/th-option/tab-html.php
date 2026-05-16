@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 $getUrlTab = isset($_GET['th-tab']) && $_GET['th-tab'] ? sanitize_key($_GET['th-tab']) : false;
 $tabActiveRp =  $getUrlTab == 'recommended-plugin' ? 'active' : '';
 if (!$tabActiveRp) {
