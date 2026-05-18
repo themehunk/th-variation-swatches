@@ -98,6 +98,7 @@ Yes, You can translate our plugin to desired language.
 * New: Languages folder added.
 * Update: Issues resolved.
 * Update: Style settings working at frontend also added.
+* Update: Tooltip live working added.
 
 = 1.3.6 =
 * Update: Style Updated.
