@@ -11,7 +11,48 @@
             $this.SaveSetting();
             $this.ChangeSetting();
             $this.ColorPiker();
+            $this.ShapeStyle();
         },
+
+         // =========================
+        // Shape Style Function
+        // =========================
+   ShapeStyle: function (){
+
+    var selector = 'input[name="th_variation_swatches[style]"]';
+
+    function applyShapeStyle(){
+
+        var shape = $(selector + ':checked').val();
+
+        // re-select every time because elements may reload after refresh/ajax
+        var $colorOption = $('.variation-options.colors .color-option');
+
+        if(shape === 'rounded'){
+
+            $colorOption.css({
+                'border-radius' : '100%',
+                'padding' : '0'
+            });
+
+        } else {
+
+            $colorOption.css({
+                'border-radius' : '0',
+                'padding' : '5px 15px 15px'
+            });
+
+        }
+    }
+
+    // DOM ready + page refresh
+    $(window).on('load', function (){
+        applyShapeStyle();
+    });
+
+    // radio change
+    $(document).on('change', selector, applyShapeStyle);
+},
         SettingTab: function (){
           $(document).ready(function(){ 
                  $('#thvs').on('click', '.nav-tab', function (event){
