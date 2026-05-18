@@ -146,7 +146,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 							), 
 						))),
 			)
-		), apply_filters( 'thvs_advanced_style_default_active', false )
+		), apply_filters( 'thvs_advanced_style_default_active', true )
 		);
 
         th_variation_swatches()->add_setting(
@@ -195,7 +195,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'id'      => 'stylesheet',
 								'type'    => 'checkbox',
 								'title'   => esc_html__( 'Default Stylesheet', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'Enable default stylesheet', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'It must always be enable to apply plugins styles over the attribute', 'th-variation-swatches' ),
 								'default' => true
 							),
 
@@ -291,7 +291,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 					)
 				),
 			)
-		), apply_filters( 'thvs_advanced_style_default_active', true )
+		), apply_filters( 'thvs_advanced_style_default_active', false)
 		);
 		th_variation_swatches()->add_setting(
 			'thvs_special', esc_html__( 'Advance (Pro)', 'th-variation-swatches' ), apply_filters(
