@@ -12,6 +12,7 @@
             $this.ChangeSetting();
             $this.ColorPiker();
             $this.ShapeStyle();
+            $this.TooltipToggle();
         },
 
          // =========================
@@ -52,6 +53,39 @@
 
     // radio change
     $(document).on('change', selector, applyShapeStyle);
+},
+
+TooltipToggle: function (){
+
+    var selector = '#tooltip-field';
+    var styleId  = 'thvs-tooltip-style';
+
+    function applyTooltip(){
+
+        var isEnabled = $(selector).is(':checked');
+
+        // remove old style
+        $('#' + styleId).remove();
+
+        // if disabled then inject css via js
+        if(!isEnabled){
+
+            $('head').append(
+                '<style id="' + styleId + '">' +
+                '.variation-options.colors .color-option::before,' +
+                '.variation-options.colors .color-option::after{' +
+                'display:none !important;' +
+                '}' +
+                '</style>'
+            );
+        }
+    }
+
+    // page refresh/load
+    $(window).on('load', applyTooltip);
+
+    // checkbox change
+    $(document).on('change', selector, applyTooltip);
 },
         SettingTab: function (){
           $(document).ready(function(){ 
