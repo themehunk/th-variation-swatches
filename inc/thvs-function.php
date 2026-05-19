@@ -63,7 +63,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'id'      => 'attr_title_font_size',
 								'type'    => 'number',
 								'title'   => esc_html__( 'Title Size', 'th-variation-swatches' ),
-								'default' => 16,
+								'default' => 12,
 								'min'     => 8,
 								'max'     => 50,
 								'suffix'  => 'px'
@@ -124,7 +124,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Font Size', 'th-variation-swatches' ),
 								'desc'    => esc_html__( 'Variation item font size', 'th-variation-swatches' ),
-								'default' => 16,
+								'default' => 12,
 								'min'     => 8,
 								'max'     => 50,
 								'suffix'  => 'px'
@@ -209,7 +209,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 									'squared' => esc_html__( 'Squared Shape', 'th-variation-swatches' ),
 
 								),
-								'default' => 'squared'
+								'default' => 'rounded'
 							),
 							array(
 								'id'      => 'default_to_button',
@@ -221,7 +221,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 							array(
 								'id'      => 'attr_brdr_color',
 								'type'    => 'color',
-								'default' => '#ebe9eb',
+								'default' => '#EBEBEB',
 								'title'   => esc_html__( 'Border Color', 'th-variation-swatches' ),
 								'alpha'   => true,
 								
@@ -273,13 +273,14 @@ if ( ! function_exists( 'thvs_settings' ) ):
 							array(
 								'id'      => 'attr_text_hvr_color',
 								'type'    => 'color',
+								'default' => '#FFF',
 								'title'   => esc_html__( 'Text Color', 'th-variation-swatches' ),
 								'alpha'   => true,
 							),
 							array(
 								'id'      => 'attr_bg_btn_hvr_color',
 								'type'    => 'color',
-								'default' => '#e9e9e9',
+								'default' => '#111',
 								'title'   => esc_html__( 'Background Color', 'th-variation-swatches' ),
 								'alpha'   => true,
 							),
@@ -410,7 +411,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Font Size', 'th-variation-swatches' ),
 								'desc'    => esc_html__( 'Variation item font size', 'th-variation-swatches' ),
-								'default' => 16,
+								'default' => 12,
 								'min'     => 8,
 								'max'     => 50,
 								'suffix'  => 'px'
