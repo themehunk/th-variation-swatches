@@ -27,7 +27,7 @@
         var shape = $(selector + ':checked').val();
 
         // re-select every time because elements may reload after refresh/ajax
-        var $colorOption = $('.variation-options.colors .color-option');
+        var $colorOption = $('.variation-options.colors .color-option, .variation-options.colors .color-option span');
 
         if(shape === 'rounded'){
 
@@ -40,7 +40,7 @@
 
             $colorOption.css({
                 'border-radius' : '0',
-                'padding' : '5px 15px 15px'
+                'padding' : '0'
             });
 
         }
@@ -151,7 +151,7 @@ TooltipToggle: function (){
           $('[data-th-bg-hover="' + inputId + '"]').each(function () {
             var selector = getSelector(this);
 
-            css += selector + ':hover { background-color: ' + value + ' !important; }';
+            css += selector + ':hover { border-color: ' + value + ' !important; }';
             css += selector + ':nth-child(4){ background-color: ' + value + ' !important; }';
 
           });
@@ -160,7 +160,8 @@ TooltipToggle: function (){
           $('[data-th-color-hover="' + inputId + '"]').each(function () {
             var selector = getSelector(this);
 
-            css += selector + ':hover { color: ' + value + ' !important; }';
+            // css += selector + ':hover { color: ' + value + ' !important; }';
+            css += selector + ':hover { color: #111!important; }';
             css += selector + ':nth-child(4){ color: ' + value + ' !important; }';
             
           });

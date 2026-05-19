@@ -99,6 +99,7 @@ Yes, You can translate our plugin to desired language.
 * Update: Issues resolved.
 * Update: Style settings working at frontend also added.
 * Update: Tooltip live working added.
+* Update: Swatches style modified.
 
 = 1.3.6 =
 * Update: Style Updated.

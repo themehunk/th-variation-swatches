@@ -270,7 +270,8 @@ row-gap: 15px;
 .th-variation-swatches .variable-items-wrapper .image-variable-item{
     padding: 5px!important;
 }
-.th-variation-swatches .variable-items-wrapper .variable-item.image-variable-item.selected{
+.th-variation-swatches .variable-items-wrapper .variable-item.image-variable-item.selected,
+.th-variation-swatches .variable-items-wrapper .variable-item.color-variable-item.selected{
     background: transparent!important;
 }
 
