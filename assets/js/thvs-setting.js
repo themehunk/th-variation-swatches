@@ -78,6 +78,11 @@ TooltipToggle: function (){
                 '}' +
                 '</style>'
             );
+
+            $('#tooltip_background_color-wrapper,#tooltip_text_color-wrapper').css('display', 'none');
+        }
+        else{
+            $('#tooltip_background_color-wrapper,#tooltip_text_color-wrapper').css('display', 'flex');
         }
     }
 
