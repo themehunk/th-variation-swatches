@@ -9,18 +9,21 @@
           <div class="variation-group">
             <label>Color</label>
             <div class="variation-options colors">
-                <div class="color-option" data-value="blue" data-th-border="attr_brdr_color-field">
-              <span style="background:#000fef;"></span>
-            </div>
-             <div class="color-option" data-value="blue" data-th-border="attr_brdr_color-field">
-              <span style="background:#59d600;"></span>
-              </div>
             <div class="color-option" data-value="blue" data-th-border="attr_brdr_color-field">
+              <span style="background:#000fef;" ></span>
+            </div>
+
+            <div class="color-option" data-value="green" data-th-border="attr_brdr_color-field">
+              <span style="background:#59d600;" ></span>
+            </div>
+            <div class="color-option" data-value="orange" data-th-border="attr_brdr_color-field">
               <span style="background:#ff5d00;" ></span>
-              </div>
-            <div class="color-option" data-value="blue" data-th-border="attr_brdr_color-field">
-              <span style="background:#eded00;"></span>
             </div>
+
+            <div class="color-option" data-value="yellow" data-th-bg-tooltip="tooltip_background_color-field" data-th-color-tooltip="tooltip_text_color-field" data-th-border="attr_brdr_color-field">
+              <span style="background:#eded00;" ></span>
+            </div>
+
             </div>
           </div>
             
