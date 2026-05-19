@@ -68,6 +68,8 @@ font-size:14px;
 }
 .woo-variation-items-wrapper .button-variable-item span,.th-variation-swatches.thvs-style-squared .variable-items-wrapper .variable-item.button-variable-item .variable-item-span{
     line-height: 18px;
+    font-weight: 700;
+    color: #111;
 }
 
 .thvs-style-rounded.th-variation-swatches .variable-items-wrapper .variable-item .variable-item-span-color ,
@@ -268,7 +270,7 @@ row-gap: 15px;
     border-radius: 100%;
 }
 .th-variation-swatches .variable-items-wrapper .image-variable-item{
-    padding: 5px!important;
+    padding: 2px!important;
 }
 .th-variation-swatches .variable-items-wrapper .variable-item.image-variable-item.selected,
 .th-variation-swatches .variable-items-wrapper .variable-item.color-variable-item.selected{
