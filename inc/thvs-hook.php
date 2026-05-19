@@ -19,3 +19,29 @@ add_action( 'woocommerce_attribute_deleted', 'thvs_clear_transient', 20 );
 
 //filter attribute widget
 add_filter( 'woocommerce_layered_nav_term_html', 'thvs_filter_add_html', 20, 4 );
+
+add_action( 'created_term', 'thvs_save_term_meta', 10, 3 );
+add_action( 'edited_term', 'thvs_save_term_meta', 10, 3 );
+
+function thvs_save_term_meta( $term_id, $tt_id = '', $taxonomy = '' ) {
+
+    // save color
+    if ( isset( $_POST['product_attribute_color'] ) ) {
+
+        update_term_meta(
+            $term_id,
+            'product_attribute_color',
+            sanitize_hex_color( $_POST['product_attribute_color'] )
+        );
+    }
+
+    // save image
+    if ( isset( $_POST['product_attribute_image'] ) ) {
+
+        update_term_meta(
+            $term_id,
+            'product_attribute_image',
+            absint( $_POST['product_attribute_image'] )
+        );
+    }
+}

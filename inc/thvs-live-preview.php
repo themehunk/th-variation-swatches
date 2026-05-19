@@ -9,12 +9,25 @@
           <div class="variation-group">
             <label>Color</label>
             <div class="variation-options colors">
-              <span class="color-option" style="background:#000fef;" data-value="blue" data-th-border="attr_brdr_color-field"></span>
-              <span class="color-option" style="background:#59d600;" data-value="green" data-th-border="attr_brdr_color-field"></span>
-              <span class="color-option" style="background:#ff5d00;" data-value="orange" data-th-border="attr_brdr_color-field"></span>
-              <span class="color-option" style="background:#eded00;" data-value="yellow" data-th-bg-tooltip="tooltip_background_color-field" data-th-color-tooltip="tooltip_text_color-field" data-th-border="attr_brdr_color-field"></span>
+            <div class="color-option" data-value="blue" data-th-border="attr_brdr_color-field">
+              <span style="background:#000fef;" ></span>
+            </div>
+
+            <div class="color-option" data-value="green" data-th-border="attr_brdr_color-field">
+              <span style="background:#59d600;" ></span>
+            </div>
+            <div class="color-option" data-value="orange" data-th-border="attr_brdr_color-field">
+              <span style="background:#ff5d00;" ></span>
+            </div>
+
+            <div class="color-option" data-value="yellow" data-th-bg-tooltip="tooltip_background_color-field" data-th-color-tooltip="tooltip_text_color-field" data-th-border="attr_brdr_color-field">
+              <span style="background:#eded00;" ></span>
+            </div>
+
             </div>
           </div>
+            
+          
 
           <!-- Size -->
           <div class="variation-group">
