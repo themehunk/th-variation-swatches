@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
 Requires at least: 5.8
 Tested up to: 6.9
-Stable tag: 1.3.7
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,14 +92,18 @@ Yes, You can translate our plugin to desired language.
 
 == Changelog ==
 
-= 1.3.7 =
+= 1.4.0 =
 * Update: Admin area with live preview style updated.
 * Update: Mobile responsive design added.
 * New: Languages folder added.
 * Update: Issues resolved.
 * Update: Style settings working at frontend also added.
 * Update: Tooltip live working added.
-* Update: Swatches style modified.
+* Update: Swatches new front style added.
+* Update: Settings rearranged to live preview.
+* Update: admin area style made same as front style.
+* Update: first time attribute not saving value resolved.
+
 
 = 1.3.6 =
 * Update: Style Updated.
