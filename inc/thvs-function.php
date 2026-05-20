@@ -104,7 +104,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Width', 'th-variation-swatches' ),
 								'desc'    => esc_html__( 'Variation item width', 'th-variation-swatches' ),
-								'default' => 30,
+								'default' => 36,
 								'min'     => 10,
 								'max'     => 200,
 								'suffix'  => 'px'
@@ -114,7 +114,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Height', 'th-variation-swatches' ),
 								'desc'    => esc_html__( 'Variation item height', 'th-variation-swatches' ),
-								'default' => 30,
+								'default' => 36,
 								'min'     => 10,
 								'max'     => 200,
 								'suffix'  => 'px'
@@ -124,7 +124,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Font Size', 'th-variation-swatches' ),
 								'desc'    => esc_html__( 'Variation item font size', 'th-variation-swatches' ),
-								'default' => 12,
+								'default' => 14,
 								'min'     => 8,
 								'max'     => 50,
 								'suffix'  => 'px'
@@ -391,7 +391,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Width', 'th-variation-swatches' ),
 								'desc'    => esc_html__( 'Variation item width', 'th-variation-swatches' ),
-								'default' => 30,
+								'default' => 36,
 								'min'     => 10,
 								'max'     => 200,
 								'suffix'  => 'px'
@@ -401,7 +401,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Height', 'th-variation-swatches' ),
 								'desc'    => esc_html__( 'Variation item height', 'th-variation-swatches' ),
-								'default' => 30,
+								'default' => 36,
 								'min'     => 10,
 								'max'     => 200,
 								'suffix'  => 'px'
@@ -411,7 +411,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Font Size', 'th-variation-swatches' ),
 								'desc'    => esc_html__( 'Variation item font size', 'th-variation-swatches' ),
-								'default' => 12,
+								'default' => 14,
 								'min'     => 8,
 								'max'     => 50,
 								'suffix'  => 'px'
@@ -483,7 +483,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Width', 'th-variation-swatches' ),
 								'desc'    => esc_html__( 'Variation item width', 'th-variation-swatches' ),
-								'default' => 30,
+								'default' => 36,
 								'min'     => 10,
 								'max'     => 200,
 								'suffix'  => 'px'
@@ -493,7 +493,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'number',
 								'title'   => esc_html__( 'Height', 'th-variation-swatches' ),
 								'desc'    => esc_html__( 'Variation item height', 'th-variation-swatches' ),
-								'default' => 30,
+								'default' => 36,
 								'min'     => 10,
 								'max'     => 200,
 								'suffix'  => 'px'
