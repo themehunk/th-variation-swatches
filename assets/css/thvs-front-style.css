@@ -31,6 +31,7 @@
             border-radius: 5px;
             text-transform: capitalize;
     letter-spacing: .09rem;
+    color: #111;
 }
 .variable-item.image-variable-item{
     overflow: hidden;
@@ -69,7 +70,7 @@ font-size:14px;
 .woo-variation-items-wrapper .button-variable-item span,.th-variation-swatches.thvs-style-squared .variable-items-wrapper .variable-item.button-variable-item .variable-item-span{
     line-height: 18px;
     font-weight: 700;
-    color: #111;
+    color: inherit;
 }
 
 .thvs-style-rounded.th-variation-swatches .variable-items-wrapper .variable-item .variable-item-span-color ,
