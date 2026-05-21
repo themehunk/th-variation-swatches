@@ -269,6 +269,7 @@ row-gap: 15px;
 
 .thvs-style-rounded.th-variation-swatches .variable-items-wrapper .image-variable-item img{
     border-radius: 100%;
+    margin: initial;
 }
 .th-variation-swatches .variable-items-wrapper .image-variable-item{
     padding: 2px!important;

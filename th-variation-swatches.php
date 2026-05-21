@@ -10,7 +10,7 @@
  * License:                 GPL-2.0+
  * License URI:             http://www.gnu.org/licenses/gpl-2.0.txt
  * Requires at least:       4.8
- * Tested up to:            6.9
+ * Tested up to:            7.0
  * WC requires at least:    3.2
  * WC tested up to:         9.8
  * Domain Path:             /languages
