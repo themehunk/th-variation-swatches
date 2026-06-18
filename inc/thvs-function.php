@@ -6,6 +6,10 @@ if ( ! function_exists( 'thvs_get_all_attribute' ) ):
 
 	function thvs_get_all_attribute() {
 
+		if ( ! function_exists( 'wc_get_attribute_taxonomies' ) ) {
+			return array();
+		}
+
 		$attribute_array      = array();
 		$attribute_taxonomies = wc_get_attribute_taxonomies();
 
@@ -787,6 +791,10 @@ endif;
 //-------------------------------------------------------------------------------
 if ( ! function_exists( 'thvs_wc_product_has_attribute_type' ) ):
 	function thvs_wc_product_has_attribute_type( $type, $attribute_name ) {
+
+		if ( ! function_exists( 'wc_get_attribute_taxonomies' ) ) {
+			return false;
+		}
 
 		$attributes           = wc_get_attribute_taxonomies();
 		$attribute_name_clean = str_replace( 'pa_', '', wc_sanitize_taxonomy_name( $attribute_name ) );
@@ -1646,6 +1654,9 @@ function thvs_clear_transient() {
 /****************************/
 if ( ! function_exists( 'thvs_filter_add_html' ) ):
 function thvs_filter_add_html( $term_html, $term, $link, $count ){
+	if ( ! function_exists( 'wc_get_attribute_taxonomies' ) ) {
+		return $term_html;
+	}
 	$attribute_taxonomies = wc_get_attribute_taxonomies();
     if ( $attribute_taxonomies ){
             foreach ( $attribute_taxonomies as $tax ){
