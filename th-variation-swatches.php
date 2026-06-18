@@ -47,12 +47,29 @@ if (!defined('TH_VARIATION_SWATCHES_VERSION')) {
   define('TH_VARIATION_SWATCHES_VERSION', $plugin_data['version']);
 }
 
-if (!class_exists('TH_Variation_Swatches') && (!class_exists('TH_Variation_Swatches_Pro'))) {
+function thvs_init() {
 
-// Plugin is compatible with HPOS.
-  include_once(TH_VARIATION_SWATCHES_PLUGIN_PATH . 'inc/themehunk-menu/admin-menu.php');
-  require_once("inc/thvs.php");
-  
+	if ( ! class_exists( 'WooCommerce' ) ) {
+		add_action( 'admin_notices', 'thvs_woocommerce_missing_notice' );
+		return;
+	}
+
+	if ( ! class_exists( 'TH_Variation_Swatches' ) && ! class_exists( 'TH_Variation_Swatches_Pro' ) ) {
+		// Plugin is compatible with HPOS.
+		include_once TH_VARIATION_SWATCHES_PLUGIN_PATH . 'inc/themehunk-menu/admin-menu.php';
+		require_once 'inc/thvs.php';
+	}
+}
+add_action( 'plugins_loaded', 'thvs_init' );
+
+function thvs_woocommerce_missing_notice() {
+	echo '<div class="notice notice-error"><p>' .
+		sprintf(
+			/* translators: %s: WooCommerce plugin link */
+			esc_html__( 'TH Variation Swatches requires %s to be installed and active.', 'th-variation-swatches' ),
+			'<strong>WooCommerce</strong>'
+		) .
+		'</p></div>';
 }
 
 function thvs_plugin_action_links($links)
