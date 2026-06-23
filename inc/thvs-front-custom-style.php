@@ -27,7 +27,7 @@ $thvs_frnt_custom_css.="[data-thvstooltip]:before {
     pointer-events: none;
     box-sizing: inherit;
     position: absolute;
-    bottom: 130%;
+    bottom: 121%;
     left: 50%;
     z-index: 999;
 }

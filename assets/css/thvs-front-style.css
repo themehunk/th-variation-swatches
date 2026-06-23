@@ -69,7 +69,7 @@ font-size:14px;
 }
 .woo-variation-items-wrapper .button-variable-item span,.th-variation-swatches.thvs-style-squared .variable-items-wrapper .variable-item.button-variable-item .variable-item-span{
     line-height: 18px;
-    font-weight: 700;
+    font-weight: 500;
     color: inherit;
 }
 
@@ -99,20 +99,8 @@ position:relative;
 .thvs-attr-behavior-blur-no-cross .variable-item.disabled .variable-item-contents .variable-item-span{
 position:relative;
 }
-.thvs-attr-behavior-blur .variable-item.disabled .variable-item-contents:after{
-content: "\f335";
-font-family: dashicons;
-color:red;
-top:0;
-left:0;
-right:0;
-bottom:0;
-position:absolute;
-font-size:1.8rem;
-font-size: 1.8rem;
-line-height: initial;
-}
-.thvs-attr-behavior-blur .button-variable-item.variable-item.disabled .variable-item-contents:after {
+
+/*.thvs-attr-behavior-blur .button-variable-item.variable-item.disabled .variable-item-contents:after {
     content: "\f335";
     font-family: dashicons;
     color: red;
@@ -125,7 +113,7 @@ line-height: initial;
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
-}
+}*/
 /*******************************/
 /*Filter attribute widget style*/
 /*******************************/
@@ -194,14 +182,14 @@ border:1px solid #ebe9eb;
 /********************************/
 /*Variation style in single page*/
 /********************************/
-.th-variation-swatches.woocommerce div.product form.cart .variations td {
+.th-variation-swatches.woocommerce div form.cart .variations td {
     width: 100%;
     display: block;
     border: 0;
     padding:0;
     margin-top: 9px;
 }
-.th-variation-swatches.woocommerce div.product form.cart .variations td.label{
+.th-variation-swatches.woocommerce div form.cart .variations td.label{
 padding: 0;
     padding-bottom: 0.4rem;
     margin-bottom: 0.8rem;
@@ -211,26 +199,34 @@ padding: 0;
     margin: 0;
     padding:0;
 }
-.th-variation-swatches.woocommerce div.product form.cart .variations tr{
+.th-variation-swatches.woocommerce div form.cart .variations tr{
 margin-bottom:1.5rem;
 display:block;
 }
-.th-variation-swatches.woocommerce div.product form.cart .variations td.label label{
+.th-variation-swatches.woocommerce div form.cart .variations td.label label{
 margin-right:0.4rem;
 }
 
-.th-variation-swatches.woocommerce div.product form.cart .variations label {
-    font-weight: 500;
+.th-variation-swatches.woocommerce div form.cart .variations label {
+    font-weight: 400;
     text-transform: capitalize;
-    font-size: .875rem;
+    font-size: .799rem;
 }
 .th-variation-swatches.woocommerce a.reset_variations{
-    display: inline-block;
-    padding: 0.3rem 0rem;
-    margin-top: 0.6rem;
+   display: flex;
+    padding: 1.5rem 0rem .2rem 0;
+    margin-top: 0;
     line-height: normal;
+    align-items: center;
+    font-size: 16px!important;
+    color: #871818;
 }
-.th-variation-swatches.woocommerce div.product form.cart .variations tr:last-child{
+.th-variation-swatches.woocommerce a.reset_variations:before{
+    content: "\f113";
+    font-family: "Dashicons";
+    margin-right: 5px;
+}
+.th-variation-swatches.woocommerce div form.cart .variations tr:last-child{
 margin-bottom:0;
 }
 .th-variation-swatches .variations_form.cart.thvs-loaded{
@@ -261,6 +257,7 @@ row-gap: 15px;
 
 .woo-selected-variation-item-name{
     text-transform: capitalize;
+    font-weight: 600;
 }
 
 .th-variation-swatches .variable-items-wrapper .variable-item.color-variable-item{
@@ -331,4 +328,43 @@ row-gap: 15px;
     padding: 12px;
     background: #fff;
     color: #222;
+}
+
+
+
+
+
+
+
+/* Existing styles ko override kiye bina */
+.th-variation-swatches .variable-items-wrapper .variable-item.disabled {
+/*    background: #eff0ef !important;*/
+    position: relative;
+    box-sizing: border-box;
+    min-width: 80px;
+    overflow: hidden;
+    background: #f3f7f3 !important;
+    opacity: .7 !important;
+    color: #111;
+}
+
+/* Diagonal line */
+.th-variation-swatches .variable-items-wrapper .variable-item.disabled::after {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: -15%;
+    width: 221%;
+    height: 2px;
+    background: #bdbdbd;
+    transform: rotate(-21deg);
+    transform-origin: center;
+    pointer-events: none;
+    visibility: visible;
+    opacity: 1;
+    border-width: 1px;
+    border-color: #a9a9a9 !important;
+}
+.th-variation-swatches [data-thvstooltip]:not(.disabled):after {
+     transition: all 2s ease;
 }
