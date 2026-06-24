@@ -331,11 +331,6 @@ row-gap: 15px;
 }
 
 
-
-
-
-
-
 /* Existing styles ko override kiye bina */
 .th-variation-swatches .variable-items-wrapper .variable-item.disabled {
     position: relative;
@@ -357,13 +352,6 @@ row-gap: 15px;
         #bdbdbd 51%,
         transparent 52%
     );
-    opacity: 1!important;
-    visibility: visible!important;
-    width: initial!important;
-    margin: initial!!important;
-    border: initial!important;
-    font-size: initial!important;
-    line-height: ini!important;
 }
 .th-variation-swatches .variable-items-wrapper .variable-item.disabled::before{
     display: none!important;
