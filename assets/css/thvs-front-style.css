@@ -337,7 +337,7 @@ row-gap: 15px;
 
 
 /* Existing styles ko override kiye bina */
-.th-variation-swatches .variable-items-wrapper .variable-item.disabled {
+.th-variation-swatches .variable-items-wrapper .variable-item.disabled:not(.color-variable-item) {
 /*    background: #eff0ef !important;*/
     position: relative;
     box-sizing: border-box;
@@ -349,7 +349,7 @@ row-gap: 15px;
 }
 
 /* Diagonal line */
-.th-variation-swatches .variable-items-wrapper .variable-item.disabled::after {
+.th-variation-swatches .variable-items-wrapper .variable-item.disabled:not(.color-variable-item)::after {
     content: '';
     position: absolute;
     top: 12%;
@@ -364,7 +364,4 @@ row-gap: 15px;
     opacity: 1;
     border-width: 1px;
     border-color: #a9a9a9 !important;
-}
-.th-variation-swatches [data-thvstooltip]:not(.disabled):after {
-     transition: all 2s ease;
 }
