@@ -4,7 +4,7 @@ Author URI: : https://www.themehunk.com/
 Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
 Requires at least: 5.8
 Tested up to: 7.0
-Stable tag: 1.4.0
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,15 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.4.2 =
+* Update: Backend style updated.
+* Update: Front style updated.
+* Update: Image Tooltip issue resolved.
+* Update: Issues Resolved.
+
+= 1.4.1 =
+* Update: Style Improved.
 
 = 1.4.0 =
 * Update: Admin area with live preview style updated.

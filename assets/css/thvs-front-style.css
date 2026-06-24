@@ -33,9 +33,6 @@
     letter-spacing: .09rem;
     color: #111;
 }
-.variable-item.image-variable-item{
-    overflow: hidden;
-}
 .variable-item:not(.radio-variable-item) {
     width: 30px;
     height: 30px;
