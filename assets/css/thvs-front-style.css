@@ -213,7 +213,7 @@ margin-right:0.4rem;
     font-size: .799rem;
 }
 .th-variation-swatches.woocommerce a.reset_variations{
-   display: flex;
+   display: inline-flex;
     padding: 1.5rem 0rem .2rem 0;
     margin-top: 0;
     line-height: normal;
@@ -337,31 +337,34 @@ row-gap: 15px;
 
 
 /* Existing styles ko override kiye bina */
-.th-variation-swatches .variable-items-wrapper .variable-item.disabled:not(.color-variable-item) {
-/*    background: #eff0ef !important;*/
+.th-variation-swatches .variable-items-wrapper .variable-item.disabled {
     position: relative;
-    box-sizing: border-box;
-    min-width: 80px;
     overflow: hidden;
-    background: #f3f7f3 !important;
     opacity: .7 !important;
-    color: #111;
+    background: #f3f7f3 !important;
 }
 
-/* Diagonal line */
-.th-variation-swatches .variable-items-wrapper .variable-item.disabled:not(.color-variable-item)::after {
+.th-variation-swatches .variable-items-wrapper .variable-item.disabled::after {
     content: '';
     position: absolute;
-    top: 12%;
-    left: -15%;
-    width: 221%;
-    height: 2px;
-    background: #bdbdbd;
-    transform: rotate(-21deg);
-    transform-origin: center;
+    inset: 0;
     pointer-events: none;
-    visibility: visible;
-    opacity: 1;
-    border-width: 1px;
-    border-color: #a9a9a9 !important;
+
+    background: linear-gradient(
+        to bottom right,
+        transparent 48%,
+        #bdbdbd 49%,
+        #bdbdbd 51%,
+        transparent 52%
+    );
+    opacity: 1!important;
+    visibility: visible!important;
+    width: initial!important;
+    margin: initial!!important;
+    border: initial!important;
+    font-size: initial!important;
+    line-height: ini!important;
+}
+.th-variation-swatches .variable-items-wrapper .variable-item.disabled::before{
+    display: none!important;
 }
