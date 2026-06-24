@@ -7,7 +7,7 @@
 
           <!-- Color -->
           <div class="variation-group">
-            <label>Color</label>
+            <label>Color:</label>
             <div class="variation-options colors">
             <div class="color-option" data-value="blue" data-th-border="attr_brdr_color-field">
               <span style="background:#000fef;" ></span>
@@ -20,7 +20,7 @@
               <span style="background:#ff5d00;" ></span>
             </div>
 
-            <div class="color-option" data-value="yellow" data-th-bg-tooltip="tooltip_background_color-field" data-th-color-tooltip="tooltip_text_color-field" data-th-border="attr_brdr_color-field">
+            <div class="color-option th-yellow" data-value="yellow" data-th-bg-tooltip="tooltip_background_color-field" data-th-color-tooltip="tooltip_text_color-field" data-th-border="attr_brdr_color-field">
               <span style="background:#eded00;" ></span>
             </div>
 
@@ -31,7 +31,7 @@
 
           <!-- Size -->
           <div class="variation-group">
-            <label>Size</label>
+            <label>Size:</label>
             <div class="variation-options sizes">
               <span class="size-option" data-value="l" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field">L</span>
               <span class="size-option" data-value="m" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field">M</span>

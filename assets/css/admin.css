@@ -14,7 +14,6 @@
 *{
     box-sizing: border-box;
 }
-
 #thvs.settings-wrap {
     display: flex;
     position: relative;
@@ -832,8 +831,10 @@ h2.thvs_index_builderthvs_index_builder-section-0{
 .variation-group label {
   display: block;
   margin-bottom: 18px;
-  font-weight: 700;
   color: #314158;
+  font-weight: 400;
+  text-transform: capitalize;
+  font-size: .799rem;
 }
 
 .variation-options {
@@ -845,11 +846,11 @@ h2.thvs_index_builderthvs_index_builder-section-0{
 .color-option {
   width: 30px;
     height: 30px;
-    border: 2px solid #ccc;
+    border: 1px solid #EBE9EB;
     cursor: pointer;
     padding: 5px !important;
     display: inline-flex;
-    border-radius: 5px;
+    border-radius: 5px!important;
 }
 .color-option:hover{
     background: transparent!important;
@@ -859,13 +860,14 @@ h2.thvs_index_builderthvs_index_builder-section-0{
     min-width: 100%;
     min-height: 100%;
     padding: 0;
+    border-radius: 3px!important;
 }
 /* Size styles */
 .size-option {
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #EBEBEB;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 500;
   color: #111;
   border-radius: 5px;
 }
@@ -1141,4 +1143,7 @@ h2.thvs_index_builderthvs_index_builder-section-0{
         display: none;
     }
 
+}
+.th-yellow{
+    border-color: #111!important;
 }
