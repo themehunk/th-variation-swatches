@@ -67,7 +67,7 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'id'      => 'attr_title_font_size',
 								'type'    => 'number',
 								'title'   => esc_html__( 'Title Size', 'th-variation-swatches' ),
-								'default' => 12,
+								'default' => 14,
 								'min'     => 8,
 								'max'     => 50,
 								'suffix'  => 'px'
