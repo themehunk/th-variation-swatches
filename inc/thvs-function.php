@@ -1015,7 +1015,14 @@ if ( ! function_exists( 'thvs_default_variable_item' ) ):
 							$type = 'button';
 						}
 
-						$data .= sprintf( '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" title="%5$s" data-title="%5$s"  data-value="%3$s" role="radio" tabindex="0"><div class="variable-item-contents">', $screen_reader_html_attr . $tooltip_html_attr, esc_attr( $type ), esc_attr( $term->slug ), esc_attr( $selected_class ), $option );
+						$data .= sprintf(
+						    '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" data-title="%5$s" data-value="%3$s" role="radio" tabindex="0"><div class="variable-item-contents">',
+						    $screen_reader_html_attr . $tooltip_html_attr,
+						    esc_attr( $type ),
+						    esc_attr( $term->slug ),
+						    esc_attr( $selected_class ),
+						    $option
+						);
 
 						switch ( $type ):
 
@@ -1072,7 +1079,14 @@ if ( ! function_exists( 'thvs_default_variable_item' ) ):
 						$type = 'button';
 					}
 
-					$data .= sprintf( '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" title="%5$s" data-title="%5$s"  data-value="%3$s" role="radio" tabindex="0"><div class="variable-item-contents">', $screen_reader_html_attr . $tooltip_html_attr, esc_attr( $type ), esc_attr( $option ), esc_attr( $selected_class ), esc_html( $option ) );
+					$data .= sprintf(
+					    '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" data-title="%5$s" data-value="%3$s" role="radio" tabindex="0"><div class="variable-item-contents">',
+					    $screen_reader_html_attr . $tooltip_html_attr,
+					    esc_attr( $type ),
+					    esc_attr( $option ),
+					    esc_attr( $selected_class ),
+					    esc_html( $option )
+					);
 
 					switch ( $type ):
 
@@ -1208,7 +1222,14 @@ if ( ! function_exists( 'thvs_variable_item' ) ):
 							$tooltip_html_attr .= ! empty( $tooltip ) ? ' tabindex="2"' : '';
 						}
 
-						$data .= sprintf( '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" title="%5$s" data-title="%5$s" data-value="%3$s" role="radio" tabindex="0"><div class="variable-item-contents">', $screen_reader_html_attr . $tooltip_html_attr, esc_attr( $type ), esc_attr( $term->slug ), esc_attr( $selected_class ), $option );
+						$data .= sprintf(
+					    '<li %1$s class="variable-item %2$s-variable-item %2$s-variable-item-%3$s %4$s" data-title="%5$s" data-value="%3$s" role="radio" tabindex="0"><div class="variable-item-contents">',
+					    $screen_reader_html_attr . $tooltip_html_attr,
+					    esc_attr( $type ),
+					    esc_attr( $term->slug ),
+					    esc_attr( $selected_class ),
+					    $option
+					);
 
 						switch ( $type ):
 							case 'color':
