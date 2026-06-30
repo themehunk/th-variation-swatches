@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TH Variation Swatches\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-07 08:14+0000\n"
-"PO-Revision-Date: 2026-05-07 08:14+0000\n"
+"POT-Creation-Date: 2026-06-30 10:25+0000\n"
+"PO-Revision-Date: 2026-06-30 10:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -12,301 +12,53 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.9; wp-6.9.4\n"
+"X-Loco-Version: 2.8.5; wp-7.0; php-8.2.12\n"
 "X-Domain: th-variation-swatches"
 
-#: th-variation-swatches.php:61 inc/themehunk-menu/th-option/th-option.php:165
+#. %s: WooCommerce plugin link
+#: th-variation-swatches.php:69
+#, php-format
+msgid "TH Variation Swatches requires %s to be installed and active."
+msgstr ""
+
+#: th-variation-swatches.php:78 inc/themehunk-menu/th-option/th-option.php:165
 #: inc/themehunk-menu/th-option/th-option.php:173
 msgid "Settings"
 msgstr ""
 
-#: th-variation-swatches.php:77 inc/thvs-help.php:15
+#: th-variation-swatches.php:94 inc/thvs-help.php:15
 msgid "Documentation"
 msgstr ""
 
-#: th-variation-swatches.php:78 inc/themehunk-menu/th-option/sidebar.php:39
+#: th-variation-swatches.php:95 inc/themehunk-menu/th-option/sidebar.php:39
 msgid "Support"
 msgstr ""
 
-#: th-variation-swatches.php:79
+#: th-variation-swatches.php:96
 msgid "Premium Version"
 msgstr ""
 
-#: inc/thvs-backend-function.php:9 inc/thvs-function.php:29
-#: inc/thvs-function.php:32 inc/thvs-settings.php:64
-msgid "Basic"
+#: inc/thvs-function.php:34
+msgid "General Settings"
 msgstr ""
 
-#: inc/thvs-backend-function.php:12
-msgid "Basic Setting"
-msgstr ""
-
-#: inc/thvs-backend-function.php:18 inc/thvs-function.php:38
-#: inc/thvs-function.php:217 inc/thvs-function.php:451
-msgid "Tooltip"
-msgstr ""
-
-#: inc/thvs-backend-function.php:19 inc/thvs-function.php:39
-msgid "Enable tooltip on each product attribute."
-msgstr ""
-
-#: inc/thvs-backend-function.php:25 inc/thvs-function.php:45
-msgid "Default Stylesheet"
-msgstr ""
-
-#: inc/thvs-backend-function.php:26 inc/thvs-function.php:46
-msgid "Enable default stylesheet"
-msgstr ""
-
-#: inc/thvs-backend-function.php:32 inc/thvs-function.php:52
-msgid "Attribute Shape Style"
-msgstr ""
-
-#: inc/thvs-backend-function.php:35 inc/thvs-function.php:55
-msgid "Rounded Shape"
-msgstr ""
-
-#: inc/thvs-backend-function.php:36 inc/thvs-function.php:56
-msgid "Squared Shape"
-msgstr ""
-
-#: inc/thvs-backend-function.php:44 inc/thvs-function.php:65
-msgid "Auto Dropdowns to Button"
-msgstr ""
-
-#: inc/thvs-backend-function.php:45 inc/thvs-function.php:66
-msgid "Convert default dropdowns to button type"
-msgstr ""
-
-#: inc/thvs-backend-function.php:57 inc/thvs-function.php:91
-msgid "Advanced"
-msgstr ""
-
-#: inc/thvs-backend-function.php:61 inc/thvs-function.php:94
+#: inc/thvs-function.php:37
 msgid "Display Setting"
 msgstr ""
 
-#: inc/thvs-backend-function.php:68 inc/thvs-function.php:118
-msgid "Attribute Title"
-msgstr ""
-
-#: inc/thvs-backend-function.php:69 inc/thvs-function.php:119
-msgid "Check to Show Attribute Title"
-msgstr ""
-
-#: inc/thvs-backend-function.php:76 inc/thvs-function.php:135
-msgid "Selected Attribute variation Name"
-msgstr ""
-
-#: inc/thvs-backend-function.php:77 inc/thvs-function.php:136
-msgid "Check to show selected attribute variation name after title"
-msgstr ""
-
-#: inc/thvs-backend-function.php:85
-msgid "Separator"
-msgstr ""
-
-#: inc/thvs-backend-function.php:86
-msgid "Change separator between title and name."
-msgstr ""
-
-#: inc/thvs-backend-function.php:96 inc/thvs-function.php:196
-msgid "Image Setting"
-msgstr ""
-
-#: inc/thvs-backend-function.php:104 inc/thvs-function.php:203
-msgid "Attribute image size"
-msgstr ""
-
-#: inc/thvs-backend-function.php:105 inc/thvs-function.php:204
-msgid ""
-"<span style=\"color: red\">Attribute image size changed by <code>"
-"thvs_product_attribute_image_size</code> hook. So this option will not apply "
-"any effect.</span>"
-msgstr ""
-
-#: inc/thvs-backend-function.php:116 inc/thvs-function.php:243
-msgid "Attribute Style"
-msgstr ""
-
-#: inc/thvs-backend-function.php:124 inc/thvs-function.php:166
-#: inc/thvs-function.php:419 inc/thvs-function.php:474
-#: inc/thvs-function.php:511
-msgid "Width"
-msgstr ""
-
-#: inc/thvs-backend-function.php:125 inc/thvs-function.php:167
-#: inc/thvs-function.php:420 inc/thvs-function.php:512
-msgid "Variation item width"
-msgstr ""
-
-#: inc/thvs-backend-function.php:134 inc/thvs-function.php:176
-#: inc/thvs-function.php:429 inc/thvs-function.php:521
-msgid "Height"
-msgstr ""
-
-#: inc/thvs-backend-function.php:135 inc/thvs-function.php:177
-#: inc/thvs-function.php:430 inc/thvs-function.php:522
-msgid "Variation item height"
-msgstr ""
-
-#: inc/thvs-backend-function.php:144 inc/thvs-function.php:186
-#: inc/thvs-function.php:439 inc/thvs-function.php:531
-msgid "Font Size"
-msgstr ""
-
-#: inc/thvs-backend-function.php:145 inc/thvs-function.php:187
-#: inc/thvs-function.php:440 inc/thvs-function.php:532
-msgid "Variation item font size"
-msgstr ""
-
-#: inc/thvs-backend-function.php:154 inc/thvs-function.php:154
-msgid "Unavailable Attribute Behavior"
-msgstr ""
-
-#: inc/thvs-backend-function.php:155
-msgid ""
-"Disabled attribute will be hide / blur. Disable ajax threshold doesn't apply "
-"this feature"
-msgstr ""
-
-#: inc/thvs-backend-function.php:157 inc/thvs-function.php:157
-msgid "Blur with cross"
-msgstr ""
-
-#: inc/thvs-backend-function.php:158 inc/thvs-function.php:158
-msgid "Blur without cross"
-msgstr ""
-
-#: inc/thvs-backend-function.php:159 inc/thvs-function.php:159
-msgid "Hide"
-msgstr ""
-
-#: inc/thvs-backend-function.php:166 inc/thvs-function.php:108
-msgid "Ajax variation threshold"
-msgstr ""
-
-#: inc/thvs-backend-function.php:167
-msgid ""
-"Control the number of enable ajax variation threshold, If you set <code>"
-"1</code> all product variation will be load via ajax. Default value is <code>"
-"30</code>, <br>Note: Disable ajax threshold doesn't follow attribute "
-"behaviour. It's recommended to keep this number between 30 - 40."
-msgstr ""
-
-#: inc/thvs-backend-function.php:177 inc/thvs-function.php:101
+#: inc/thvs-function.php:44
 msgid "Clear Attribute Setting"
 msgstr ""
 
-#: inc/thvs-backend-function.php:178
-msgid "Clear selected attribute on reselect"
-msgstr ""
-
-#: inc/thvs-backend-function.php:190 inc/thvs-backend-function.php:194
-msgid "Tutorial"
-msgstr ""
-
-#: inc/thvs-backend-function.php:207
-msgid "For More Documentation"
-msgstr ""
-
-#: inc/thvs-backend-function.php:217
-msgid "TH Swatches Pro"
-msgstr ""
-
-#: inc/thvs-backend-function.php:221
-msgid "Pro Feature"
-msgstr ""
-
-#: inc/thvs-backend-function.php:249 inc/thvs-backend-function.php:253
-msgid "Themehunk Useful Plugins"
-msgstr ""
-
-#: inc/thvs-backend-function.php:264
-msgid "TH Side Cart and Menu Cart for Woocommerce"
-msgstr ""
-
-#: inc/thvs-backend-function.php:275 inc/themehunk-menu/plugins-list.php:37
-msgid "Th Product Compare"
-msgstr ""
-
-#: inc/thvs-backend-function.php:286 inc/themehunk-menu/plugins-list.php:11
-msgid "TH Advance Product Search"
-msgstr ""
-
-#: inc/thvs-backend-function.php:297 inc/themehunk-menu/plugins-list.php:62
-msgid "Lead Form Builder"
-msgstr ""
-
-#: inc/thvs-backend-function.php:308 inc/themehunk-menu/plugins-list.php:74
-msgid "WP Popup Builder – Popup Forms & Newsletter"
-msgstr ""
-
-#: inc/thvs-backend-function.php:389 inc/thvs-backend-function.php:425
-#: inc/thvs-function.php:695 inc/thvs-function.php:731
-msgid "Color"
-msgstr ""
-
-#: inc/thvs-backend-function.php:390 inc/thvs-function.php:696
-msgid "Choose a color"
-msgstr ""
-
-#: inc/thvs-backend-function.php:398 inc/thvs-backend-function.php:431
-#: inc/thvs-function.php:704 inc/thvs-function.php:737
-msgid "Image"
-msgstr ""
-
-#: inc/thvs-backend-function.php:399 inc/thvs-function.php:705
-#: inc/thvs-settings.php:941
-msgid "Choose an Image"
-msgstr ""
-
-#: inc/thvs-backend-function.php:437 inc/thvs-function.php:743
-msgid "Button"
-msgstr ""
-
-#: inc/thvs-backend-function.php:554 inc/thvs-backend-function.php:567
-#: inc/thvs-backend-function.php:629 inc/thvs-backend-function.php:641
-#: inc/thvs-backend-function.php:837 inc/thvs-backend-function.php:849
-#: inc/thvs-backend-function.php:1223 inc/thvs-backend-function.php:1235
-#: inc/thvs-function.php:860 inc/thvs-function.php:873
-#: inc/thvs-function.php:935 inc/thvs-function.php:947
-#: inc/thvs-function.php:1143 inc/thvs-function.php:1155
-#: inc/thvs-function.php:1529 inc/thvs-function.php:1541
-msgid "Choose an option"
-msgstr ""
-
-#: inc/thvs-backend-function.php:1289 inc/thvs-function.php:1595
-msgid "Select terms"
-msgstr ""
-
-#: inc/thvs-backend-function.php:1305 inc/thvs-function.php:1611
-msgid "Select all"
-msgstr ""
-
-#: inc/thvs-backend-function.php:1306 inc/thvs-function.php:1612
-msgid "Select none"
-msgstr ""
-
-#: inc/thvs-backend-function.php:1312 inc/thvs-function.php:1618
-#, php-format
-msgid "Add new %s"
-msgstr ""
-
-#: inc/thvs-backend-function.php:1312 inc/thvs-backend-function.php:1314
-#: inc/thvs-function.php:1618 inc/thvs-function.php:1620
-msgid "Add new"
-msgstr ""
-
-#: inc/thvs-function.php:72
-msgid "Swatches Style In Single Page (Pro)"
-msgstr ""
-
-#: inc/thvs-function.php:102
+#: inc/thvs-function.php:45
 msgid "Clear selected attribute on select again"
 msgstr ""
 
-#: inc/thvs-function.php:109
+#: inc/thvs-function.php:51
+msgid "Ajax variation threshold"
+msgstr ""
+
+#: inc/thvs-function.php:52
 msgid ""
 "Control the number of enable ajax variation threshold, If you set <code>"
 "1</code> all product variation will be load via ajax. Default value is <code>"
@@ -315,214 +67,380 @@ msgid ""
 "number between 30 - 40.</span>"
 msgstr ""
 
-#: inc/thvs-function.php:126
+#: inc/thvs-function.php:61
+msgid "Attribute Title"
+msgstr ""
+
+#: inc/thvs-function.php:62
+msgid "Check to Show Attribute Title"
+msgstr ""
+
+#: inc/thvs-function.php:69
 msgid "Title Size"
 msgstr ""
 
-#: inc/thvs-function.php:144
+#: inc/thvs-function.php:78
+msgid "Selected Attribute variation Name"
+msgstr ""
+
+#: inc/thvs-function.php:79
+msgid "Check to show selected attribute variation name after title"
+msgstr ""
+
+#: inc/thvs-function.php:87
 msgid "separator"
 msgstr ""
 
-#: inc/thvs-function.php:145
+#: inc/thvs-function.php:88
 #, php-format
 msgid "Change separator between title and name. Default: %s."
 msgstr ""
 
-#: inc/thvs-function.php:155
+#: inc/thvs-function.php:97
+msgid "Unavailable Attribute Behavior"
+msgstr ""
+
+#: inc/thvs-function.php:98
 #, php-format
 msgid ""
 "Disabled attribute will be hide / blur. %sNote: Disable ajax threshold "
 "doesn't apply this feature.%s"
 msgstr ""
 
-#: inc/thvs-function.php:214
-msgid "Style (Pro)"
+#: inc/thvs-function.php:100
+msgid "Blur with cross"
 msgstr ""
 
-#: inc/thvs-function.php:226 inc/thvs-function.php:277
-#: inc/thvs-function.php:311
+#: inc/thvs-function.php:101
+msgid "Blur without cross"
+msgstr ""
+
+#: inc/thvs-function.php:102
+msgid "Hide"
+msgstr ""
+
+#: inc/thvs-function.php:109 inc/thvs-function.php:396
+#: inc/thvs-function.php:451 inc/thvs-function.php:488
+msgid "Width"
+msgstr ""
+
+#: inc/thvs-function.php:110 inc/thvs-function.php:397
+#: inc/thvs-function.php:489
+msgid "Variation item width"
+msgstr ""
+
+#: inc/thvs-function.php:119 inc/thvs-function.php:406
+#: inc/thvs-function.php:498
+msgid "Height"
+msgstr ""
+
+#: inc/thvs-function.php:120 inc/thvs-function.php:407
+#: inc/thvs-function.php:499
+msgid "Variation item height"
+msgstr ""
+
+#: inc/thvs-function.php:129 inc/thvs-function.php:416
+#: inc/thvs-function.php:508
+msgid "Font Size"
+msgstr ""
+
+#: inc/thvs-function.php:130 inc/thvs-function.php:417
+#: inc/thvs-function.php:509
+msgid "Variation item font size"
+msgstr ""
+
+#: inc/thvs-function.php:139
+msgid "Image Setting"
+msgstr ""
+
+#: inc/thvs-function.php:146
+msgid "Attribute image size"
+msgstr ""
+
+#: inc/thvs-function.php:147
+msgid ""
+"<span style=\"color: red\">Attribute image size changed by <code>"
+"thvs_product_attribute_image_size</code> hook. So this option will not apply "
+"any effect.</span>"
+msgstr ""
+
+#: inc/thvs-function.php:157
+msgid "Style"
+msgstr ""
+
+#: inc/thvs-function.php:160 inc/thvs-function.php:168
+#: inc/thvs-function.php:428
+msgid "Tooltip"
+msgstr ""
+
+#: inc/thvs-function.php:169
+msgid "Enable tooltip on each product attribute."
+msgstr ""
+
+#: inc/thvs-function.php:176 inc/thvs-function.php:253
+#: inc/thvs-function.php:288
 msgid "Background Color"
 msgstr ""
 
-#: inc/thvs-function.php:232 inc/thvs-function.php:270
-#: inc/thvs-function.php:304
+#: inc/thvs-function.php:182 inc/thvs-function.php:246
+#: inc/thvs-function.php:281
 msgid "Text Color"
 msgstr ""
 
-#: inc/thvs-function.php:253 inc/thvs-function.php:295
+#: inc/thvs-function.php:193
+msgid "Attribute Style"
+msgstr ""
+
+#: inc/thvs-function.php:201
+msgid "Default Stylesheet"
+msgstr ""
+
+#: inc/thvs-function.php:202
+msgid "It must always be enable to apply plugins styles over the attribute"
+msgstr ""
+
+#: inc/thvs-function.php:209
+msgid "Attribute Shape Style"
+msgstr ""
+
+#: inc/thvs-function.php:212
+msgid "Rounded Shape"
+msgstr ""
+
+#: inc/thvs-function.php:213
+msgid "Squared Shape"
+msgstr ""
+
+#: inc/thvs-function.php:221
+msgid "Auto Dropdowns to Button"
+msgstr ""
+
+#: inc/thvs-function.php:222
+msgid "Convert default dropdowns to button type"
+msgstr ""
+
+#: inc/thvs-function.php:229 inc/thvs-function.php:271
 msgid "Border Color"
 msgstr ""
 
-#: inc/thvs-function.php:260
+#: inc/thvs-function.php:236
 msgid "Border Size"
 msgstr ""
 
-#: inc/thvs-function.php:285
+#: inc/thvs-function.php:261
 msgid "Hover & Selected Attribute Style"
 msgstr ""
 
-#: inc/thvs-function.php:325
-msgid "Special (Pro)"
+#: inc/thvs-function.php:302
+msgid "Advance (Pro)"
 msgstr ""
 
-#: inc/thvs-function.php:328
+#: inc/thvs-function.php:305
 msgid "Product Catalog"
 msgstr ""
 
-#: inc/thvs-function.php:336
+#: inc/thvs-function.php:313
 msgid "Enable Swatches"
 msgstr ""
 
-#: inc/thvs-function.php:337
+#: inc/thvs-function.php:314
 msgid "Show Swatches in Catlog on Shop / Archive Page"
 msgstr ""
 
-#: inc/thvs-function.php:344
+#: inc/thvs-function.php:321
 msgid "Enable Single Swatches"
 msgstr ""
 
-#: inc/thvs-function.php:345
+#: inc/thvs-function.php:322
 msgid "Show single attribute as catalog mode on shop / archive pages"
 msgstr ""
 
-#: inc/thvs-function.php:352
+#: inc/thvs-function.php:329
 msgid "Select Attribute"
 msgstr ""
 
-#: inc/thvs-function.php:353
+#: inc/thvs-function.php:330
 msgid "Choose an attribute to show in catlog"
 msgstr ""
 
-#: inc/thvs-function.php:361
+#: inc/thvs-function.php:338
 msgid "Enable More"
 msgstr ""
 
-#: inc/thvs-function.php:362
+#: inc/thvs-function.php:339
 msgid "Show More link in Catlog on Shop / Archive Page more than 4 Attribute"
 msgstr ""
 
-#: inc/thvs-function.php:368
+#: inc/thvs-function.php:345
 msgid "Attribute Display Limit"
 msgstr ""
 
-#: inc/thvs-function.php:378
+#: inc/thvs-function.php:355
 msgid "More Text"
 msgstr ""
 
-#: inc/thvs-function.php:380
+#: inc/thvs-function.php:357
 msgid "More"
 msgstr ""
 
-#: inc/thvs-function.php:386
+#: inc/thvs-function.php:363
 msgid "Enable Tooltip"
 msgstr ""
 
-#: inc/thvs-function.php:393
+#: inc/thvs-function.php:370
 msgid "Enable Clear Link"
 msgstr ""
 
-#: inc/thvs-function.php:400
+#: inc/thvs-function.php:377
 msgid "Link Attribute"
 msgstr ""
 
-#: inc/thvs-function.php:401
+#: inc/thvs-function.php:378
 msgid "Attribute Selected on product page"
 msgstr ""
 
-#: inc/thvs-function.php:407
+#: inc/thvs-function.php:384
 msgid "Swatches Alignment"
 msgstr ""
 
-#: inc/thvs-function.php:410
+#: inc/thvs-function.php:387
 msgid "Left"
 msgstr ""
 
-#: inc/thvs-function.php:411
+#: inc/thvs-function.php:388
 msgid "Center"
 msgstr ""
 
-#: inc/thvs-function.php:412
+#: inc/thvs-function.php:389
 msgid "Right"
 msgstr ""
 
-#: inc/thvs-function.php:459
+#: inc/thvs-function.php:436
 msgid "Enable Image Tooltip"
 msgstr ""
 
-#: inc/thvs-function.php:460
+#: inc/thvs-function.php:437
 msgid "Show Image Tooltip in Product single page"
 msgstr ""
 
-#: inc/thvs-function.php:466
+#: inc/thvs-function.php:443
 msgid "Select Tooltip Attribute"
 msgstr ""
 
-#: inc/thvs-function.php:467
+#: inc/thvs-function.php:444
 msgid "Choose an attribute to show Tooltip in Product Single Page"
 msgstr ""
 
-#: inc/thvs-function.php:475
+#: inc/thvs-function.php:452
 msgid "Note:Tooltip Image Maintain 1:1 ratio."
 msgstr ""
 
-#: inc/thvs-function.php:488
+#: inc/thvs-function.php:465
 msgid "Highlight Attribute"
 msgstr ""
 
-#: inc/thvs-function.php:496
+#: inc/thvs-function.php:473
 msgid "Enable Highlight"
 msgstr ""
 
-#: inc/thvs-function.php:497
+#: inc/thvs-function.php:474
 msgid "Show Attribute in large size"
 msgstr ""
 
-#: inc/thvs-function.php:503
+#: inc/thvs-function.php:480
 msgid "Select Highlight Attribute"
 msgstr ""
 
-#: inc/thvs-function.php:504
+#: inc/thvs-function.php:481
 msgid "Choose an attribute to show large in Product Single Page"
 msgstr ""
 
-#: inc/thvs-function.php:544
+#: inc/thvs-function.php:521
 msgid "Stock"
 msgstr ""
 
-#: inc/thvs-function.php:552
+#: inc/thvs-function.php:529
 msgid "Enable Stock"
 msgstr ""
 
-#: inc/thvs-function.php:553
+#: inc/thvs-function.php:530
 msgid "Show Stock availablity in Product single page"
 msgstr ""
 
-#: inc/thvs-function.php:559
+#: inc/thvs-function.php:536
 msgid "Stock threshold"
 msgstr ""
 
-#: inc/thvs-function.php:560
+#: inc/thvs-function.php:537
 msgid "When stock reaches this amount stock label will be shown."
 msgstr ""
 
-#: inc/thvs-function.php:571
+#: inc/thvs-function.php:548
 msgid "Filter Attribute Widget"
 msgstr ""
 
-#: inc/thvs-function.php:579
+#: inc/thvs-function.php:556
 msgid "Filter Attribute Style"
 msgstr ""
 
-#: inc/thvs-function.php:597
+#: inc/thvs-function.php:574
 msgid "Reset All Setting"
 msgstr ""
 
-#: inc/thvs-function.php:600
+#: inc/thvs-function.php:577
 msgid "Reset All Your Custom Settings."
 msgstr ""
 
-#: inc/thvs-function.php:612 inc/thvs-function.php:615
+#: inc/thvs-function.php:589 inc/thvs-function.php:592
 msgid "Help"
+msgstr ""
+
+#: inc/thvs-function.php:672 inc/thvs-function.php:708
+msgid "Color"
+msgstr ""
+
+#: inc/thvs-function.php:673
+msgid "Choose a color"
+msgstr ""
+
+#: inc/thvs-function.php:681 inc/thvs-function.php:714
+msgid "Image"
+msgstr ""
+
+#: inc/thvs-function.php:682 inc/thvs-settings.php:941
+msgid "Choose an Image"
+msgstr ""
+
+#: inc/thvs-function.php:720
+msgid "Button"
+msgstr ""
+
+#: inc/thvs-function.php:841 inc/thvs-function.php:854
+#: inc/thvs-function.php:916 inc/thvs-function.php:928
+#: inc/thvs-function.php:1138 inc/thvs-function.php:1150
+#: inc/thvs-function.php:1531 inc/thvs-function.php:1543
+msgid "Choose an option"
+msgstr ""
+
+#: inc/thvs-function.php:1597
+msgid "Select terms"
+msgstr ""
+
+#: inc/thvs-function.php:1613
+msgid "Select all"
+msgstr ""
+
+#: inc/thvs-function.php:1614
+msgid "Select none"
+msgstr ""
+
+#: inc/thvs-function.php:1620
+#, php-format
+msgid "Add new %s"
+msgstr ""
+
+#: inc/thvs-function.php:1620 inc/thvs-function.php:1622
+msgid "Add new"
 msgstr ""
 
 #: inc/thvs-help.php:9 inc/thvs-help.php:12
@@ -630,6 +548,10 @@ msgid ""
 "installed and activated WooCommerce Plugin."
 msgstr ""
 
+#: inc/thvs-settings.php:64
+msgid "Basic"
+msgstr ""
+
 #: inc/thvs-settings.php:68 inc/thvs-settings.php:70
 msgid "Upgrade"
 msgstr ""
@@ -684,13 +606,29 @@ msgstr ""
 msgid "Vayu Blocks"
 msgstr ""
 
+#: inc/themehunk-menu/plugins-list.php:11
+msgid "TH Advance Product Search"
+msgstr ""
+
 #: inc/themehunk-menu/plugins-list.php:24
 msgid "Th All In One Woo Cart"
+msgstr ""
+
+#: inc/themehunk-menu/plugins-list.php:37
+msgid "Th Product Compare"
 msgstr ""
 
 #. Name of the plugin
 #: inc/themehunk-menu/plugins-list.php:50
 msgid "TH Variation Swatches"
+msgstr ""
+
+#: inc/themehunk-menu/plugins-list.php:62
+msgid "Lead Form Builder"
+msgstr ""
+
+#: inc/themehunk-menu/plugins-list.php:74
+msgid "WP Popup Builder – Popup Forms & Newsletter"
 msgstr ""
 
 #: inc/themehunk-menu/th-option/header.php:22
