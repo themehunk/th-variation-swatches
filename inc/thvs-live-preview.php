@@ -1,42 +1,59 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit;?>
 <!-- preview wrapper -->
-			<div class="setting-preview-wrap style-wrapper" data-tab="thvs-style">
-				    <div class="page-wrapper">
-              <span class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye text-blue-500" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg><?php esc_html_e('Live Preview','th-variation-swatches'); ?></span>
+      <div class="setting-preview-wrap style-wrapper" data-tab="thvs-style">
+            <div class="page-wrapper">
+              <span class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye text-blue-500" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg><?php esc_html_e('Live Preview','th-variation-swatches-pro'); ?></span>
         <div class="product-variations-preview">
 
-          <!-- Color -->
+            <!-- Color -->
           <div class="variation-group">
-            <label>Color:</label>
+            <label data-th-font-size="attr_title_font_size-field">Color <span data-th-text="variation_label_separator-field">:</span> <span data-th-toggle="show_variation_label-field" class="woo-selected-variation-item-name" data-th-font-size="attr_title_font_size-field">Yellow</span></label>
             <div class="variation-options colors">
-            <div class="color-option" data-value="blue" data-th-border="attr_brdr_color-field">
+            <div class="color-option" data-value="blue" data-th-border="attr_brdr_color-field" data-th-width="width-field" data-th-height="width-field" >
               <span style="background:#000fef;" ></span>
             </div>
 
-            <div class="color-option" data-value="green" data-th-border="attr_brdr_color-field">
+            <div class="color-option" data-value="green" data-th-border="attr_brdr_color-field" data-th-width="width-field" data-th-height="width-field">
               <span style="background:#59d600;" ></span>
             </div>
-            <div class="color-option" data-value="orange" data-th-border="attr_brdr_color-field">
+            <div class="color-option" data-value="orange" data-th-border="attr_brdr_color-field" data-th-width="width-field" data-th-height="width-field">
               <span style="background:#ff5d00;" ></span>
             </div>
 
-            <div class="color-option th-yellow" data-value="yellow" data-th-bg-tooltip="tooltip_background_color-field" data-th-color-tooltip="tooltip_text_color-field" data-th-border="attr_brdr_color-field">
+            <div class="color-option th-yellow" data-value="Yellow" data-th-bg-tooltip="tooltip_background_color-field" data-th-color-tooltip="tooltip_text_color-field" data-th-border="attr_brdr_hvr_color-field" data-th-width="width-field" data-th-height="width-field">
               <span style="background:#eded00;" ></span>
             </div>
 
             </div>
           </div>
-            
-          
 
           <!-- Size -->
           <div class="variation-group">
-            <label>Size:</label>
+            <label data-th-font-size="attr_title_font_size-field" >Size <span data-th-text="variation_label_separator-field">:</span> <span data-th-toggle="show_variation_label-field" class="woo-selected-variation-item-name" data-th-font-size="attr_title_font_size-field">XL</span></label>
             <div class="variation-options sizes">
-              <span class="size-option" data-value="l" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field">L</span>
-              <span class="size-option" data-value="m" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field">M</span>
-              <span class="size-option" data-value="s" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field">S</span>
-              <span class="size-option" data-value="xl" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field" data-th-bg-hover="attr_bg_btn_hvr_color-field" data-th-color-hover="attr_text_hvr_color-field" data-th-border-hover="attr_brdr_hvr_color-field">XL</span>
+              <span class="size-option" data-value="l" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field"
+              data-th-width="width-field" data-th-height="height-field" data-th-font-size="single_font_size-field">L</span>
+              <span class="size-option" data-value="m" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field"
+              data-th-width="width-field" data-th-height="height-field" data-th-font-size="single_font_size-field">M</span>
+              <span class="size-option" data-value="s" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field"
+              data-th-width="width-field" data-th-height="height-field" data-th-font-size="single_font_size-field">S</span>
+              <span class="size-option" data-value="xl" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field" data-th-bg-hover="attr_bg_btn_hvr_color-field" data-th-color-hover="attr_text_hvr_color-field" data-th-border-hover="attr_brdr_hvr_color-field"
+              data-th-width="width-field" data-th-height="height-field" data-th-font-size="single_font_size-field">XL</span>
+            </div>
+          </div>
+
+             <!-- Unavailable Attribute -->
+          <div class="variation-group disabled cross">
+            <label data-th-font-size="attr_title_font_size-field">Style <span data-th-text="variation_label_separator-field">:</span> <span data-th-toggle="show_variation_label-field" class="woo-selected-variation-item-name" data-th-font-size="attr_title_font_size-field"></span></label>
+            <div class="variation-options sizes">
+              <span class="size-option" data-value="l" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field"
+              data-th-width="width-field" data-th-height="height-field" data-th-font-size="single_font_size-field">R</span>
+              <span class="size-option" data-value="m" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field"
+              data-th-width="width-field" data-th-height="height-field" data-th-font-size="single_font_size-field">S</span>
+              <span class="size-option" data-value="s" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field"
+              data-th-width="width-field" data-th-height="height-field" data-th-font-size="single_font_size-field">G</span>
+               <span class="size-option" data-value="s" data-th-border="attr_brdr_color-field" data-th-bg="attr_bg_btn_color-field" data-th-color="attr_text_color-field"
+              data-th-width="width-field" data-th-height="height-field" data-th-font-size="single_font_size-field">K</span>
             </div>
           </div>
 
@@ -45,6 +62,6 @@
         <!-- Empty content area -->
         <div class="content-area"></div>
     </div>
-				
-			   </div>
+        
+         </div>
 <!-- preview wrapper -->  

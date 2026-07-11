@@ -13,7 +13,103 @@
             $this.ColorPiker();
             $this.ShapeStyle();
             $this.TooltipToggle();
+            $this.LiveStylePreview();
+            $this.LiveTextPreview();
         },
+
+                LiveStylePreview: function () {
+
+  function applyPreview(inputId, value) {
+
+    /* ---------- NUMBERS ---------- */
+
+    applyNumberCss('font-size', 'data-th-font-size');
+    applyNumberCss('width', 'data-th-width');
+    applyNumberCss('height', 'data-th-height');
+    applyNumberCss('line-height', 'data-th-line-height');
+    applyNumberCss('border-radius', 'data-th-radius');
+    applyNumberCss('padding', 'data-th-padding');
+    applyNumberCss('margin', 'data-th-margin');
+    applyNumberCss('letter-spacing', 'data-th-letter-spacing');
+    applyNumberCss('top', 'data-th-top');
+    applyNumberCss('right', 'data-th-right');
+    applyNumberCss('bottom', 'data-th-bottom');
+    applyNumberCss('left', 'data-th-left');
+    applyNumberCss('max-width', 'data-th-max-width');
+    applyNumberCss('min-height', 'data-th-min-height');
+
+    function applyNumberCss(cssProp, attrName) {
+      $('[' + attrName + '="' + inputId + '"]').each(function () {
+        var unit = $(this).data('th-unit');
+        unit = (unit === undefined) ? 'px' : unit;
+        $(this).css(cssProp, value + unit);
+      });
+    }
+
+    /* ---------- ADVANCED PROPERTIES ---------- */
+
+    // gap
+    $('[data-th-gap="' + inputId + '"]').each(function () {
+      var unit = $(this).data('th-unit');
+      unit = (unit === undefined) ? 'px' : unit;
+      $(this).css('gap', value + unit);
+    });
+
+    // z-index
+    $('[data-th-z-index="' + inputId + '"]').css('z-index', value);
+
+    // opacity
+    $('[data-th-opacity="' + inputId + '"]').css('opacity', value);
+
+    // transform: scale
+    $('[data-th-transform="' + inputId + '"]').css('transform', 'scale(' + value + ')');
+
+  }
+
+
+  // Listen to Number Control updates
+  $(document).on('input change', 'input[type="number"]', function () {
+    if (this.id) {
+      applyPreview(this.id, $(this).val());
+    }
+  });
+
+},
+
+
+
+LiveTextPreview: function () {
+
+  function applyText(inputId, value) {
+
+    // TEXT ONLY
+    $('[data-th-text="' + inputId + '"]').each(function () {
+      $(this).text(value);
+    });
+
+    // HTML ALLOWED
+    $('[data-th-text-html="' + inputId + '"]').each(function () {
+      $(this).html(value);
+    });
+
+  }
+
+  // Live typing
+  $(document).on('input keyup change', 'input[type="text"], textarea', function () {
+    if (!this.id) return;
+    applyText(this.id, $(this).val());
+  });
+
+  // Apply saved values on page load
+  $(document).ready(function () {
+    $('input[type="text"], textarea').each(function () {
+      if (this.id && $(this).val()) {
+        applyText(this.id, $(this).val());
+      }
+    });
+  });
+
+},
 
          // =========================
         // Shape Style Function
@@ -353,9 +449,9 @@ TooltipToggle: function (){
     ChangeSetting:function(){
              $(document).on('click', '#show_title-field', function (event){
                    if($(this).is(':checked')){
-                    $('#show_variation_label-wrapper,#variation_label_separator-wrapper').show('100');
+                    $('#show_variation_label-wrapper').show('100');
                    }else{
-                      $('#show_variation_label-wrapper,#variation_label_separator-wrapper').hide('100');
+                      $('#show_variation_label-wrapper').hide('100');
                    }
                    
              });
@@ -413,6 +509,122 @@ jQuery(document).ready(function($) {
     // Run on input change
     $('#attr_brdr_size-field').on('input change', function() {
         updateBorder();
+    });
+
+});
+
+
+jQuery(document).ready(function($) {
+
+    function updateBorder() {
+        var borderWidth = $('#attr_brdr_size-field').val();
+
+        if (borderWidth !== '') {
+            borderWidth = borderWidth + 'px';
+        }
+
+        $('.style-wrapper .color-option,.style-wrapper.size-option').css({
+            'border-width': borderWidth,
+        });
+    }
+
+    // Run on page load
+    updateBorder();
+
+    // Run on input change
+    $('#attr_brdr_size-field').on('input change', function() {
+        updateBorder();
+    });
+
+
+    // Swatches style in single page
+
+    // 1. Apni saari settings aur unke rules ka ek configuration object banayein
+const swatchesConfig = {
+    // Pehli setting (Jo aapke paas pehle se thi - 2 options)
+    "th_variation_swatches[th-swatches-style]": {
+        "thswatche": function() {
+            $('.variation-group .variation-options').css('margin-left', '0');
+        },
+        "default": function() { // Agar 'thswatche' nahi hai to ye chalega (Else condition)
+            $('.variation-group .variation-options').css('margin-left', '39px');
+        }
+    },
+    
+    // Doosri setting (Jisme aapki 3 values hain)
+    // ISME APNI REAL SETTING KA NAAM AUR CLASSES BADAL LEIN
+    "th_variation_swatches[attribute_behavior]": { 
+        "blur": function() {
+            // Pehle baaki dono classes hatao, fir 'blur' add karo
+            $('.variation-group.disabled').removeClass('blur-no-cross hide').addClass('blur');
+        },
+        "blur-no-cross": function() {
+            // Pehle baaki dono classes hatao, fir 'blur-no-cross' add karo
+            $('.variation-group.disabled').removeClass('blur hide').addClass('blur-no-cross');
+        },
+        "hide": function() {
+            // Pehle baaki dono classes hatao, fir 'hide' add karo
+            $('.variation-group.disabled').removeClass('blur blur-no-cross').addClass('hide');
+        },
+        "default": function() {
+            // Agar koi bhi radio selected nahi hai ya default state chahiye, toh saari temporary classes hata do
+            $('.variation-group.disabled').removeClass('blur blur-no-cross hide');
+        }
+    }
+};
+
+// 2. Main Reusable Function jo selected setting aur uski value ke hisab se action lega
+function handleSettingToggle(settingName) {
+    // Selected radio button ki value nikalen
+    var selectedValue = $(`input[name='${settingName}']:checked`).val();
+    
+    // Check karein kya ye setting humare config object mein exist karti hai
+    if (swatchesConfig[settingName]) {
+        var actions = swatchesConfig[settingName];
+        
+        // Agar selected value ka specific function hai to use chalayein, nahi to default chalayein
+        if (typeof actions[selectedValue] === 'function') {
+            actions[selectedValue]();
+        } else if (typeof actions['default'] === 'function') {
+            actions['default']();
+        }
+    }
+}
+
+// 3. Document Ready / Page Load par saari configured settings ko initialize karein
+    
+    // Loop chala kar page load par hi sabhi settings ka default state set kar dein
+    Object.keys(swatchesConfig).forEach(function(settingName) {
+        handleSettingToggle(settingName);
+        
+        // 4. Dynamic Event Listener: Har setting ke change hone par ye chalega
+        $(document).on('change', `input[name='${settingName}']`, function() {
+            handleSettingToggle(settingName);
+        });
+    });
+
+   
+   // Shop Page Variation alignment
+       function updateAlignment() {
+        var alignment = $('#show_swatches_shop_attr_alignment-field').val();
+
+        var justifyContent = 'flex-start';
+
+        if (alignment === 'center') {
+            justifyContent = 'center';
+        } else if (alignment === 'right') {
+            justifyContent = 'flex-end';
+        }
+
+        $('.variation-options').css('justify-content', justifyContent);
+    }
+
+    // Initial load
+    updateAlignment();
+
+    // On select change
+    $('#show_swatches_shop_attr_alignment-field').on('change', function () {
+        updateAlignment();
     });
 
 });

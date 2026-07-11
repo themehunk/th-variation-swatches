@@ -55,15 +55,37 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'max'     => 80,
 								'require' => array( 'disable_threshold' => array( 'type' => 'empty' ) )
 							),
-                           array(
-								'id'      => 'show_title',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Attribute Title', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'Check to Show Attribute Title', 'th-variation-swatches' ),
-								'default' => true,
+                          
+
+						) ) ),
+			)
+		), apply_filters( 'thvs_advanced_style_default_active', true )
+		);
+
+        th_variation_swatches()->add_setting(
+			'thvs_style', esc_html__( 'Style', 'th-variation-swatches' ), apply_filters(
+			'thvs_style_settings_section', array(
+				
+				array(
+					'title'  => esc_html__( 'Attribute Style', 'th-variation-swatches' ),
+					
+					'fields' => apply_filters(
+						'thvs_style_tooltip_setting_fields', array(
+
+							array(
+								'id'      => 'style',
+								'type'    => 'radio',
+								'title'   => esc_html__( 'Attribute Shape Style', 'th-variation-swatches' ),
 								
+								'options' => array(
+									'rounded' => esc_html__( 'Rounded Shape', 'th-variation-swatches' ),
+									'squared' => esc_html__( 'Squared Shape', 'th-variation-swatches' ),
+
+								),
+								'default' => 'rounded'
 							),
-                           array(
+
+							 array(
 								'id'      => 'attr_title_font_size',
 								'type'    => 'number',
 								'title'   => esc_html__( 'Title Size', 'th-variation-swatches' ),
@@ -71,14 +93,6 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'min'     => 8,
 								'max'     => 50,
 								'suffix'  => 'px'
-							),
-							array(
-								'id'      => 'show_variation_label',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Selected Attribute variation Name', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'Check to show selected attribute variation name after title', 'th-variation-swatches' ),
-								'default' => true,
-								
 							),
 
 							array(
@@ -114,16 +128,6 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'suffix'  => 'px'
 							),
 							array(
-								'id'      => 'height',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Height', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'Variation item height', 'th-variation-swatches' ),
-								'default' => 36,
-								'min'     => 10,
-								'max'     => 200,
-								'suffix'  => 'px'
-							),
-							array(
 								'id'      => 'single_font_size',
 								'type'    => 'number',
 								'title'   => esc_html__( 'Font Size', 'th-variation-swatches' ),
@@ -132,96 +136,8 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'min'     => 8,
 								'max'     => 50,
 								'suffix'  => 'px'
-							)
-
-						) ) ),
-				array(
-					'title'  => esc_html__( 'Image Setting', 'th-variation-swatches' ),
-					'fields' => apply_filters(
-						'thvs_advanced_setting_fields', array(
-
-							array(
-								'id'      => 'attribute_image_size',
-								'type'    => 'select',
-								'title'   => esc_html__( 'Attribute image size', 'th-variation-swatches' ),
-								'desc'    => has_filter( 'thvs_product_attribute_image_size' ) ? __( '<span style="color: red">Attribute image size changed by <code>thvs_product_attribute_image_size</code> hook. So this option will not apply any effect.</span>', 'th-variation-swatches' ) : __( sprintf( 'Choose attribute image size. <a target="_blank" href="%s">Media Settings</a>', esc_url( admin_url( 'options-media.php' ) ) ), 'th-variation-swatches' ),
-								'options' => thvs_get_all_image_sizes(),
-								'default' => 'thumbnail'
-							), 
-						))),
-			)
-		), apply_filters( 'thvs_advanced_style_default_active', true )
-		);
-
-        th_variation_swatches()->add_setting(
-			'thvs_style', esc_html__( 'Style', 'th-variation-swatches' ), apply_filters(
-			'thvs_style_settings_section', array(
-				array(
-					'title'  => esc_html__( 'Tooltip', 'th-variation-swatches' ),
-					
-					'fields' => apply_filters(
-						'thvs_style_tooltip_setting_fields', array(
-							
-							array(
-								'id'      => 'tooltip',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Tooltip', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'Enable tooltip on each product attribute.', 'th-variation-swatches' ),
-								'default' => true
 							),
 
-							array(
-								'id'      => 'tooltip_background_color',
-								'type'    => 'color',
-								'title'   => esc_html__( 'Background Color', 'th-variation-swatches' ),
-								'alpha'   => true,
-							),
-							array(
-								'id'      => 'tooltip_text_color',
-								'type'    => 'color',
-								'title'   => esc_html__( 'Text Color', 'th-variation-swatches' ),
-								'alpha'   => true,
-							),
-							
-						
-							
-
-						)
-					)
-				),
-				array(
-					'title'  => esc_html__( 'Attribute Style', 'th-variation-swatches' ),
-					
-					'fields' => apply_filters(
-						'thvs_style_tooltip_setting_fields', array(
-							
-							array(
-								'id'      => 'stylesheet',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Default Stylesheet', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'It must always be enable to apply plugins styles over the attribute', 'th-variation-swatches' ),
-								'default' => true
-							),
-
-							array(
-								'id'      => 'style',
-								'type'    => 'radio',
-								'title'   => esc_html__( 'Attribute Shape Style', 'th-variation-swatches' ),
-								
-								'options' => array(
-									'rounded' => esc_html__( 'Rounded Shape', 'th-variation-swatches' ),
-									'squared' => esc_html__( 'Squared Shape', 'th-variation-swatches' ),
-
-								),
-								'default' => 'rounded'
-							),
-							array(
-								'id'      => 'default_to_button',
-								'type'    => 'checkbox',
-								'title'   => esc_html__( 'Auto Dropdowns to Button', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'Convert default dropdowns to button type', 'th-variation-swatches' ),
-								'default' => true
-							),
 							array(
 								'id'      => 'attr_brdr_color',
 								'type'    => 'color',
@@ -252,6 +168,14 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'color',
 								'title'   => esc_html__( 'Background Color', 'th-variation-swatches' ),
 								'alpha'   => true,
+							),
+
+							array(
+								'id'      => 'default_to_button',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Auto Dropdowns to Button', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Convert default dropdowns to button type', 'th-variation-swatches' ),
+								'default' => true
 							),
 
 						)
@@ -286,6 +210,40 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'type'    => 'color',
 								'default' => '#111',
 								'title'   => esc_html__( 'Background Color', 'th-variation-swatches' ),
+								'alpha'   => true,
+							),
+							
+						
+							
+
+						)
+					)
+				),
+
+				array(
+					'title'  => esc_html__( 'Tooltip', 'th-variation-swatches' ),
+					
+					'fields' => apply_filters(
+						'thvs_style_tooltip_setting_fields', array(
+							
+							array(
+								'id'      => 'tooltip',
+								'type'    => 'checkbox',
+								'title'   => esc_html__( 'Tooltip', 'th-variation-swatches' ),
+								'desc'    => esc_html__( 'Enable tooltip on each product attribute.', 'th-variation-swatches' ),
+								'default' => true
+							),
+
+							array(
+								'id'      => 'tooltip_background_color',
+								'type'    => 'color',
+								'title'   => esc_html__( 'Background Color', 'th-variation-swatches' ),
+								'alpha'   => true,
+							),
+							array(
+								'id'      => 'tooltip_text_color',
+								'type'    => 'color',
+								'title'   => esc_html__( 'Text Color', 'th-variation-swatches' ),
 								'alpha'   => true,
 							),
 							
@@ -1029,7 +987,9 @@ if ( ! function_exists( 'thvs_default_variable_item' ) ):
 							case 'image':
 								$attachment_id = $assigned[ $term->slug ]['image_id'];
 								$image_size    = sanitize_text_field( th_variation_swatches()->th_variation_swatches_get_option( 'attribute_image_size' ) );
-								$image         = wp_get_attachment_image_src( $attachment_id, apply_filters( 'thvs_product_attribute_image_size', $image_size, $attribute, $product ) );
+								// $image         = wp_get_attachment_image_src( $attachment_id, apply_filters( 'thvs_product_attribute_image_size', $image_size, $attribute, $product ) );
+
+								$image = wp_get_attachment_image_src( $attachment_id, array( 150, 150 ) );
 
 								if ( is_array( $image ) ) {
 									$data .= sprintf( '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', esc_attr( $option ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );
@@ -1093,7 +1053,10 @@ if ( ! function_exists( 'thvs_default_variable_item' ) ):
 						case 'image':
 							$attachment_id = $assigned[ $option ]['image_id'];
 							$image_size    = sanitize_text_field( th_variation_swatches()->th_variation_swatches_get_option( 'attribute_image_size' ) );
-							$image         = wp_get_attachment_image_src( $attachment_id, apply_filters( 'wvs_product_attribute_image_size', $image_size, $attribute, $product ) );
+							// $image         = wp_get_attachment_image_src( $attachment_id, apply_filters( 'wvs_product_attribute_image_size', $image_size, $attribute, $product ) );
+
+							$image = wp_get_attachment_image_src( $attachment_id, array( 150, 150 ) );
+
 
 							if ( is_array( $image ) ) {
 								$data .= sprintf( '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', esc_attr( $option ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );
@@ -1242,7 +1205,9 @@ if ( ! function_exists( 'thvs_variable_item' ) ):
 
 								$attachment_id = apply_filters( 'thvs_product_global_attribute_image_id', absint( thvs_get_product_attribute_image( $term ) ), $term, $args );
 								$image_size    = th_variation_swatches()->th_variation_swatches_get_option( 'attribute_image_size' );
-								$image         = wp_get_attachment_image_src( $attachment_id, apply_filters( 'thvs_product_attribute_image_size', $image_size, $attribute, $product ) );
+								// $image         = wp_get_attachment_image_src( $attachment_id, apply_filters( 'thvs_product_attribute_image_size', $image_size, $attribute, $product ) );
+
+								$image = wp_get_attachment_image_src( $attachment_id, array( 150, 150 ) );
 
 								if ( is_array( $image ) ) {
 									$data .= sprintf( '<img class="variable-item-image" aria-hidden="true" alt="%s" src="%s" width="%d" height="%d" />', esc_attr( $option ), esc_url( $image[0] ), esc_attr( $image[1] ), esc_attr( $image[2] ) );

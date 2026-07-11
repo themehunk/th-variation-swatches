@@ -52,24 +52,21 @@ letter-spacing: .04rem;
 ";
 endif;
 $attrwdht = esc_html(th_variation_swatches()->th_variation_swatches_get_option( 'width' ));
-$attrhgt = esc_html(th_variation_swatches()->th_variation_swatches_get_option( 'height' ));
 $attrsingle_font_size = esc_html(th_variation_swatches()->th_variation_swatches_get_option( 'single_font_size' ));
-$thvs_frnt_custom_css.=".variable-item:not(.radio-variable-item){
-	height:{$attrwdht}px;width:{$attrhgt}px;
+$thvs_frnt_custom_css.=".color-variable-item, .image-variable-item{
+    height:{$attrwdht}px;width:{$attrwdht}px;
 } 
 .thvs-attr-behavior-blur .variable-item.disabled .variable-item-contents span:after{
     height:{$attrwdht}px;
     line-height:{$attrwdht}px;
 }
+.th-variation-swatches .variable-items-wrapper .variable-item.button-variable-item{
+    min-width:{$attrwdht}px;
+}
 .woo-variation-items-wrapper .button-variable-item span,.th-variation-swatches.thvs-style-squared .variable-items-wrapper .variable-item.button-variable-item .variable-item-span {
     font-size:{$attrsingle_font_size}px;
 }";
 
-if(wc_string_to_bool( th_variation_swatches()->th_variation_swatches_get_option( 'show_title' ) )==''):
-    $thvs_frnt_custom_css.=".thvs-loaded .variations th.label{
-        display:none!important;
-    }";
-endif;
 
 //Tooltip
 $tooltip_background_color = esc_html(th_variation_swatches()->th_variation_swatches_get_option( 'tooltip_background_color' ));
