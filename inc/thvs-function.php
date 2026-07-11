@@ -128,16 +128,6 @@ if ( ! function_exists( 'thvs_settings' ) ):
 								'suffix'  => 'px'
 							),
 							array(
-								'id'      => 'height',
-								'type'    => 'number',
-								'title'   => esc_html__( 'Height', 'th-variation-swatches' ),
-								'desc'    => esc_html__( 'Variation item height', 'th-variation-swatches' ),
-								'default' => 36,
-								'min'     => 10,
-								'max'     => 200,
-								'suffix'  => 'px'
-							),
-							array(
 								'id'      => 'single_font_size',
 								'type'    => 'number',
 								'title'   => esc_html__( 'Font Size', 'th-variation-swatches' ),

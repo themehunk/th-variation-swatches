@@ -13,8 +13,103 @@
             $this.ColorPiker();
             $this.ShapeStyle();
             $this.TooltipToggle();
-            $this.getattributeType();
+            $this.LiveStylePreview();
+            $this.LiveTextPreview();
         },
+
+                LiveStylePreview: function () {
+
+  function applyPreview(inputId, value) {
+
+    /* ---------- NUMBERS ---------- */
+
+    applyNumberCss('font-size', 'data-th-font-size');
+    applyNumberCss('width', 'data-th-width');
+    applyNumberCss('height', 'data-th-height');
+    applyNumberCss('line-height', 'data-th-line-height');
+    applyNumberCss('border-radius', 'data-th-radius');
+    applyNumberCss('padding', 'data-th-padding');
+    applyNumberCss('margin', 'data-th-margin');
+    applyNumberCss('letter-spacing', 'data-th-letter-spacing');
+    applyNumberCss('top', 'data-th-top');
+    applyNumberCss('right', 'data-th-right');
+    applyNumberCss('bottom', 'data-th-bottom');
+    applyNumberCss('left', 'data-th-left');
+    applyNumberCss('max-width', 'data-th-max-width');
+    applyNumberCss('min-height', 'data-th-min-height');
+
+    function applyNumberCss(cssProp, attrName) {
+      $('[' + attrName + '="' + inputId + '"]').each(function () {
+        var unit = $(this).data('th-unit');
+        unit = (unit === undefined) ? 'px' : unit;
+        $(this).css(cssProp, value + unit);
+      });
+    }
+
+    /* ---------- ADVANCED PROPERTIES ---------- */
+
+    // gap
+    $('[data-th-gap="' + inputId + '"]').each(function () {
+      var unit = $(this).data('th-unit');
+      unit = (unit === undefined) ? 'px' : unit;
+      $(this).css('gap', value + unit);
+    });
+
+    // z-index
+    $('[data-th-z-index="' + inputId + '"]').css('z-index', value);
+
+    // opacity
+    $('[data-th-opacity="' + inputId + '"]').css('opacity', value);
+
+    // transform: scale
+    $('[data-th-transform="' + inputId + '"]').css('transform', 'scale(' + value + ')');
+
+  }
+
+
+  // Listen to Number Control updates
+  $(document).on('input change', 'input[type="number"]', function () {
+    if (this.id) {
+      applyPreview(this.id, $(this).val());
+    }
+  });
+
+},
+
+
+
+LiveTextPreview: function () {
+
+  function applyText(inputId, value) {
+
+    // TEXT ONLY
+    $('[data-th-text="' + inputId + '"]').each(function () {
+      $(this).text(value);
+    });
+
+    // HTML ALLOWED
+    $('[data-th-text-html="' + inputId + '"]').each(function () {
+      $(this).html(value);
+    });
+
+  }
+
+  // Live typing
+  $(document).on('input keyup change', 'input[type="text"], textarea', function () {
+    if (!this.id) return;
+    applyText(this.id, $(this).val());
+  });
+
+  // Apply saved values on page load
+  $(document).ready(function () {
+    $('input[type="text"], textarea').each(function () {
+      if (this.id && $(this).val()) {
+        applyText(this.id, $(this).val());
+      }
+    });
+  });
+
+},
 
          // =========================
         // Shape Style Function
