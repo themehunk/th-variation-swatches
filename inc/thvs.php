@@ -130,7 +130,7 @@ if ( ! class_exists( 'TH_Variation_Swatches' ) ):
             }
             array_push( $classes, sprintf( 'thvs-style-%s', $this->th_variation_swatches_get_option( 'style' ) ) );
             array_push( $classes, sprintf( 'thvs-attr-behavior-%s', $this->th_variation_swatches_get_option( 'attribute_behavior' ) ) );
-            array_push( $classes, sprintf( 'thvs%s-css', $this->th_variation_swatches_get_option( 'stylesheet' ) ? '' : '-no' ) );
+            array_push( $classes, sprintf( 'thvs%s-css', $this->th_variation_swatches_get_option( 'stylesheet' ) ? '' : '' ) );
             
             return apply_filters( 'thvs_body_class', array_unique( $classes ), $old_classes );
         }
@@ -141,9 +141,9 @@ if ( ! class_exists( 'TH_Variation_Swatches' ) ):
 
         public function th_variation_swatches_enqueue_scripts(){
            
-          if ( wc_string_to_bool( $this->th_variation_swatches_get_option( 'stylesheet' ) ) ) {
+           
           wp_enqueue_style( 'th-variation-swatches', TH_VARIATION_SWATCHES_PLUGIN_URI. '/assets/css/thvs-front-style.css', array(), TH_VARIATION_SWATCHES_VERSION );
-           }
+           
           wp_add_inline_style('th-variation-swatches', thvs_front_custom_style());
 
           wp_enqueue_script( 'th-variation-swatches-front', TH_VARIATION_SWATCHES_PLUGIN_URI. '/assets/js/thvs-front.js', array(
@@ -156,7 +156,7 @@ if ( ! class_exists( 'TH_Variation_Swatches' ) ):
                 'th-variation-swatches-front', 'th_variation_swatches_options', apply_filters(
                     'th_variation_swatches_js_options', array(
                         'is_product_page'           => is_product(),
-                        'show_variation_label'      => wc_string_to_bool( $this->th_variation_swatches_get_option( 'show_variation_label' ) ),
+                        'show_variation_label'      => true,
                         'variation_label_separator' => esc_html( $this->th_variation_swatches_get_option( 'variation_label_separator' ) ),
                         'thvs_nonce'                => wp_create_nonce( 'th_variation_swatches' ),
                     )
