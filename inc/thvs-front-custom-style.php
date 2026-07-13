@@ -90,7 +90,7 @@ $attr_text_hvr_color          = esc_html(th_variation_swatches()->th_variation_s
 $attr_bg_btn_hvr_color        = esc_html(th_variation_swatches()->th_variation_swatches_get_option( 'attr_bg_btn_hvr_color' ));
 
 $thvs_frnt_custom_css.=".th-variation-swatches .variable-items-wrapper .variable-item:hover,.th-variation-swatches .variable-items-wrapper .variable-item.selected{border:{$attr_brdr_size}px solid {$attr_brdr_hvr_color };} .th-variation-swatches .variable-items-wrapper .variable-item.selected{background-color:{$attr_bg_btn_hvr_color}!important;color:{$attr_text_hvr_color};box-shadow:none;}
-.th-variation-swatches .variable-items-wrapper .variable-item:hover{border-color:{$attr_bg_btn_hvr_color};} ";
+.th-variation-swatches .variable-items-wrapper .variable-item:hover{border-color:{$attr_brdr_hvr_color};} ";
 $attr_title_font_size        = esc_html(th_variation_swatches()->th_variation_swatches_get_option( 'attr_title_font_size' ));
 $thvs_frnt_custom_css.=".variations .woo-selected-variation-item-name,.variations .label label{
 font-size:{$attr_title_font_size}px;

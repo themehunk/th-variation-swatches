@@ -42,6 +42,7 @@ if ( ! class_exists( 'TH_Variation_Swatches' ) ):
                 require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-function.php';
                 require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-hook.php';
                 require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/thvs-front-custom-style.php';
+                require_once TH_VARIATION_SWATCHES_PLUGIN_PATH . '/inc/deactivate-feedback.php';
     
             
         }

@@ -659,7 +659,8 @@ p.thvs-button-wrapper {
 
 /* Help TAB CSS START   */
 .help-wrapper.setting-preview-wrap{
-    width: 100%;
+    width: 90%!important;
+    margin: 0 auto !important;
 }
 .help-wrapper .page-wrapper{
     background: transparent!important;
@@ -788,8 +789,7 @@ h2.thvs_index_builderthvs_index_builder-section-0{
 .thvs-button-wrapper > a{
     display: none;
 }
-.setting-wrap.thvs_style .setting-content,
-.setting-wrap.thvs_special .setting-content{
+.setting-wrap.thvs_style .setting-content{
     width: 46%;
     margin: initial;
 }
@@ -800,8 +800,7 @@ h2.thvs_index_builderthvs_index_builder-section-0{
     align-items: center;
 }
 
-.setting-wrap.thvs_style .thvs-tabs-wrapper .form-table,
-.setting-wrap.thvs_special .thvs-tabs-wrapper .form-table{
+.setting-wrap.thvs_style .thvs-tabs-wrapper .form-table{
     width: 100%;
 }
 
@@ -893,6 +892,7 @@ h2.thvs_index_builderthvs_index_builder-section-0{
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  line-height: normal;
 }
 
 /* Active state (for preview testing) */
