@@ -97,6 +97,7 @@ Yes, You can translate our plugin to desired language.
 * Update: Color Option issues resolved.
 * Update: Deactivation form added.
 * Update: Style Improved.
+* Update: Single page variation form style updated.
 
 = 1.4.3 =
 * Update: Languages files added.

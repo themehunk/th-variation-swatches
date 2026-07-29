@@ -353,3 +353,8 @@ row-gap: 15px;
 .th-variation-swatches .variable-items-wrapper .variable-item.disabled::before{
     display: none!important;
 }
+
+.woocommerce .summary form.cart{
+    display: flex;
+    flex-wrap: wrap;
+}
