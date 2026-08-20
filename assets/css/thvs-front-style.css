@@ -65,7 +65,7 @@ padding: 0 0.5rem;
 font-size:14px;
 }
 .woo-variation-items-wrapper .button-variable-item span,.th-variation-swatches.thvs-style-squared .variable-items-wrapper .variable-item.button-variable-item .variable-item-span{
-    line-height: 18px;
+    line-height: normal;
     font-weight: 500;
     color: inherit;
 }
@@ -352,4 +352,9 @@ row-gap: 15px;
 }
 .th-variation-swatches .variable-items-wrapper .variable-item.disabled::before{
     display: none!important;
+}
+
+.woocommerce .summary form.cart{
+    display: flex;
+    flex-wrap: wrap;
 }

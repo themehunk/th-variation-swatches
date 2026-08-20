@@ -3,8 +3,8 @@ Contributors: ThemeHunk
 Author URI: : https://www.themehunk.com/
 Tags: woocommerce, variation swatches, woocommerce attributes, woocommerce variation, woocommerce variation swatches 
 Requires at least: 5.8
-Tested up to: 7.0
-Stable tag: 1.4.3
+Tested up to: 7.1
+Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,16 @@ Yes, You can translate our plugin to desired language.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.4.5 =
+* Update: Style Updated.
+
+= 1.4.4 =
+* Update: Languages files added.
+* Update: Color Option issues resolved.
+* Update: Deactivation form added.
+* Update: Style Improved.
+* Update: Single page variation form style updated.
 
 = 1.4.3 =
 * Update: Languages files added.
